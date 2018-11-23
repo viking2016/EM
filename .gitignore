@@ -21,7 +21,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-*.Libs/
+Libs/
 
 ## Obj-C/Swift specific
 *.hmap
@@ -62,3 +62,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+.DS_Store
