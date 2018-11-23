@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>1、了解电梯情况挂保养警示牌（确认电梯具体位置，防坠落、绊倒、挤伤、撞击、绞割、电击！）</string>
+	<string>2、正确执行进出轿厢程序（依次验证厅门/急停/检修是否有效/包括观光梯工作）</string>
+	<string>3、断电后正确使用电源警示及锁闭程序</string>
+	<string>4、安全工具的正确使用（漏电保护器/厅门限位器/厅门护栏</string>
+	<string>5、安全用具的穿戴（安全鞋/安全帽/安全带/工作服等）</string>
+	<string>6、正确使用短接线程序（短接线均有编号，短接工作过程进行登记）</string>
+	<string>7、所有因工作需要被拆除的防护装置，在工作结束后必须将其复位</string>
+	<string>8、正确执行进出底坑程序（依次验证厅门/下底坑前急停是否有效/包括液压梯能量释放）</string>
+</array>
+</plist>

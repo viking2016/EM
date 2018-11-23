@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ESSHomeCollectionViewCell" id="gTV-IL-0wX" customClass="ESSHomeCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dqi-Xp-45V">
+                        <rect key="frame" x="15" y="8" width="85" height="85"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Dqi-Xp-45V" secondAttribute="height" multiplier="1:1" id="6S4-jy-ZOy"/>
+                            <constraint firstAttribute="width" constant="85" id="LcD-Qm-vmx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维保单位" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-97-BnN">
+                        <rect key="frame" x="23.5" y="72" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Dqi-Xp-45V" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" multiplier="1.15" id="Glm-do-RPb"/>
+                <constraint firstItem="Dqi-Xp-45V" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="OeD-NM-Uk8"/>
+                <constraint firstItem="KB3-97-BnN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ZUP-aF-8c6"/>
+                <constraint firstItem="KB3-97-BnN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="1.6" id="yrQ-Ne-JaP"/>
+            </constraints>
+            <size key="customSize" width="97" height="87"/>
+            <connections>
+                <outlet property="img" destination="Dqi-Xp-45V" id="J8W-EJ-dyG"/>
+                <outlet property="lb" destination="KB3-97-BnN" id="CBu-uH-gB0"/>
+            </connections>
+            <point key="canvasLocation" x="57" y="72"/>
+        </collectionViewCell>
+    </objects>
+</document>

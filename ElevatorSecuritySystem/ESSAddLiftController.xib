@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ESSAddLiftController">
+            <connections>
+                <outlet property="lb" destination="sub-fh-bxm" id="gnB-XX-8Uz"/>
+                <outlet property="tf" destination="7MN-26-SGO" id="8MF-5Y-19x"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入电梯注册代码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sub-fh-bxm">
+                    <rect key="frame" x="15" y="130" width="219" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="mLi-jE-X3D"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写真实有效的注册代码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7MN-26-SGO">
+                    <rect key="frame" x="15" y="194" width="345" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="42K-MF-hw8"/>
+                    </constraints>
+                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="659-US-Efg">
+                    <rect key="frame" x="15" y="245" width="345" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Jrt-Sb-5yq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7MN-26-SGO" secondAttribute="trailing" constant="15" id="8yy-x2-PAF"/>
+                <constraint firstItem="659-US-Efg" firstAttribute="trailing" secondItem="7MN-26-SGO" secondAttribute="trailing" id="A7W-eu-Cuu"/>
+                <constraint firstItem="7MN-26-SGO" firstAttribute="top" secondItem="sub-fh-bxm" secondAttribute="bottom" constant="35" id="SOy-tg-ySb"/>
+                <constraint firstItem="7MN-26-SGO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="SSF-dl-ssH"/>
+                <constraint firstItem="659-US-Efg" firstAttribute="leading" secondItem="7MN-26-SGO" secondAttribute="leading" id="Uux-py-dLF"/>
+                <constraint firstItem="659-US-Efg" firstAttribute="top" secondItem="7MN-26-SGO" secondAttribute="bottom" constant="1" id="n1T-xA-ffG"/>
+                <constraint firstItem="sub-fh-bxm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="qiZ-wt-PAX"/>
+                <constraint firstItem="sub-fh-bxm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="130" id="vhR-GF-hJD"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ESSImagePickerCollectionViewCell" id="gTV-IL-0wX" customClass="ESSImagePickerCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="145" height="154"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="145" height="154"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HrC-7B-ONt">
+                        <rect key="frame" x="0.0" y="0.0" width="145" height="154"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HrC-7B-ONt" secondAttribute="trailing" id="Ckh-Ui-5Hy"/>
+                <constraint firstItem="HrC-7B-ONt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LNv-v6-ur8"/>
+                <constraint firstAttribute="bottom" secondItem="HrC-7B-ONt" secondAttribute="bottom" id="cSf-Jy-W2W"/>
+                <constraint firstItem="HrC-7B-ONt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="o18-DL-nRa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="145" height="154"/>
+            <connections>
+                <outlet property="imageView" destination="HrC-7B-ONt" id="9Cg-Vg-wl7"/>
+            </connections>
+            <point key="canvasLocation" x="81.5" y="53"/>
+        </collectionViewCell>
+    </objects>
+</document>

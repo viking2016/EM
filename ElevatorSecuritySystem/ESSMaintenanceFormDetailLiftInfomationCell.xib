@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ESSMaintenanceFormDetailLiftInfomationCell" rowHeight="44" id="U3k-RM-F9D" customClass="ESSMaintenanceFormDetailLiftInfomationCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3k-RM-F9D" id="NN3-89-Sfi">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可调整" textAlignment="right" lineBreakMode="headTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-HY-UJ3">
+                        <rect key="frame" x="317" y="13.5" width="43" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题暂无" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMa-fs-mhZ">
+                        <rect key="frame" x="15" y="13.5" width="57.5" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="57.5" id="N0H-Cr-mi5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.019607843140000001" green="0.1764705882" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-j7-02x">
+                        <rect key="frame" x="0.0" y="43" width="375" height="0.5"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.91372549020000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="IKx-Cx-way"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AIl-j7-02x" firstAttribute="leading" secondItem="NN3-89-Sfi" secondAttribute="leading" id="199-gI-Z01"/>
+                    <constraint firstItem="085-HY-UJ3" firstAttribute="top" secondItem="NN3-89-Sfi" secondAttribute="top" constant="13.5" id="C7l-3R-S2a"/>
+                    <constraint firstAttribute="bottom" secondItem="AIl-j7-02x" secondAttribute="bottom" id="Cda-rG-9gJ"/>
+                    <constraint firstItem="085-HY-UJ3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vMa-fs-mhZ" secondAttribute="trailing" constant="15" id="D2G-Ue-Ef2"/>
+                    <constraint firstItem="AIl-j7-02x" firstAttribute="top" secondItem="vMa-fs-mhZ" secondAttribute="bottom" constant="12.5" id="MMA-nU-ld0"/>
+                    <constraint firstAttribute="trailing" secondItem="085-HY-UJ3" secondAttribute="trailing" constant="15" id="WbL-Bi-nmT"/>
+                    <constraint firstItem="vMa-fs-mhZ" firstAttribute="top" secondItem="NN3-89-Sfi" secondAttribute="top" constant="13.5" id="bIT-RL-aTp"/>
+                    <constraint firstAttribute="trailing" secondItem="AIl-j7-02x" secondAttribute="trailing" id="bNx-n7-udJ"/>
+                    <constraint firstItem="AIl-j7-02x" firstAttribute="top" secondItem="085-HY-UJ3" secondAttribute="bottom" constant="12.5" id="fxp-bM-Bkk"/>
+                    <constraint firstItem="vMa-fs-mhZ" firstAttribute="leading" secondItem="NN3-89-Sfi" secondAttribute="leading" constant="15" id="hoh-8i-1pF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="leftLb" destination="vMa-fs-mhZ" id="uUr-FN-qAH"/>
+                <outlet property="rightLb" destination="085-HY-UJ3" id="r7s-QI-7E3"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="12"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,60 @@
+//
+//  ElevatorSecuritySystem.pch
+//  ElevatorSecuritySystem
+//
+//  Created by 刘树龙 on 2017/4/7.
+//  Copyright © 2017年 Qingdao Zhengxin Technology Co,. Ltd. All rights reserved.
+//
+
+#ifndef ElevatorSecuritySystem_pch
+#define ElevatorSecuritySystem_pch
+
+
+//宏
+#define SLEEPTIME 2.0
+#define TIMEOUTINTERVAL 15
+#define HEIGHTFORCELL 44
+#define SYSFONT [UIFont systemFontOfSize:14]
+
+#define LBXScan_Define_Native  //包含native库
+#define LBXScan_Define_UI     //包含界面库
+
+// support file
+#import "Defines.h"
+
+// 第三方库
+#import <YYKit.h>
+#import <SVProgressHUD.h>
+#import <Masonry.h>
+#import <SocketRocket.h>
+#import <Masonry.h>
+#import <Chameleon.h>
+#import "MJRefresh.h"
+#import <MJExtension.h>
+#import <DateTools.h>
+#import <Realm/Realm.h>
+
+// 自定义控制器
+#import "ESSNavigationController.h"
+#import "ESSTabBarController.h"
+
+// 工具类
+#import "ESSNetworkingTool.h"
+#import "ESSLoginTool.h"
+
+// 自定义类扩展
+#import "UIWindow+Add.h"
+#import "NSDictionary+Add.h"
+#import "NSString+Add.h"
+#import "UILabel+Add.h"
+#import "UIButton+Add.h"
+#import "UIBarButtonItem+Add.h"
+// 第三方类扩展
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
+#import "UIScrollView+EmptyDataSet.h"
+
+// CustomView
+#import "ESSSubmitButton.h"
+
+#endif /* ElevatorSecuritySystem_pch */

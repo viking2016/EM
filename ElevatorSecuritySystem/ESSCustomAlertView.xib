@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ESSCustomAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2S-cn-JAo">
+                    <rect key="frame" x="147" y="12" width="82" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否完成维保任务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1I-0C-VVj">
+                    <rect key="frame" x="130.5" y="44" width="114.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVv-sa-grQ">
+                    <rect key="frame" x="0.0" y="69" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kfE-IM-hdk"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ym-Qn-D7S">
+                    <rect key="frame" x="0.0" y="70" width="375" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3D9-SK-TDm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="救援成功" image="AlertViewNormal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" image="AlertViewSelected"/>
+                    <connections>
+                        <action selector="successBtnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="nMQ-bx-9cA"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFx-np-SZi">
+                    <rect key="frame" x="0.0" y="120" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Zj3-2a-ukG"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G78-NB-yDm">
+                    <rect key="frame" x="0.0" y="121" width="375" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="jS6-et-Gt2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="救援失败" image="AlertViewNormal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" image="AlertViewSelected"/>
+                    <connections>
+                        <action selector="successBtnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="KY6-Pe-wTg"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="533-Jy-0hi">
+                    <rect key="frame" x="0.0" y="171" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Vaa-oI-aUh"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHx-9o-o59">
+                    <rect key="frame" x="26" y="189" width="43" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请在此输入备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ut1-UP-WeK">
+                    <rect key="frame" x="69" y="188.5" width="306" height="17"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNw-JB-tfD">
+                    <rect key="frame" x="0.0" y="221.5" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="ACM-ga-1yU"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdM-Kt-juH">
+                    <rect key="frame" x="0.0" y="222.5" width="186.5" height="57.5"/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="confirmBtnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="EFh-e1-EfM"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbS-RL-SQY">
+                    <rect key="frame" x="186.5" y="222.5" width="1" height="57.5"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="0.5" id="SAH-77-F7F"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jow-gN-irl">
+                    <rect key="frame" x="188" y="222.5" width="187" height="57.5"/>
+                    <state key="normal" title="确认"/>
+                    <connections>
+                        <action selector="confirmBtnEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="kV9-Rr-wxF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="BHx-9o-o59" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="26" id="0yl-G8-dSK"/>
+                <constraint firstItem="RbS-RL-SQY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Ug-qc-ZeP"/>
+                <constraint firstItem="Jow-gN-irl" firstAttribute="leading" secondItem="RbS-RL-SQY" secondAttribute="trailing" id="2u0-38-K0T"/>
+                <constraint firstAttribute="trailing" secondItem="0ym-Qn-D7S" secondAttribute="trailing" id="3cH-IT-S0o"/>
+                <constraint firstItem="G78-NB-yDm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="819-Sl-gNa"/>
+                <constraint firstItem="eNw-JB-tfD" firstAttribute="top" secondItem="Ut1-UP-WeK" secondAttribute="bottom" constant="16" id="BLz-RK-RMK"/>
+                <constraint firstItem="d1I-0C-VVj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Byl-ko-F2L"/>
+                <constraint firstItem="UVv-sa-grQ" firstAttribute="top" secondItem="d1I-0C-VVj" secondAttribute="bottom" constant="8" id="D8g-mh-uy8"/>
+                <constraint firstAttribute="bottom" secondItem="kdM-Kt-juH" secondAttribute="bottom" id="E1z-4l-wDs"/>
+                <constraint firstItem="Ut1-UP-WeK" firstAttribute="centerY" secondItem="BHx-9o-o59" secondAttribute="centerY" id="EDe-kc-LbN"/>
+                <constraint firstItem="UVv-sa-grQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Idd-rD-j9e"/>
+                <constraint firstAttribute="trailing" secondItem="RFx-np-SZi" secondAttribute="trailing" id="K7D-ub-7kj"/>
+                <constraint firstItem="RbS-RL-SQY" firstAttribute="leading" secondItem="kdM-Kt-juH" secondAttribute="trailing" id="KBd-1O-n9a"/>
+                <constraint firstItem="RFx-np-SZi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NSc-5Y-L2H"/>
+                <constraint firstItem="kdM-Kt-juH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PPH-eP-Jfk"/>
+                <constraint firstItem="G78-NB-yDm" firstAttribute="top" secondItem="RFx-np-SZi" secondAttribute="bottom" id="VEJ-Ro-SdS"/>
+                <constraint firstItem="d1I-0C-VVj" firstAttribute="top" secondItem="v2S-cn-JAo" secondAttribute="bottom" constant="8" id="Wgn-Gh-6FJ"/>
+                <constraint firstItem="0ym-Qn-D7S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xmk-HT-PHC"/>
+                <constraint firstItem="v2S-cn-JAo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xvj-oz-mfg"/>
+                <constraint firstItem="eNw-JB-tfD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xzt-9t-tqi"/>
+                <constraint firstItem="0ym-Qn-D7S" firstAttribute="top" secondItem="UVv-sa-grQ" secondAttribute="bottom" id="Y3s-KF-8GK"/>
+                <constraint firstItem="Jow-gN-irl" firstAttribute="top" secondItem="eNw-JB-tfD" secondAttribute="bottom" id="ZjU-Od-ot6"/>
+                <constraint firstAttribute="trailing" secondItem="Jow-gN-irl" secondAttribute="trailing" id="b7j-Wf-AHW"/>
+                <constraint firstItem="RFx-np-SZi" firstAttribute="top" secondItem="0ym-Qn-D7S" secondAttribute="bottom" id="c7A-X5-QNo"/>
+                <constraint firstItem="kdM-Kt-juH" firstAttribute="top" secondItem="eNw-JB-tfD" secondAttribute="bottom" id="cCL-UE-lhb"/>
+                <constraint firstItem="Ut1-UP-WeK" firstAttribute="leading" secondItem="BHx-9o-o59" secondAttribute="trailing" id="csn-m3-90B"/>
+                <constraint firstItem="533-Jy-0hi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="d0z-hS-EKr"/>
+                <constraint firstItem="G78-NB-yDm" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="egr-YF-5Sn"/>
+                <constraint firstItem="RbS-RL-SQY" firstAttribute="top" secondItem="eNw-JB-tfD" secondAttribute="bottom" id="fqZ-sN-YnZ"/>
+                <constraint firstItem="v2S-cn-JAo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="hhz-55-j0h"/>
+                <constraint firstAttribute="trailing" secondItem="UVv-sa-grQ" secondAttribute="trailing" id="hrU-DL-gOJ"/>
+                <constraint firstAttribute="trailing" secondItem="533-Jy-0hi" secondAttribute="trailing" id="hy8-X7-L6i"/>
+                <constraint firstAttribute="trailing" secondItem="Ut1-UP-WeK" secondAttribute="trailing" id="iKF-47-0lX"/>
+                <constraint firstAttribute="bottom" secondItem="Jow-gN-irl" secondAttribute="bottom" id="l8u-aA-jt1"/>
+                <constraint firstItem="RbS-RL-SQY" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="lWT-ml-B1F"/>
+                <constraint firstItem="533-Jy-0hi" firstAttribute="top" secondItem="G78-NB-yDm" secondAttribute="bottom" id="oa1-0v-0wo"/>
+                <constraint firstItem="BHx-9o-o59" firstAttribute="top" secondItem="533-Jy-0hi" secondAttribute="bottom" constant="17" id="vYw-NO-Rfr"/>
+                <constraint firstAttribute="trailing" secondItem="eNw-JB-tfD" secondAttribute="trailing" id="yrA-tB-XxK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cancelBtn" destination="kdM-Kt-juH" id="BQr-NV-BCS"/>
+                <outlet property="confirmBtn" destination="Jow-gN-irl" id="453-7x-VSX"/>
+                <outlet property="contentLb" destination="Ut1-UP-WeK" id="eLb-9G-rky"/>
+                <outlet property="failBtn" destination="G78-NB-yDm" id="9qg-ky-S6b"/>
+                <outlet property="messageLb" destination="d1I-0C-VVj" id="uYI-LQ-6Ya"/>
+                <outlet property="successBtn" destination="0ym-Qn-D7S" id="MW7-gH-4ag"/>
+                <outlet property="titleLb" destination="v2S-cn-JAo" id="8mM-xS-CcX"/>
+            </connections>
+            <point key="canvasLocation" x="-76" y="-31"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AlertViewNormal" width="14" height="14"/>
+        <image name="AlertViewSelected" width="14" height="14"/>
+    </resources>
+</document>

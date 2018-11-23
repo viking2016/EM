@@ -1,0 +1,40 @@
+//
+//  ESSRepairModel.m
+//  ElevatorSecuritySystem
+//
+//  Created by 刘树龙 on 2018/6/27.
+//  Copyright © 2018年 Qingdao Zhengxin Technology Co,. Ltd. All rights reserved.
+//
+
+#import "ESSRepairModel.h"
+
+@implementation ESSPartReplacemenModel
+
+@end
+
+@implementation ESSRepairModel
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (NSMutableArray<UIImage *> *)preImages {
+    if (!_preImages) {
+        _preImages = [NSMutableArray new];
+    }
+    return _preImages;
+}
+
+- (NSMutableArray<UIImage *> *)edImages {
+    if (!_edImages) {
+        _edImages = [NSMutableArray new];
+    }
+    return _edImages;
+}
+
+@end

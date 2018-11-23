@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ESSInformationListCell" rowHeight="86" id="KGk-i7-Jjw" customClass="ESSInformationListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="85.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公司通知标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RR-aw-8Fg">
+                        <rect key="frame" x="15" y="12" width="86" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Lkn-GS-JY1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-14 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVj-8M-fnQ">
+                        <rect key="frame" x="228.5" y="12.5" width="76.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公司通知，维保助手正式开始，公司通知，维保助手正式开始，公司通知，维保助手正式开" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-Xp-Lt3">
+                        <rect key="frame" x="15" y="39" width="290" height="34.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3RR-aw-8Fg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="5J0-XD-4Hz"/>
+                    <constraint firstItem="3RR-aw-8Fg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="84q-2v-F45"/>
+                    <constraint firstItem="nVj-8M-fnQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3RR-aw-8Fg" secondAttribute="trailing" constant="15" id="NQi-J3-kVJ"/>
+                    <constraint firstItem="kkl-Xp-Lt3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OAU-dy-S3A"/>
+                    <constraint firstItem="nVj-8M-fnQ" firstAttribute="centerY" secondItem="3RR-aw-8Fg" secondAttribute="centerY" id="ZxW-sF-xfe"/>
+                    <constraint firstAttribute="bottom" secondItem="kkl-Xp-Lt3" secondAttribute="bottom" constant="12" id="qIc-Qx-eRG"/>
+                    <constraint firstAttribute="trailing" secondItem="kkl-Xp-Lt3" secondAttribute="trailing" constant="15" id="ryF-MV-Jmn"/>
+                    <constraint firstItem="kkl-Xp-Lt3" firstAttribute="top" secondItem="3RR-aw-8Fg" secondAttribute="bottom" constant="10" id="uEp-br-FpI"/>
+                    <constraint firstAttribute="trailing" secondItem="nVj-8M-fnQ" secondAttribute="trailing" constant="15" id="v9N-C3-mWa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLb" destination="nVj-8M-fnQ" id="v2t-HQ-KU4"/>
+                <outlet property="detailLb" destination="kkl-Xp-Lt3" id="DuF-2L-A9G"/>
+                <outlet property="titleLb" destination="3RR-aw-8Fg" id="Nj6-16-FZS"/>
+            </connections>
+            <point key="canvasLocation" x="-281" y="38"/>
+        </tableViewCell>
+    </objects>
+</document>

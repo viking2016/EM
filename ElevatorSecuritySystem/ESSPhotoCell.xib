@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ESSPhotoCell" id="gTV-IL-0wX" customClass="ESSPhotoCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_shijianshangbao_shangchuanzhaopian" translatesAutoresizingMaskIntoConstraints="NO" id="ash-qz-TPw">
+                        <rect key="frame" x="2" y="2" width="96" height="96"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJX-lG-hDc">
+                        <rect key="frame" x="86" y="0.0" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="2hJ-gK-MMF"/>
+                            <constraint firstAttribute="height" constant="14" id="p3n-zH-foe"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="icon_shijianshangbao_shanchu"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="sJX-lG-hDc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4rK-HV-jDC"/>
+                <constraint firstItem="ash-qz-TPw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="D0P-Wu-rsh"/>
+                <constraint firstAttribute="bottom" secondItem="ash-qz-TPw" secondAttribute="bottom" constant="2" id="PeR-E3-Kwg"/>
+                <constraint firstAttribute="trailing" secondItem="sJX-lG-hDc" secondAttribute="trailing" id="gkE-tN-sFf"/>
+                <constraint firstItem="ash-qz-TPw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="qIe-A1-lN2"/>
+                <constraint firstAttribute="trailing" secondItem="ash-qz-TPw" secondAttribute="trailing" constant="2" id="sxs-08-vfc"/>
+            </constraints>
+            <connections>
+                <outlet property="deleteBtn" destination="sJX-lG-hDc" id="UMb-Xo-cbM"/>
+                <outlet property="imageView" destination="ash-qz-TPw" id="VaE-p6-gqg"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon_shijianshangbao_shanchu" width="13" height="13"/>
+        <image name="icon_shijianshangbao_shangchuanzhaopian" width="64" height="64"/>
+    </resources>
+</document>
