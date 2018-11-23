@@ -31,9 +31,12 @@
 }
 
 - (void)downloadData{
-    NSDictionary *items = @{@"BasicInfoID":[NSNumber numberWithInt:self.basicInfoID]};
-    [ESSNetworkingTool POST:@"/APP/FaultCode/getFaultReasonTypeList" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
-        self.dataSource = responseObject[@"datas"];
+    if (!(self.elevNo.length > 0)) {
+        return;
+    }
+    NSDictionary *items = @{@"ElevID":self.elevNo};
+    [ESSNetworkingTool GET:@"/APP/WY/Rescue_AlarmOrderTaskWY/ElevatorWorkOrderFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+        self.dataSource = [responseObject mutableCopy];
         [self.tableView reloadData];
     }];
 }
@@ -63,7 +66,7 @@
     //选中数据
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *dict = self.dataSource[indexPath.row];
-    self.block(dict[@"Name"], dict[@"Code"]);
+    self.block(dict[@"Name"], dict[@"ZiDianID"]);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

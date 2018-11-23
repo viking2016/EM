@@ -11,6 +11,8 @@ typedef void(^TypeBlock)(NSString *str, NSString *code);
 
 @interface ESSSelectFaultTypeController : UIViewController
 
+
+@property (copy,nonatomic) NSString *elevNo;
 @property (assign, nonatomic) int basicInfoID;
 @property (copy, nonatomic) TypeBlock block;
 

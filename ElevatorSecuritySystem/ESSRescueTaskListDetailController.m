@@ -206,8 +206,8 @@
 }
 //处置反馈
 - (void)feedbackEvent {
-    ESSChuZhiFanKuiController *vc = [[ESSChuZhiFanKuiController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID]];
-    vc.basicInfoID = self.dictSource[@"BasicInfoId"];
+    ESSChuZhiFanKuiController *vc = [[ESSChuZhiFanKuiController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID] ElevNo:self.dictSource[@"ElevNo"]];
+//    vc.basicInfoID = self.dictSource[@"BasicInfoId"];
 //    [self.navigationController pushViewController:[[ESSChuZhiFanKuiController alloc]initWithRescueId:[NSString stringWithFormat:@"%ld",self.RescueId]] animated:YES];
     [self.navigationController pushViewController:vc animated:YES];
     

@@ -11,9 +11,11 @@
 @interface ESSChuZhiFanKuiController : UIViewController
 
 @property (nonatomic, copy) NSString *rescueId;
-@property (nonatomic, assign) int basicInfoID;
+@property (nonatomic, copy) NSString *elevNo;
 
-- (instancetype)initWithRescueId:(NSString *)rescueId;
+//@property (nonatomic, assign) int basicInfoID;
+
+- (instancetype)initWithRescueId:(NSString *)rescueId ElevNo:(NSString *)elevNo;
 
 @property(nonatomic,copy)void(^submitCallback)(NSString *);
 

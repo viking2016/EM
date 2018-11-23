@@ -32,10 +32,11 @@
     [self createUI];
 }
 
-- (instancetype)initWithRescueId:(NSString *)rescueId{
+- (instancetype)initWithRescueId:(NSString *)rescueId ElevNo:(NSString *)elevNo{
     self = [super init];
     if (self) {
         self.rescueId = rescueId;
+        self.elevNo = elevNo;
     }
     return self;
 }
@@ -100,7 +101,7 @@
     [parameters setValue:self.rescueId forKey:@"TaskID"];
     [parameters setValue:self.FaultAnalysis forKey:@"FaultAnalysis"];
     [parameters setValue:self.textView.text forKey:@"Result"];
-    [ESSNetworkingTool POST:@"/APP/Rescue_WorkOrderTask/SubmitFeedback" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool POST:@"/APP/WY/Rescue_AlarmOrderTaskWY/ElevatorWorkOrderFaultType" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         
         if ([[responseObject objectForKey:@"isOk"]boolValue]) {
             [SVProgressHUD showSuccessWithStatus:@"提交成功"];
@@ -148,7 +149,7 @@
     if (indexPath.row == 0) {
         
         ESSSelectFaultTypeController *vc = [ESSSelectFaultTypeController new];
-//        vc.basicInfoID = self.model.BasicInfoID;
+        vc.elevNo = self.elevNo;
         vc.block = ^(NSString *str, NSString *code) {
             self.faultCode = [NSString stringWithFormat:@"%@",code];
             self.faultType = str;
@@ -156,20 +157,20 @@
         };
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1) {
-//        ESSSelectFaultReasonController *vc = [ESSSelectFaultReasonController new];
-//        vc.code = self.model.FailureCause;
-//        vc.block = ^(NSString *str, NSString *code) {
-//            self.faultReason  = str;
-//            self.FaultAnalysis = code;
-//            [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
-//        };
-//        if (self.model.FailureCause) {
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }
-//        else
-//        {
-//            [SVProgressHUD showInfoWithStatus:@"请选择故障原因"];
-//        }
+        ESSSelectFaultReasonController *vc = [ESSSelectFaultReasonController new];
+        vc.code = self.faultCode;
+        vc.block = ^(NSString *str, NSString *code) {
+            self.faultReason  = str;
+            self.FaultAnalysis = code;
+            [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
+        };
+        if (self.faultCode) {
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else
+        {
+            [SVProgressHUD showInfoWithStatus:@"请选择故障原因"];
+        }
     }
 }
 

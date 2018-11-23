@@ -39,10 +39,10 @@
 }
 
 - (void)downloadData{
-    NSDictionary *items = @{@"code":self.code};
-    [ESSNetworkingTool POST:@"/APP/FaultCode/getFaultReasonList" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+    NSDictionary *items = @{@"ZiDianID":self.code};
+    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTaskWY/GetItemByFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
         self.dataSource = [NSMutableArray new];
-        _dataSource = responseObject[@"datas"];
+        _dataSource = [responseObject mutableCopy];
         [self.tableView reloadData];
     }];
 }
