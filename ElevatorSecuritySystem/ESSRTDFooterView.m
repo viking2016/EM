@@ -18,7 +18,7 @@
     
     
     self.controllerType = controllerType;
-    NSArray *array = dictionary[@"RescueLogList"];
+    NSArray *array = dictionary[@"RescueProcessItem"];
     NSInteger num = array.count;
     self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 81*num)];
     self.dataArray = [array mutableCopy];
@@ -208,8 +208,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row < self.dataArray.count) {
-        cell.contentLb.text = [NSString stringWithFormat:@"【%@】%@",self.dataArray[indexPath.row][@"Result"],self.dataArray[indexPath.row][@"Content"]] ;
-        cell.timeLb.text = self.dataArray[indexPath.row][@"LogTime"];
+        cell.contentLb.text = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"Description"]] ;
+        cell.timeLb.text = self.dataArray[indexPath.row][@"CreateTime"];
         if (indexPath.row == 0) {
             cell.icon.image = [UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_shijianzhoulan"];
         }else{

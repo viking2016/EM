@@ -13,7 +13,7 @@
 @property (nonatomic,copy)NSString *AlarmOrderTaskID;
 @property (nonatomic,copy) NSString *state;
 @property (nonatomic,copy) NSString *controllerType;
-- (instancetype)initWithRescueId:(NSInteger )rescueId rescueState:(NSString *)state controllerType:(NSString *)controllerType;
+- (instancetype)initWithAlarmOrderTaskID:(NSString *)alarmOrderTaskID rescueState:(NSString *)state controllerType:(NSString *)controllerType;
 
 
 @end

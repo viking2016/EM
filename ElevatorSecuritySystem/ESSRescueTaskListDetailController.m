@@ -174,22 +174,22 @@
                                                               NSLog(@"action = %@", action);
                                                               
                                                               NSMutableDictionary *parameters = [NSMutableDictionary new];
-                                                              [parameters setValue:[NSString stringWithFormat:@"%ld",self.AlarmOrderTaskID] forKey:@"TaskID"];
-                                                              
-                                                              [ESSNetworkingTool POST:@"/APP/Rescue_WorkOrderTask/SubmitArriveState" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
-                                                                  if (![responseObject[@"data"] isKindOfClass:[NSNull class]]){
-                                                                      if ([[responseObject objectForKey:@"isOk"] boolValue]) {
-                                                                          
-                                                                          if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
-                                                                              [SVProgressHUD showInfoWithStatus:@"平台工单已到达现场，刷新数据中..."];
-                                                                              [self downloadDate];
-                                                                              [self createUI];
-                                                                          }else {
-                                                                              [SVProgressHUD showSuccessWithStatus:@"确认成功"];
-                                                                              self.state = @"到达现场";
-                                                                              [self createUI];
-                                                                          }
-                                                                      }
+                                                              [parameters setValue:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID] forKey:@"AlarmOrderTaskID"];
+                                                              [parameters setValue:@"3" forKey:@"TaskState"];
+                                                              [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+                                                                  if (![responseObject isKindOfClass:[NSNull class]]){
+//                                                                          if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
+//                                                                              [SVProgressHUD showInfoWithStatus:@"平台工单已到达现场，刷新数据中..."];
+//                                                                              [self downloadDate];
+//                                                                              [self createUI];
+//                                                                          }else {
+//                                                                              [SVProgressHUD showSuccessWithStatus:@"确认成功"];
+//                                                                              self.state = @"到达现场";
+//                                                                              [self createUI];
+//                                                                          }
+                                                                      [SVProgressHUD showSuccessWithStatus:@"确认成功"];
+                                                                      self.state = @"到达现场";
+                                                                      [self createUI];
                                                                   }
                                                               }];
                                                           }];
@@ -206,7 +206,7 @@
 }
 //处置反馈
 - (void)feedbackEvent {
-    ESSChuZhiFanKuiController *vc = [[ESSChuZhiFanKuiController  alloc]initWithRescueId:[NSString stringWithFormat:@"%ld",self.AlarmOrderTaskID]];
+    ESSChuZhiFanKuiController *vc = [[ESSChuZhiFanKuiController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID]];
     vc.basicInfoID = self.dictSource[@"BasicInfoId"];
 //    [self.navigationController pushViewController:[[ESSChuZhiFanKuiController alloc]initWithRescueId:[NSString stringWithFormat:@"%ld",self.RescueId]] animated:YES];
     [self.navigationController pushViewController:vc animated:YES];
@@ -220,7 +220,7 @@
 //上报
 - (void)submitBtnEvent {
     
-    ESSSubmitController *vc = [[ESSSubmitController  alloc]initWithRescueId:[NSString stringWithFormat:@"%ld",self.AlarmOrderTaskID]];
+    ESSSubmitController *vc = [[ESSSubmitController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID]];
     [self.navigationController pushViewController:vc animated:YES];
     
     vc.submitCallback = ^(NSString *str)
@@ -235,23 +235,27 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:self.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
-    [parameters setValue:result forKey:@"Result"];
+    [parameters setValue:result forKey:@"TaskState"];
     [parameters setValue:remark forKey:@"Remark"];
-    [ESSNetworkingTool POST:@"/APP/Rescue_WorkOrderTask/SubmitResult" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
-        if (![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
+    [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+        if (![responseObject isKindOfClass:[NSNull class]]) {
 
-            if ([[responseObject objectForKey:@"isOk"]boolValue]) {
-                if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
-                    [SVProgressHUD showInfoWithStatus:@"平台工单已救援完成，刷新数据中"];
-                    [self downloadDate];
-                    [self createUI];
-                }else {
-                    [SVProgressHUD showSuccessWithStatus:@"提交成功"];
-                    [self downloadDate];
-                    self.state = @"成功失败";
-                    [self createUI];
-                }
-            }
+//            if ([[responseObject objectForKey:@"isOk"]boolValue]) {
+//                if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
+//                    [SVProgressHUD showInfoWithStatus:@"平台工单已救援完成，刷新数据中"];
+//                    [self downloadDate];
+//                    [self createUI];
+//                }else {
+//                    [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+//                    [self downloadDate];
+//                    self.state = @"成功失败";
+//                    [self createUI];
+//                }
+//            }
+            [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+            [self downloadDate];
+            self.state = @"成功失败";
+            [self createUI];
         }
     }];
 }
@@ -261,7 +265,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:self.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
 
-    [ESSNetworkingTool GET:@"/APP/WB/ Rescue_AlarmOrderTask /GetRescueDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if (![responseObject isKindOfClass:[NSNull class]]) {
                 self.dictSource = [responseObject mutableCopy];
                 [self.tableView reloadData];
@@ -275,7 +279,7 @@
 
 - (void)zheDieBtnEvent:(UIButton *)btn {
     
-    NSArray *arr = self.dictSource[@"RescueLogList"];
+    NSArray *arr = self.dictSource[@"RescueProcessItem"];
 
         btn.selected = !btn.selected;
         if (btn.selected) {
@@ -309,10 +313,10 @@
                     cell=[[[NSBundle mainBundle]loadNibNamed:@"ESSRTDLiftInfoCell" owner:self options:nil]lastObject];
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.rescueIdLab.text = self.dictSource[@"LiftCode"];
-                cell.locationLab.text = self.dictSource[@"Location"];
+                cell.rescueIdLab.text = self.dictSource[@"ElevNo"];
+                cell.locationLab.text = [NSString stringWithFormat:@"%@%@",self.dictSource[@"ProjectName"],self.dictSource[@"InnerNo"]];
                 cell.addressLab.text = self.dictSource[@"Address"];
-                cell.liftTypeLab.text = self.dictSource[@"LiftType"];
+                cell.liftTypeLab.text = self.dictSource[@"ElevType"];
                 cell.Lat = self.dictSource[@"Lat"];
                 cell.Lng = self.dictSource[@"Lng"];
                 return cell;
@@ -328,9 +332,9 @@
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
-                cell.alarmInfoLab.text = [[self.dictSource[@"AlarmName"] stringByAppendingString:@"  "] stringByAppendingString:self.dictSource[@"AlarmPhone"]];
-                cell.alarmTimeLab.text = self.dictSource[@"AlarmTime"];
-                cell.taskClassLab.text = self.dictSource[@"Type"];
+                cell.alarmInfoLab.text = [[self.dictSource[@"AlarmPersonName"] stringByAppendingString:@"  "] stringByAppendingString:self.dictSource[@"AlarmPersonTel"]];
+                cell.alarmTimeLab.text = self.dictSource[@"ReceiveAlarmTime"];
+                cell.taskClassLab.text = self.dictSource[@"RescueLevel"];
                 cell.faultTypeLab.text = self.dictSource[@"FaultType"];
                 
                 if ([self.controllerType isEqualToString:@"1"]) {
@@ -339,23 +343,23 @@
                     cell.phoneBtn.hidden = YES;
                 }
                 
-                NSString *tmpNum = self.dictSource[@"StrandNum"];
+                NSString *tmpNum = self.dictSource[@"TrappedNum"];
                 if (!(tmpNum.length > 0)) {
                     cell.numberLab.text = @"0";
                 }else{
-                    cell.numberLab.text = [NSString stringWithFormat:@"%@ 人",self.dictSource[@"StrandNum"]];
+                    cell.numberLab.text = [NSString stringWithFormat:@"%@ 人",self.dictSource[@"TrappedNum"]];
                 }
-                cell.shouKunTypeLab.text = self.dictSource[@"StrandType"];
+                cell.shouKunTypeLab.text = self.dictSource[@"TrappedTypes"];
                 
-                NSString *tmp = self.dictSource[@"FieldDescription"];
+                NSString *tmp = self.dictSource[@"SceneDescription"];
                 if (!(tmp.length >0)) {
                     cell.xianChangMiaoShuLab.text = @"   ";
 
                 }else{
-                    cell.xianChangMiaoShuLab.text = self.dictSource[@"FieldDescription"];
+                    cell.xianChangMiaoShuLab.text = self.dictSource[@"SceneDescription"];
 
                 }
-                cell.AlarmPhone = self.dictSource[@"AlarmPhone"];
+                cell.AlarmPhone = self.dictSource[@"AlarmPersonTel"];
                 return cell;
             }
             break;
@@ -385,16 +389,15 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleLab.text = @"使用单位信息";
             [cell.icon setImage:[UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_shiyongdanweixinxi"]];
-            cell.unitNameLab.text = self.dictSource[@"UUnit"];
-            cell.personLab.text = [NSString stringWithFormat:@"%@  %@",self.dictSource[@"UPrincipal"],self.dictSource[@"UPrincipalTel"]];
-            cell.tel = self.dictSource[@"UPrincipalTel"];
+            cell.unitNameLab.text = self.dictSource[@"PropertyUnitName"];
+            cell.personLab.text = [NSString stringWithFormat:@"%@  %@",self.dictSource[@"UUnitPrincipal"],self.dictSource[@"UUnitPrincipalTel"]];
+            cell.tel = self.dictSource[@"UUnitPrincipalTel"];
             if ([self.controllerType isEqualToString:@"1"]) {
                 cell.phoneBtn.hidden = NO;
             }else{
                 cell.phoneBtn.hidden = YES;
             }
             
-
             return cell;
         }
             break;
@@ -409,8 +412,8 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.titleLab.text = @"物业公司信息";
             [cell.icon setImage:[UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_wuyegongsixinxi"]];
-            cell.unitNameLab.text = self.dictSource[@"PCUnit"];
-            cell.personLab.text = [NSString stringWithFormat:@"%@ %@",self.dictSource[@"SafetyManagerName"],self.dictSource[@"SafetyManagerTel"]];
+            cell.unitNameLab.text = self.dictSource[@"PropertyUnitName"];
+            cell.personLab.text = [NSString stringWithFormat:@"%@ %@",self.dictSource[@"SafetyManagerName"],self.dictSource[@"SafetyManagerNameTel"]];
             cell.tel = self.dictSource[@"SafetyManagerTel"];
             if ([self.controllerType isEqualToString:@"1"]) {
                 cell.phoneBtn.hidden = NO;
@@ -430,13 +433,13 @@
             {
                 cell=[[[NSBundle mainBundle]loadNibNamed:@"ESSRTDWeiBaoComInfoCell" owner:self options:nil]lastObject];
             }
-            cell.MUnitLab.text = self.dictSource[@"MUnit"];
-            cell.MPersonNameLb.text = self.dictSource[@"MPersonName"];
+            cell.MUnitLab.text = self.dictSource[@"MUnitName"];
+            cell.MPersonNameLb.text = self.dictSource[@"MPerson"];
             cell.MPersonPhoneLb.text = self.dictSource[@"MPersonTel"];
-            cell.EPersonNameLb.text = self.dictSource[@"EPersonName"];
+            cell.EPersonNameLb.text = self.dictSource[@"EPerson"];
             cell.EPersonPhoneLb.text = self.dictSource[@"EPersonTel"];
-            cell.MPrincipalNameLb.text = self.dictSource[@"MPrincipal"];
-            cell.MPrincipalPhoneLb.text = self.dictSource[@"MPrincipalTel"];
+            cell.MPrincipalNameLb.text = self.dictSource[@"MUnitPrincipal"];
+            cell.MPrincipalPhoneLb.text = self.dictSource[@"MUnitPrincipalTel"];
 
 //            cell.MPersonInfo.text = [NSString stringWithFormat:@"%@ %@",self.dictSource[@"MPersonName"],self.dictSource[@"MPersonTel"]];
 //            cell.EPersonInfo.text = [NSString stringWithFormat:@"%@ %@",self.dictSource[@"EPersonName"],self.dictSource[@"EPersonTel"]];
@@ -445,7 +448,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.MPersonTel = self.dictSource[@"MPersonTel"];
             cell.EPersonTel = self.dictSource[@"EPersonTel"];
-            cell.MPrincipalTel = self.dictSource[@"MPrincipalTel"];
+            cell.MPrincipalTel = self.dictSource[@"MUnitPrincipalTel"];
             if ([self.controllerType isEqualToString:@"1"]) {
                 cell.phoneBtn_1.hidden = NO;
                 cell.phoneBtn_2.hidden = NO;
@@ -468,7 +471,7 @@
                 cell=[[[NSBundle mainBundle]loadNibNamed:@"ESSRTDRescueLogCell" owner:self options:nil]lastObject];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            //            cell.dataArray = self.dictSource[@"RescueLogList"];
+//            cell.dataArray = self.dictSource[@"RescueProcessItem"];
             return cell;
             
         }

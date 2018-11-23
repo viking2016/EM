@@ -144,7 +144,7 @@
     if (_dataArray.count > indexPath.row) {
         ESSRescueTaskListModel *model = _dataArray[indexPath.row];
         
-        if ([model.State isEqualToString:@"待确认"]){
+        if ([model.TaskState isEqualToString:@"待确认"]){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示"
                                                                            message:@"确认任务"
                                                                     preferredStyle:UIAlertControllerStyleAlert];
@@ -152,8 +152,6 @@
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault
                                                                   handler:^(UIAlertAction * action) {
                                                                       //响应事件
-                                                                      NSLog(@"action = %@", action);
-                                                                      
                                                                       NSMutableDictionary *parameters = [NSMutableDictionary new];
                                                                       [parameters setValue:model.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
                                                                       [parameters setValue:@"1" forKey:@"TaskState"];
@@ -161,7 +159,7 @@
                                                                       [ESSNetworkingTool POST:@"/APP/WB/ Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
                                                                             if (![responseObject isKindOfClass:[NSNull class]]){
                                                                                 
-                                                                                [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithRescueId:model.AlarmOrderTaskID rescueState:@"已确认" controllerType:self.controllerType] animated:YES];
+                                                                                [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithAlarmOrderTaskID:model.AlarmOrderTaskID rescueState:@"已确认" controllerType:self.controllerType] animated:YES];
                                                                                 [self loadNewData];
 //                                                                                if ([[responseObject objectForKey:@"info"] isEqualToString:@"301"]){
 //                                                                                    [SVProgressHUD showInfoWithStatus:@"平台工单已确认任务，刷新数据中..."];
@@ -184,7 +182,7 @@
             [alert addAction:cancelAction];
             [self presentViewController:alert animated:YES completion:nil];  
         }else{
-            [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithRescueId:model.AlarmOrderTaskID rescueState:model.State controllerType:self.controllerType] animated:YES];
+            [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithAlarmOrderTaskID:model.AlarmOrderTaskID rescueState:model.State controllerType:self.controllerType] animated:YES];
         }
     }
 }
