@@ -156,7 +156,7 @@
                                                                       [parameters setValue:model.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
                                                                       [parameters setValue:@"1" forKey:@"TaskState"];
                                                                       [parameters setValue:@"" forKey:@"Remark"];
-                                                                      [ESSNetworkingTool POST:@"/APP/WB/ Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+                                                                      [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
                                                                             if (![responseObject isKindOfClass:[NSNull class]]){
                                                                                 
                                                                                 [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithAlarmOrderTaskID:model.AlarmOrderTaskID rescueState:@"已确认" controllerType:self.controllerType] animated:YES];

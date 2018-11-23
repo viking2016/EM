@@ -32,7 +32,7 @@
 -(void)resgin:(NSNotification *)Noti
 {
     NSDictionary *dic=Noti.userInfo;
-    self.dataArray = dic[@"RescueLogList"];
+    self.dataArray = dic[@"RescueProcessItem"];
 
     [self.tab reloadData];
     _tab = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 81*_dataArray.count) style:UITableViewStylePlain];
@@ -60,8 +60,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row < self.dataArray.count) {
-        cell.contentLb.text = [NSString stringWithFormat:@"【%@】%@",self.dataArray[indexPath.row][@"Result"],self.dataArray[indexPath.row][@"Content"]] ;
-        cell.timeLb.text = self.dataArray[indexPath.row][@"LogTime"];
+        cell.contentLb.text = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"Description"]] ;
+        cell.timeLb.text = self.dataArray[indexPath.row][@"CreateTime"];
         if (indexPath.row == 0) {
             cell.icon.image = [UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_shijianzhoulan"];
         }else{
