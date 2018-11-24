@@ -81,11 +81,21 @@
         [PartReplacemen addObject:[model mj_keyValues]];
     }
     
-    NSDictionary *parameters = @{@"RepairID":[NSNumber numberWithInt:self.model.RepairID],@"FailureCause":self.model.FailureCause,@"FailureCauseAnalysis":FailureCauseAnalysis,@"MaintenanceRemark":self.model.MaintenanceRemark,@"PartReplacemen":PartReplacemen,@"TotalAmount":self.model.TotalAmount,@"IsCharge":self.model.IsCharge,@"Result":self.model.Result,@"ProcessingResults":self.model.ProcessingResults};
-    
-    NSString *URLStr = @"APP/Maintenance_Repair/SubmitWSD";
+    NSDictionary *tmpDic = @{
+                             @"RepairID":[NSNumber numberWithInt:self.model.RepairID],
+                             @"FailureCause":self.model.FailureCause,
+                             @"FailureCauseAnalysis":FailureCauseAnalysis,
+                             @"MaintenanceRemark":self.model.MaintenanceRemark,
+                             @"PartReplacemen":PartReplacemen,
+                             @"TotalAmount":self.model.TotalAmount,
+                             @"IsCharge":self.model.IsCharge,
+                             @"Result":self.model.Result,
+                             @"ProcessingResults":self.model.ProcessingResults
+                             };
+    NSString *jsonStr = [tmpDic mj_JSONString];
+    NSDictionary *parameters = @{@"StrJson":jsonStr};
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:URLStr parameters:parameters images:@{} success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:@{} success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功 "];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];

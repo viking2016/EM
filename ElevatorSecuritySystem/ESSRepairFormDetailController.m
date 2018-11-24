@@ -59,7 +59,7 @@
 }
 
 - (void)downloadData {
-    NSString *urlStr = @"/APP/Maintenance_Repair/GetDetail";
+    NSString *urlStr = @"/APP/WB/Maintenance_Repair/GetDetail";
     NSDictionary *parameters = @{@"RepairID":[NSString stringWithFormat:@"%d",self.repairID]};
     [SVProgressHUD show];
     [ESSNetworkingTool GET:urlStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {

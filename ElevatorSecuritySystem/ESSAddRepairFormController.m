@@ -32,12 +32,12 @@
     if (!self.model) {
         self.model = [ESSRepairModel new];
         self.model.RepairID = 0;
-        self.model.RepairPerson = @"";
-        self.model.RepairPersonTel = @"";
+        self.model.Reporter = @"";
+        self.model.RepairerTel = @"";
         NSDateFormatter *format = [NSDateFormatter new];
         format.dateFormat = @"YYYY-MM-dd";
         NSString *dateStr = [format stringFromDate:[NSDate date]];
-        self.model.RepairDate = dateStr;
+        self.model.ReportDate = dateStr;
         
     }else {
         self.navigationItem.title = @"修改维修任务";
@@ -68,15 +68,15 @@
         {
             ESSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSBaseTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.detailLbText = self.model.LiftCode;
+            cell.detailLbText = self.model.ElevNo;
             return cell;
         }
             break;
         case 1:
         {
             ESSTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSTextFieldTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.RepairPerson placeholder:@"请在此填写报修人姓名" keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
-                self.model.RepairPerson = value;
+            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.Reporter placeholder:@"请在此填写报修人姓名" keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
+                self.model.Reporter = value;
             }];
             return cell;
         }
@@ -84,8 +84,8 @@
         case 2:
         {
             ESSTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSTextFieldTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.RepairPersonTel placeholder:@"请在此填写报修人电话" keyboardType:UIKeyboardTypeNumberPad textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
-                self.model.RepairPersonTel = value;
+            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.RepairerTel placeholder:@"请在此填写报修人电话" keyboardType:UIKeyboardTypeNumberPad textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
+                self.model.RepairerTel = value;
             }];
             return cell;
         }
@@ -94,8 +94,8 @@
         {
             ESSDatePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDatePickerTableViewCell class])];
             
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.RepairDate pickerDateFormate:UIDatePickerModeDate showDateFormate:@"YYYY-MM-dd" valueSelected:^(NSString *value) {
-                self.model.RepairDate = value;
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.ReportDate pickerDateFormate:UIDatePickerModeDate showDateFormate:@"YYYY-MM-dd" valueSelected:^(NSString *value) {
+                self.model.ReportDate = value;
             }];
             return cell;
         }
@@ -103,8 +103,8 @@
         case 4:
         {
             ESSStringPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSStringPickerTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.CallType strings:@[@"客户召修",@"救援召修",@"维保召修"] valueSelected:^(NSString *value, id response) {
-                self.model.CallType = value;
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.ReportType strings:@[@"客户召修",@"救援召修",@"维保召修"] valueSelected:^(NSString *value, id response) {
+                self.model.ReportType = value;
             }];
             return cell;
         }
@@ -114,9 +114,9 @@
             ESSTextViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSTextViewTableViewCell class])];
             cell.separatorInset = UIEdgeInsetsMake(0, 1000, 0, 0);
             cell.lbText = self.staticArr[indexPath.row];
-            cell.textView.text = self.model.Remark;
+            cell.textView.text = self.model.ReportContent;
             cell.textViewTextChanged = ^(NSString *value) {
-                self.model.Remark = value;
+                self.model.ReportContent = value;
             };
             return cell;
         }
@@ -161,24 +161,23 @@
     }
     NSDictionary *tmpDic = @{
                              @"RepairID":[NSNumber numberWithInt:self.model.RepairID]
-                             ,@"BasicInfoID":[NSNumber numberWithInt:self.model.BasicInfoID]
-                             ,@"RepairPerson":self.model.RepairPerson
-                             ,@"RepairPersonTel":self.model.RepairPersonTel
-                             ,@"RepairDate":self.model.RepairDate
-                             ,@"Remark":self.model.Remark
-                             ,@"DataSource":[NSNumber numberWithInt:1]
-                             ,@"CallType":self.model.CallType
+                             ,@"ElevID":[NSNumber numberWithInt:self.model.ElevID]
+                             ,@"Reporter":self.model.Reporter
+                             ,@"ReporterTel":self.model.RepairerTel
+                             ,@"ReportDate":self.model.ReportType
+                             ,@"ReportContent":self.model.ReportContent
+                             ,@"ReportType":self.model.ReportType
                              };
     NSString *jsonStr = [tmpDic mj_JSONString];
     NSDictionary *parameters = @{@"StrJson":jsonStr};
     
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否立即开始维修任务" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *URLStr = @"/APP/Maintenance_Repair/BeginRepair";
+            NSString *URLStr = @"/APP/WB/Maintenance_Repair/BeginRepair";
             NSDictionary *parameters = @{@"RepairID":[NSNumber numberWithInt:self.model.RepairID]};
             [SVProgressHUD show];
             [ESSNetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {

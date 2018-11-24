@@ -26,11 +26,11 @@
         _model = model;
     }
     [self.repairNoBtn setTitle:self.model.RepairNo forState:UIControlStateNormal];
-    self.repairPersonLb.text = [NSString stringWithFormat:@"%@  %@",model.RepairPerson,model.RepairPersonTel];
-    self.repairDateLb.text = self.model.RepairDate;
-    self.servicePersonLb.text = self.model.ServicePerson;
+    self.repairPersonLb.text = [NSString stringWithFormat:@"%@  %@",model.Reporter,model.RepairerTel];
+    self.repairDateLb.text = self.model.ReportDate;
+    self.servicePersonLb.text = self.model.Reporter;
     self.stateLb.text = self.model.State;
-    self.remarkLb.text = self.model.Remark;
+    self.remarkLb.text = self.model.ReportContent;
 }
 
 @end

@@ -24,15 +24,36 @@
 
 #pragma mark - Private Method
 
+/*
+ <__NSFrozenArrayM 0x6000015ef930>(
+ {
+ ElevID = 48;
+ ElevNo = 000063;
+ ElevType = "\U5ba2\U68af";
+ InnerNo = "2\U53f7\U68af";
+ IsDelete = 0;
+ ProjectName = "\U5b59\U51ef\U5c0f\U533a1";
+ RepairID = 42;
+ RepairNo = 18000063003;
+ Repairer = "\U9c7c\U4e00\U4e00";
+ RepairerTel = 15764222334;
+ ReportContent = 11111111111111111;
+ ReportDate = "2018/11/21 0:00:00";
+ Reporter = 2;
+ ReporterTel = 22;
+ State = "\U7ef4\U4fee\U4e2d";
+ TJRQ = "2018-11-21 15:00";
+ }
+ */
+
 - (void)downloadData{
     self.datas = [NSMutableArray new];
-    NSDictionary *parameters = @{};
-    [ESSNetworkingTool GET:@"/APP/Maintenance_Repair/GetList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    NSDictionary *parameters = @{@"Status":@"0"};
+    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetRepairList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
-        NSArray *tmpArr = responseObject[@"datas"];
-        if ([tmpArr isKindOfClass:[NSArray class]]) {
-            for (NSDictionary *dic in tmpArr)
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dic in responseObject)
             {
                 ESSRepairModel *model = [ESSRepairModel mj_objectWithKeyValues:dic];
                 [self.datas addObject:model];
@@ -49,9 +70,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ESSRepairTaskListCell * cell =[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSRepairTaskListCell class])];
-    ESSRepairModel *model = self.datas[indexPath.row];
-    cell.model = model;
+    ESSRepairTaskListCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSRepairTaskListCell class])];
+    cell.model = self.datas[indexPath.row];
     cell.deleted = ^{
         [self.datas removeObjectAtIndex:indexPath.row];
         [self.tableView reloadData];
@@ -72,7 +92,6 @@
     NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:14.0f], NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     return [[NSAttributedString alloc] initWithString:text attributes:attribute];
 }
-
 
 #pragma mark - DZNEmptyDataSetDelegate
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {

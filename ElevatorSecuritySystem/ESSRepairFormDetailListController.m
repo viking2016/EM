@@ -34,14 +34,14 @@
 }
 
 - (void)downloadData {
+    [SVProgressHUD show];
     self.datas = [NSMutableArray new];
-    NSDictionary *parameters = @{};
-    [ESSNetworkingTool GET:@"/APP/Maintenance_Repair/GetWSList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    NSDictionary *parameters = @{@"Status":@"1"};
+    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetRepairList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
-        NSArray *tmpArr = responseObject[@"datas"];
-        if ([tmpArr isKindOfClass:[NSArray class]]) {
-            for (NSDictionary *dic in tmpArr)
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dic in responseObject)
             {
                 ESSRepairModel *model = [ESSRepairModel mj_objectWithKeyValues:dic];
                 [self.datas addObject:model];
