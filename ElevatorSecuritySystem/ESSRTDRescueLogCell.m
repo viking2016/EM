@@ -82,7 +82,7 @@
     
     NSLog(@"点击了第%ld行",indexPath.row);
     if (indexPath.row < _dataArray.count) {
-        [self.viewController.navigationController pushViewController:[[ESSJiuYuanRiZhiDetailController alloc]initWithLogId:_dataArray[indexPath.row][@"LogId"]] animated:YES];
+        [self.viewController.navigationController pushViewController:[[ESSJiuYuanRiZhiDetailController alloc]initWithLogId:_dataArray[indexPath.row][@"ProcessRecordID"]] animated:YES];
     }    
 }
 

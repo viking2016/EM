@@ -87,7 +87,7 @@
     self.collectionView.delaysContentTouches = NO;//取消button响应延迟
     self.collectionView.showsVerticalScrollIndicator = NO;
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHomeData) name:@"getHomeData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getHomeData) name:@"getHomeData" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,43 +110,43 @@
 }
 
 - (void)getHomeData{
-    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetList" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
-        NSMutableArray *mTitles = [NSMutableArray new];
-        NSMutableArray *mImages = [NSMutableArray new];
-        self.mNewsURLs = [NSMutableArray new];
-        for (NSDictionary *dic in responseObject[@"datas"]){
-            [mTitles addObject:dic[@"Title"]];
-            [mImages addObject:dic[@"Img"]];
-            [self.mNewsURLs addObject:dic[@"Url"]];
-        }
-        self.imageCycleView.titlesGroup = mTitles;
-        self.imageCycleView.imageURLStringsGroup = mImages;
-    }];
-
-    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetLatestNotices" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
-        _textCycleTitleArr = [[NSMutableArray alloc] init];
-        _typeArray = [[NSMutableArray alloc] init];
-        _textCycleURLArr = [[NSMutableArray alloc] init];
-        if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
-            for (NSDictionary *dict in responseObject[@"datas"]){
-                [_textCycleTitleArr addObject:dict[@"Title"]];
-                [_typeArray addObject:dict[@"Type"]];
-                [_textCycleURLArr addObject:dict[@"Url"]];
-            }
-            self.textCycleView.titlesGroup = [_textCycleTitleArr copy];
-            self.textCycleView.typeGroup = [_typeArray copy];
-        }else{
-            self.textCycleView.titlesGroup = @[@"暂无未读消息",@"暂无未读消息"];
-            self.textCycleView.typeGroup = @[@"消息",@"消息"];
-        }
-    }];
+//    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetList" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+//        NSMutableArray *mTitles = [NSMutableArray new];
+//        NSMutableArray *mImages = [NSMutableArray new];
+//        self.mNewsURLs = [NSMutableArray new];
+//        for (NSDictionary *dic in responseObject[@"datas"]){
+//            [mTitles addObject:dic[@"Title"]];
+//            [mImages addObject:dic[@"Img"]];
+//            [self.mNewsURLs addObject:dic[@"Url"]];
+//        }
+//        self.imageCycleView.titlesGroup = mTitles;
+//        self.imageCycleView.imageURLStringsGroup = mImages;
+//    }];
+//
+//    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetLatestNotices" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+//        _textCycleTitleArr = [[NSMutableArray alloc] init];
+//        _typeArray = [[NSMutableArray alloc] init];
+//        _textCycleURLArr = [[NSMutableArray alloc] init];
+//        if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
+//            for (NSDictionary *dict in responseObject[@"datas"]){
+//                [_textCycleTitleArr addObject:dict[@"Title"]];
+//                [_typeArray addObject:dict[@"Type"]];
+//                [_textCycleURLArr addObject:dict[@"Url"]];
+//            }
+//            self.textCycleView.titlesGroup = [_textCycleTitleArr copy];
+//            self.textCycleView.typeGroup = [_typeArray copy];
+//        }else{
+//            self.textCycleView.titlesGroup = @[@"暂无未读消息",@"暂无未读消息"];
+//            self.textCycleView.typeGroup = @[@"消息",@"消息"];
+//        }
+//    }];
     
-    [ESSNetworkingTool GET:@"/APP/Elev_BasicInfo/GetTaskCount" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
-        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
-            self.maintenanceBtn.numberLabel.text = responseObject[@"data"][@"MaintTaskCount"];
-            self.repairBtn.numberLabel.text = responseObject[@"data"][@"RepairTaskCount"];
-            self.rescueBtn.numberLabel.text = responseObject[@"data"][@"RescueTaskCount"];
-            self.nianshenBtn.numberLabel.text = responseObject[@"data"][@"AnnualLiftCount"];
+    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetTaskCount" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            self.maintenanceBtn.numberLabel.text = responseObject[@"MaintTaskCount"];
+            self.repairBtn.numberLabel.text = responseObject[@"RepairTaskCount"];
+            self.rescueBtn.numberLabel.text = responseObject[@"RescueTaskCount"];
+            self.nianshenBtn.numberLabel.text = responseObject[@"AnnualLiftCount"];
         }
     }];
 }

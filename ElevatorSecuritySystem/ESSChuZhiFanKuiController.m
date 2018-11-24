@@ -98,17 +98,14 @@
         return;
     }
     NSMutableDictionary *parameters = [NSMutableDictionary new];
-    [parameters setValue:self.rescueId forKey:@"TaskID"];
-    [parameters setValue:self.FaultAnalysis forKey:@"FaultAnalysis"];
-    [parameters setValue:self.textView.text forKey:@"Result"];
-    [ESSNetworkingTool POST:@"/APP/WY/Rescue_AlarmOrderTaskWY/ElevatorWorkOrderFaultType" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
-        
-        if ([[responseObject objectForKey:@"isOk"]boolValue]) {
-            [SVProgressHUD showSuccessWithStatus:@"提交成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            self.submitCallback(@"success");
-
-        }
+    [parameters setValue:self.rescueId forKey:@"AlarmOrderTaskID"];
+    [parameters setValue:self.faultType forKey:@"FaultReason1"];
+    [parameters setValue:self.faultReason forKey:@"FaultReason2"];
+    [parameters setValue:self.textView.text forKey:@"Remark"];
+    [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/FaultReason" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+        self.submitCallback(@"success");
     }];
 }
 

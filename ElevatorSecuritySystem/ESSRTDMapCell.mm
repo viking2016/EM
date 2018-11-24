@@ -99,7 +99,7 @@
 /**
  *  @author Mask
  *
- *  @brief 地图加载完全后 第一次获取数据  貌似只会调用一次  内存警告被回收 会再次调用
+ *  @brief 地图加载完全后 第一次获取数据  貌似只会调用一次
  *
  *  @param mapView <#mapView description#>
  */
@@ -136,10 +136,12 @@
         {
             NSLog(@"***************** car检索发送失败 ***************");
         }
-       
     }
 }
 
+- (void)mapViewDidFinishRendering:(BMKMapView *)mapView {
+    
+}
 #pragma mark -- 路径规划
 - (void)onGetDrivingRouteResult:(BMKRouteSearch *)searcher result:(BMKDrivingRouteResult *)result errorCode:(BMKSearchErrorCode)error {
     BMKDrivingRouteLine* plan = (BMKDrivingRouteLine*)[result.routes objectAtIndex:0];
@@ -194,8 +196,8 @@
         return;
     }
     BMKMapPoint pt = polyLine.points[0];
-    ltX = pt.x, ltY = pt.y;
-    rbX = pt.x, rbY = pt.y;
+    ltX = pt.x;ltY = pt.y;
+    rbX = pt.x;rbY = pt.y;
     for (int i = 1; i < polyLine.pointCount; i++) {
         BMKMapPoint pt = polyLine.points[i];
         if (pt.x < ltX) {

@@ -10,7 +10,6 @@
 
 #import "ESSSubmitController.h"
 #import "ESSChuZhiFanKuiController.h"
-#import "ESSJiuYuanRiZhiDetailController.h"
 
 #import "ESSRTDLiftInfoCell.h"
 #import "ESSRTDAlarmInfoCell.h"
@@ -92,24 +91,21 @@
     
     _alertView.callBack = ^(NSDictionary *dic)
     {
-        NSLog(@"回调***%@",dic);
         if ([[dic objectForKey:@"state"]boolValue] == 0) {
             _alertBaseView.hidden = YES;
         }else {
             _alertBaseView.hidden = YES;
             [self submitRescueresult:dic[@"result"] remark:dic[@"remark"]];
-
         }
     };
     _alertBaseView.hidden = YES;
-    
-    
     if (!_timer) {
-        _timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(downloadDate) userInfo:nil repeats:YES];
+        _timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(reloadTableView) userInfo:nil repeats:YES];
     }
-    
 }
-
+-(void)reloadTableView{
+    [self.tableView reloadData];
+}
 
 - (void)createUI {
     
@@ -207,22 +203,16 @@
 //处置反馈
 - (void)feedbackEvent {
     ESSChuZhiFanKuiController *vc = [[ESSChuZhiFanKuiController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID] ElevNo:self.dictSource[@"ElevNo"]];
-//    vc.basicInfoID = self.dictSource[@"BasicInfoId"];
-//    [self.navigationController pushViewController:[[ESSChuZhiFanKuiController alloc]initWithRescueId:[NSString stringWithFormat:@"%ld",self.RescueId]] animated:YES];
     [self.navigationController pushViewController:vc animated:YES];
-    
     vc.submitCallback = ^(NSString *str)
     {
-        NSLog(@"%@",str);
         [self downloadDate];
     };
 }
 //上报
 - (void)submitBtnEvent {
-    
     ESSSubmitController *vc = [[ESSSubmitController  alloc]initWithRescueId:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID]];
     [self.navigationController pushViewController:vc animated:YES];
-    
     vc.submitCallback = ^(NSString *str)
     {
         NSLog(@"%@",str);
@@ -232,14 +222,12 @@
 #pragma mark ---network
 
 - (void)submitRescueresult:(NSString *)result remark:(NSString *)remark{
-    
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:self.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
     [parameters setValue:result forKey:@"TaskState"];
     [parameters setValue:remark forKey:@"Remark"];
     [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if (![responseObject isKindOfClass:[NSNull class]]) {
-
 //            if ([[responseObject objectForKey:@"isOk"]boolValue]) {
 //                if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
 //                    [SVProgressHUD showInfoWithStatus:@"平台工单已救援完成，刷新数据中"];
@@ -269,7 +257,6 @@
         if (![responseObject isKindOfClass:[NSNull class]]) {
                 self.dictSource = [responseObject mutableCopy];
                 [self.tableView reloadData];
-                
                 self.footerView = [[ESSRTDFooterView alloc]initWithDictionary:self.dictSource controllerType:self.controllerType];
                 [self.footerView.zheDieBtn addTarget:self action:@selector(zheDieBtnEvent:) forControlEvents:UIControlEventTouchUpInside];
                 self.tableView.tableFooterView = _footerView;
@@ -471,7 +458,6 @@
                 cell=[[[NSBundle mainBundle]loadNibNamed:@"ESSRTDRescueLogCell" owner:self options:nil]lastObject];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            cell.dataArray = self.dictSource[@"RescueProcessItem"];
             return cell;
             
         }
@@ -485,8 +471,8 @@
                 cell=[[[NSBundle mainBundle]loadNibNamed:@"ESSRTDFanKuiCell" owner:self options:nil]lastObject];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.faultLb.text = self.dictSource[@"FaultAnalysis"];
-            cell.beiZhuLb.text = self.dictSource[@"DealResult"];
+            cell.faultLb.text = self.dictSource[@"FaultReason2"];
+            cell.beiZhuLb.text = self.dictSource[@"Feedback"];
             return cell;
         }
             break;

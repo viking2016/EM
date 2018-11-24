@@ -99,13 +99,24 @@
         [SVProgressHUD showInfoWithStatus:@"请输入事件详情"];
         return;
     }
+    [parameters setValue:_textView.text forKey:@"Remark"];
+    [parameters setValue:self.rescueId forKey:@"AlarmOrderTaskID"];
+
     
-    [parameters setValue:_textView.text forKey:@"Description"];
-    [parameters setValue:self.rescueId forKey:@"TaskID"];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
-    [parameters setObject:dict[@"Token"] forKey:@"Token"];
-    NSString *tel = [[ESSLoginTool getLoginInfo] objectForKey:@"userName"];
-    [parameters setObject:tel forKey:@"Tel"];
+    NSMutableDictionary *mDic = [NSMutableDictionary new];
+    NSDictionary *loginInfo = [ESSLoginTool getLoginInfo];
+    NSDictionary *userInfo = [ESSLoginTool getUserInfo];
+    if (userInfo) {
+        NSString *token = userInfo[@"Token"];
+        [parameters setObject:token forKey:@"Token"];
+    }
+    if (loginInfo) {
+        NSString *tel = loginInfo[@"YongHuMing"];
+        [parameters setObject:tel forKey:@"YongHuMing"];
+    }
+    
+    [parameters setObject:[[UIDevice currentDevice].identifierForVendor UUIDString] forKey:@"UUID"];
+    
     
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否提交" preferredStyle:UIAlertControllerStyleAlert];
     //项目一
@@ -114,7 +125,7 @@
         
         NSString *mainURL = [ESSLoginTool getMainURL];
         
-        [manager POST:[mainURL stringByAppendingString:@"/APP/Rescue_WorkOrderTask/SubmitEvent" ] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [manager POST:[mainURL stringByAppendingString:@"/APP/WB/Rescue_AlarmOrderTask/EReport" ] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             for (int i=0;i<_dataArray.count;i++)
             {
                 UIImage *image=[_dataArray objectAtIndex:i];
@@ -123,11 +134,9 @@
                 [formData appendPartWithFileData:imageData name:[NSString stringWithFormat:@"file_%d",i] fileName:fileName mimeType: @"image/jpeg"];
             }
         } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            if ([responseObject[@"info"] intValue] == 0 ) {
-                [SVProgressHUD showSuccessWithStatus:@"提交成功"];
-                [self.navigationController popViewControllerAnimated:YES];
-                self.submitCallback(@"success");
-            }
+            [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            self.submitCallback(@"success");
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
         }];

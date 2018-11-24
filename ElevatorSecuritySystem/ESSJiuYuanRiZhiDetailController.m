@@ -209,39 +209,36 @@
 
 - (void)downloadData {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
-    [parameters setValue:self.LogId forKey:@"LogId"];
-    [ESSNetworkingTool GET:@"/APP/Rescue_WorkOrder/GetRescueLogDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
-        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
-            if ([[responseObject objectForKey:@"isOk"] boolValue]) {
-                
-                _result_Lab.text = [NSString replaceEmptyString:responseObject[@"data"][@"Result"]];
-                _content_Lab.text = responseObject[@"data"][@"Content"];
-                _time_Lab.text = [responseObject[@"data"][@"LogTime"] stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-                _user_Lab.text = responseObject[@"data"][@"Operator"];
-                _zhaiYao_Lab.text = [NSString replaceEmptyString:responseObject[@"data"][@"Abstract"]];
-                [_photo_TitleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-                    if (_zhaiYao_Lab.text.length > 0){
-                        make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(14);
-                    }else{
-                        make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(29);
-                    }
-                }];
-                
-                NSString *tmp = [responseObject[@"data"] objectForKey:@"Imgs"];
-                                                         
-                if (tmp.length > 0) {
-                    self.dataArray = [[responseObject[@"data"][@"Imgs"] componentsSeparatedByString:@","] mutableCopy];
-                    }
-                [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    if (_zhaiYao_Lab.text.length > 0){
-                        make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(14);
-                    }else{
-                        make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(29);
-                    }
-                    make.height.mas_equalTo(_itemWH * ((_dataArray.count/3)+1 + 29));
-                    [self.collectionView reloadData];
-                }];
+    [parameters setValue:self.LogId forKey:@"ProcessRecordID"];
+    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueRecordDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            _result_Lab.text = [NSString replaceEmptyString:responseObject[@"Description"]];
+            _content_Lab.text = responseObject[@"RescueContent"];
+            _time_Lab.text = [responseObject[@"CreateTime"] stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
+            _user_Lab.text = responseObject[@"CreateName"];
+            _zhaiYao_Lab.text = [NSString replaceEmptyString:responseObject[@"Remark"]];
+            [_photo_TitleLab mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (_zhaiYao_Lab.text.length > 0){
+                    make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(14);
+                }else{
+                    make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(29);
+                }
+            }];
+            
+            NSString *tmp = [responseObject objectForKey:@"ImgURL"];
+            
+            if (tmp.length > 0) {
+                self.dataArray = [[responseObject[@"ImgURL"] componentsSeparatedByString:@","] mutableCopy];
             }
+            [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (_zhaiYao_Lab.text.length > 0){
+                    make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(14);
+                }else{
+                    make.top.equalTo(_zhaiYao_Lab.mas_bottom).offset(29);
+                }
+                make.height.mas_equalTo(_itemWH * ((_dataArray.count/3)+1 + 29));
+                [self.collectionView reloadData];
+            }];
         }
     }];
 }

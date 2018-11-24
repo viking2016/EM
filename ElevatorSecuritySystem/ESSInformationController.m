@@ -44,10 +44,10 @@
     if (self.aTitles.count == 0) {
         [SVProgressHUD show];
         self.aTitles = [[NSMutableArray alloc] init];
-        [ESSNetworkingTool GET:@"/APP/Elev_Article/GetArticleType" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+        [ESSNetworkingTool GET:@"APP/CMS/CMS_News/GetLanMu" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
             [SVProgressHUD dismiss];
-            if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
-                for (NSDictionary *dic in responseObject[@"datas"]) {
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in responseObject) {
                     NSString *name = [dic objectForKey:@"Name"];
                     [self.aTitles addObject:name];
                 }

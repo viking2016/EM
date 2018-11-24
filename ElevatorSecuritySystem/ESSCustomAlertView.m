@@ -55,9 +55,9 @@
     NSMutableDictionary *dict = [NSMutableDictionary new];
     
     if (_result == 1) {  
-        [dict setValue:@"救援成功" forKey:@"result"];
+        [dict setValue:@"4" forKey:@"result"];
     }else if (_result == 0){
-        [dict setValue:@"救援失败" forKey:@"result"];
+        [dict setValue:@"5" forKey:@"result"];
     }
     
     
