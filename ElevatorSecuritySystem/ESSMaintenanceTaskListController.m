@@ -191,11 +191,11 @@
         }else if ([model.State isEqualToString:@"进行中"]){ //进行中
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否暂停该维保任务" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *pause = [UIAlertAction actionWithTitle:@"暂停维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
+                NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"1"};
                 [SVProgressHUD show];
                 [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
-                    [self.datas[indexPath.row] setValue:@"4" forKey:@"State"];
+                    [self.datas[indexPath.row] setValue:@"暂停" forKey:@"State"];
                     [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
                 }];
             }];
@@ -212,7 +212,7 @@
         }else if ([model.State isEqualToString:@"暂停"]){//暂停中
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否恢复该维保任务" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"恢复维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"1"};
+                NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
                 [SVProgressHUD show];
                 [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
