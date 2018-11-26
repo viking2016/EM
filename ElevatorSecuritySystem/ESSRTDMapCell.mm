@@ -105,13 +105,12 @@
  */
 - (void)mapViewDidFinishLoading:(BMKMapView *)mapView{
     if (_locService) {
-        
         //    //构造驾车查询基础信息类
         BMKPlanNode* start = [[BMKPlanNode alloc]init];
-        start.cityName = @"青岛市";
+//        start.cityName = @"青岛市";
         
         BMKPlanNode* end = [[BMKPlanNode alloc]init];
-        end.cityName = @"青岛市";
+//        end.cityName = @"青岛市";
         CLLocationCoordinate2D pt_start = (CLLocationCoordinate2D){0, 0};//初始化
         CLLocationCoordinate2D pt_end = (CLLocationCoordinate2D){0, 0};//初始化
         

@@ -21,6 +21,9 @@
 
 #import "ESSRTDFooterView.h"
 #import "ESSCustomAlertView.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+
+
 @interface ESSRescueTaskListDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -489,6 +492,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
