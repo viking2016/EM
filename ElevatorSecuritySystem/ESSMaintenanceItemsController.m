@@ -95,13 +95,13 @@
         [SVProgressHUD show];
         [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:item success:^(NSDictionary * _Nonnull responseObject) {
             [SVProgressHUD dismiss];
-            if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
-                NSArray *locationArray = [responseObject[@"datas"] valueForKey:@"Location"];
+            if ([responseObject isKindOfClass:[NSArray class]]) {
+                NSArray *locationArray = [responseObject valueForKey:@"Position"];
                 NSSet *indexSet = [NSSet setWithArray:locationArray];
                 NSMutableArray *resultArray = [NSMutableArray array];
                 [[indexSet allObjects] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Location == %@",obj];
-                    NSArray *locationArray = [responseObject[@"datas"] filteredArrayUsingPredicate:predicate];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Position == %@",obj];
+                    NSArray *locationArray = [(NSMutableArray *)responseObject filteredArrayUsingPredicate:predicate];
                     NSMutableArray *mArr = [NSMutableArray new];
                     [locationArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                         NSMutableDictionary *mDic = [obj mutableCopy];
@@ -113,11 +113,11 @@
                 
                 if (resultArray.count == 4) {// 不是扶梯
                     [resultArray enumerateObjectsUsingBlock:^(NSMutableArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if ([[obj firstObject][@"Location"] isEqualToString:@"机房"]) {
+                        if ([[obj firstObject][@"Position"] isEqualToString:@"机房"]) {
                             [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:0];
-                        }else if ([[obj firstObject][@"Location"] isEqualToString:@"轿厢"]){
+                        }else if ([[obj firstObject][@"Position"] isEqualToString:@"轿厢"]){
                             [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:1];
-                        }else if ([[obj firstObject][@"Location"] isEqualToString:@"井道"]){
+                        }else if ([[obj firstObject][@"Position"] isEqualToString:@"井道"]){
                             [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:2];
                         }else {
                             [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:3];
@@ -160,8 +160,8 @@
     NSLog(@"year=%zd month=%zd day=%zd hour=%zd minute=%zd second=%zd",compas.year,compas.month,compas.day,compas.hour,compas.minute,compas.second);
     
     NSString *str;
-    NSInteger *tmp = (compas.year*365 +compas.month*30 + compas.day) * 24 + compas.hour;
-    str = [NSString stringWithFormat:@"%d小时%d'%d",tmp,compas.minute,compas.second];
+    long tmp = (compas.year * 365 +compas.month * 30 + compas.day) * 24 + compas.hour;
+    str = [NSString stringWithFormat:@"%ld小时%ld'%ld",tmp,compas.minute,compas.second];
     
     return str;
 }
@@ -194,22 +194,14 @@
 
 - (void)back {
     __block BOOL hasValue = false;
-    NSMutableArray *maintenanceResults = [[NSMutableArray alloc] init];
     
     [self.dataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *item = obj[@"Code"];
             NSString *result = obj[@"Result"];
-            NSString *repairApplyNo = @"";
-            NSString *repairNo = @"";
-            
             if (result.length) {
                 * stop = true;
                 hasValue = true;
             }
-            
-            NSDictionary *dic = @{@"Item":item,@"Result":result,@"RepairApplyNo":repairApplyNo,@"RepairNo":repairNo};
-            [maintenanceResults addObject:dic];
         }];
     }];
     
@@ -229,17 +221,15 @@
     
     [self.dataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
        [obj enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-           NSString *item = obj[@"Code"];
+           NSString *item = obj[@"MRuleItemID"];
            NSString *result = obj[@"Result"];
-           NSString *repairApplyNo = @"";
-           NSString *repairNo = @"";
            
            if (!result.length) {
                * stop = true;
                hasEmpty = true;
            }
            
-           NSDictionary *dic = @{@"Item":item,@"Result":result,@"RepairApplyNo":repairApplyNo,@"RepairNo":repairNo};
+           NSDictionary *dic = @{@"MRuleItemID":item,@"Result":result};
            [maintenanceResults addObject:dic];
        }];
     }];
@@ -260,26 +250,26 @@
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            NSDictionary *dic = @{@"TaskID":self.taskID,@"FinishTime":self.finishTime,@"MaintenanceResults":maintenanceResults};
+            NSDictionary *dic = @{@"MTaskID":self.taskID,@"FinishTime":self.finishTime,@"MaintenanceResults":maintenanceResults};
             
             NSMutableString *mStr = [NSMutableString stringWithString:[dic mj_JSONString]];
             NSString *strJson = [mStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"'\'"]];
             NSDictionary *paras = @{@"strJson":strJson};
             
             [SVProgressHUD show];
-            [ESSNetworkingTool POST:@"/APP/Maintenance_WorkOrder/Submit" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
-                ESSMaintencanceItemsModel *result = [ESSMaintencanceItemsModel objectForPrimaryKey:self.taskID];
-                if (result) {
-                    RLMRealm *realm = [RLMRealm defaultRealm];
-                    [realm beginWriteTransaction];
-                    [realm deleteObject:result];
-                    [realm commitWriteTransaction];
-                }
-                [SVProgressHUD showSuccessWithStatus:@"提交成功"];
+            [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+//                ESSMaintencanceItemsModel *result = [ESSMaintencanceItemsModel objectForPrimaryKey:self.taskID];
+//                if (result) {
+//                    RLMRealm *realm = [RLMRealm defaultRealm];
+//                    [realm beginWriteTransaction];
+//                    [realm deleteObject:result];
+//                    [realm commitWriteTransaction];
+//                }
+//                [SVProgressHUD showSuccessWithStatus:@"提交成功"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
                 
-                NSString *maintenanceNo = responseObject[@"data"];
-                ESSMaintenanceFormDetailController *vc = [ESSMaintenanceFormDetailController new];
+//                NSString *maintenanceNo = responseObject[@"data"];
+//                ESSMaintenanceFormDetailController *vc = [ESSMaintenanceFormDetailController new];
 
                 NSArray *controllers = self.navigationController.viewControllers;
                 [self.navigationController popToViewController:controllers[1] animated:YES];
@@ -317,7 +307,7 @@
     NSMutableArray *mArr = self.dataArr[indexPath.section];
     NSMutableDictionary *mDic = mArr[indexPath.row];
 
-    NSString *mainText = [NSString stringWithFormat:@"%@(%@)",mDic[@"Name"],mDic[@"Type"]];
+    NSString *mainText = mDic[@"Content"];
     NSString *date = [NSString stringWithFormat:@"%ld.%ld",indexPath.section + 1,indexPath.row + 1];
     NSString *detailText = mDic[@"Requirement"];
     NSString *result = mDic[@"Result"];
@@ -368,7 +358,7 @@
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(35, 12, SCREEN_WIDTH - 35, 20)];
     [headerView addSubview:label];
     label.font = [UIFont systemFontOfSize:15];
-    label.text = [self.dataArr[section] firstObject][@"Location"];
+    label.text = [self.dataArr[section] firstObject][@"Position"];
     
     UIImageView *arrow = [[UIImageView alloc] init];
     [headerView addSubview:arrow];
