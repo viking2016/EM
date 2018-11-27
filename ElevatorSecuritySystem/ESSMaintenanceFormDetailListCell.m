@@ -21,7 +21,7 @@
     self.addressLb.text = [NSString stringWithFormat:@"%@%@（%@）", model.ProjectName, model.InnerNo,model.ElevNo];
     self.dateLb.text = model.FinishTime;
     
-    if ([model.IsChaoQi boolValue]) {
+    if ([model.IsChaoQi isEqualToString:@"超期"]) {
         self.stateLb.hidden = NO;
         self.stateLb.text = @"超期完成";
         self.stateLb.textColor = kCOLOR_OVERTIME;

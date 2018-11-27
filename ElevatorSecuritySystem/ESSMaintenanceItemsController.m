@@ -110,20 +110,6 @@
                     }];
                     [resultArray addObject:mArr];
                 }];
-                
-                if (resultArray.count == 4) {// 不是扶梯
-                    [resultArray enumerateObjectsUsingBlock:^(NSMutableArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if ([[obj firstObject][@"Position"] isEqualToString:@"机房"]) {
-                            [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:0];
-                        }else if ([[obj firstObject][@"Position"] isEqualToString:@"轿厢"]){
-                            [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:1];
-                        }else if ([[obj firstObject][@"Position"] isEqualToString:@"井道"]){
-                            [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:2];
-                        }else {
-                            [resultArray exchangeObjectAtIndex:idx withObjectAtIndex:3];
-                        }
-                    }];
-                }
                 self.dataArr = [resultArray copy];
                 [self.tableView reloadData];
             }

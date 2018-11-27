@@ -94,8 +94,8 @@
     [_tableView deselectRowAtIndexPath:indexPath  animated:YES];
     if (self.datas.count > indexPath.row) {
         ESSMaintenanceFormDetailListModel *model = self.datas[indexPath.row];
-        ESSMaintenanceFormDetailController *vc = [[ESSMaintenanceFormDetailController alloc] initWithWorkOrderID:model.MTaskID];
-        vc.navigationItem.title = model.MType;
+        ESSMaintenanceFormDetailController *vc = [[ESSMaintenanceFormDetailController alloc] initWithWorkOrderID:model.MTaskID mCategories:model.MCategories];
+ 
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

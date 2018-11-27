@@ -28,11 +28,11 @@
 
 @implementation ESSMaintenanceFormDetailController
 
-- (instancetype)initWithWorkOrderID:(NSString *)workOrderID
-{
+- (instancetype)initWithWorkOrderID:(NSString *)workOrderID mCategories:(NSString *)mCategories{
     self = [super init];
     if (self) {
         self.workOrderID = workOrderID;
+        self.MCategories = mCategories;
     }
     return self;
 }
@@ -40,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationItem.title = @"维保单详情";
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.navigationItem.leftBarButtonItem setAction:@selector(goBack)];
@@ -70,36 +71,30 @@
 }
 
 - (void)loadNewData {
-    NSDictionary *paras = @{@"MTaskID":self.workOrderID};
+    NSDictionary *paras = @{@"MTaskID":self.workOrderID,@"MCategories":self.MCategories};
     [SVProgressHUD show];
     _dataSource = [[NSMutableArray alloc] init];
+    
+    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            NSArray *arr1 = @[@"生产厂家",@"电梯品牌",@"电梯型号",@"注册代码",@"额定速度",@"额定重量",@"使用地址"];
+            NSArray *arr2 = @[@"公司名称",@"负责人",@"负责人电话",@"安全管理员",@"安全管理员电话"];
+            NSArray *arr3 = @[@"公司名称",@"负责人",@"负责人电话",@"机械维保人员姓名",@"机械维保人员电话",@"电气维保人员姓名",@"电气维保人员电话"];
+    
+            [_dataSource addObject:responseObject];
+            self.dataArray = [[NSMutableArray alloc]init];
+            self.dataArray = [responseObject mutableCopy];
+            [_dataSource addObject:arr1];
+            [_dataSource addObject:arr2];
+            [_dataSource addObject:arr3];
+            [self.tableView reloadData];
+
+        }
+    }];
+    
     [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-        
-        NSArray *arr1 = @[@"生产厂家",@"电梯品牌",@"电梯型号",@"注册代码",@"额定速度",@"额定重量",@"使用单位",@"使用地址"];
-        NSArray *arr2 = @[@"公司名称",@"负责人",@"负责人电话",@"安全管理员",@"安全管理员电话"];
-        NSArray *arr3 = @[@"公司名称",@"负责人",@"负责人电话",@"机械维保人员姓名",@"机械维保人员电话",@"电气维保人员姓名",@"电气维保人员电话"];
-        
         self.model = [ESSMaintenanceFormDetailModel mj_objectWithKeyValues:responseObject];
-        
-        if (self.model.Results.count > 0) {
-            [_dataSource addObject:self.model.Results];
-        }
-        self.dataArray = [[NSMutableArray alloc]init];
-        if (_dataArray.count > 0) {
-            NSArray *tmpArray = _dataSource[0];
-            if (tmpArray.count > 0) {
-                for (NSDictionary *dict in _dataSource[0]) {
-                    Maintenanceresults *model = [[Maintenanceresults alloc]init];
-                    [model setValuesForKeysWithDictionary:dict];
-                    [self.dataArray addObject:model];
-                }
-            }
-        }
-        
-        [_dataSource addObject:arr1];
-        [_dataSource addObject:arr2];
-        [_dataSource addObject:arr3];
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     }];

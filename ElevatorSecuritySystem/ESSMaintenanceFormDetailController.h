@@ -11,7 +11,7 @@
 @interface ESSMaintenanceFormDetailController : UIViewController
 
 @property (nonatomic, copy)NSString *workOrderID;
-
-- (instancetype)initWithWorkOrderID:(NSString *)workOrderID;
+@property (nonatomic, copy)NSString *MCategories;
+- (instancetype)initWithWorkOrderID:(NSString *)workOrderID mCategories:(NSString *)mCategories;
 
 @end

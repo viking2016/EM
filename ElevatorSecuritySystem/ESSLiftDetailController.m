@@ -78,7 +78,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"电梯详情";
-    self.URLArray = @[@"/APP/WP/Elev_Info/GetFactoryInfo",@"/APP/WP/Elev_Info/GetManufactureInfo",@"/APP/WP/Elev_Info/GetElevUseInfo",@"/APP/WP/Elev_Info/GetPCUnitInfo",@"/APP/WP/Elev_Info/GetPUnitInfo",@"/APP/WP/Elev_Info/GetInstallInfo",@"/APP/WP/Elev_Info/GetRegOrgInfo",@"/APP/WP/Elev_Info/GetMUnitInfo",@"/APP/WP/Elev_Info/GetMaintenanceInfo",@"/APP/WP/Elev_Info/GetRepairInfo@"];
+    self.URLArray = @[@"/APP/WP/Elev_InfoWP/GetFactoryInfo",@"/APP/WP/Elev_InfoWP/GetManufactureInfo",@"/APP/WP/Elev_InfoWP/GetElevUseInfo",@"/APP/WP/Elev_InfoWP/GetPCUnitInfo",@"/APP/WP/Elev_InfoWP/GetPUnitInfo",@"/APP/WP/Elev_InfoWP/GetInstallInfo",@"/APP/WP/Elev_InfoWP/GetRegOrgInfo",@"/APP/WP/Elev_InfoWP/GetMUnitInfo",@"/APP/WP/Elev_InfoWP/GetMaintenanceInfo",@"/APP/WP/Elev_InfoWP/GetRepairInfo@"];
     
     self.scrollViewHeight.constant = 1200;
 //    self.registCodeLb.lineBreakMode = NSLineBreakByTruncatingMiddle  ;

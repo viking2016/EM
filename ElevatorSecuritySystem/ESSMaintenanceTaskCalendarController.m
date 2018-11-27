@@ -186,12 +186,6 @@ UIScrollViewDelegate
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-// 跳转维保单控制器
-- (void)pushMaintenanceListWithWorkOrderID:(NSString *)workOrderID {
-    ESSMaintenanceFormDetailController *vc = [[ESSMaintenanceFormDetailController alloc] initWithWorkOrderID:workOrderID];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 #pragma mark - Action
 
 - (void)showIndicator {

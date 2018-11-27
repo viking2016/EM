@@ -129,12 +129,6 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-// 跳转维保单控制器
-- (void)pushMaintenanceListWithWorkOrderID:(NSString *)workOrderID {
-    [self.navigationController pushViewController:[[ESSMaintenanceFormDetailController alloc] initWithWorkOrderID:workOrderID] animated:YES];
-}
-
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
