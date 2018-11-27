@@ -58,11 +58,9 @@
 - (void)downloadData{
     [SVProgressHUD show];
     NSDictionary *parameters = @{@"Keywords":self.searchString};
-    [ESSNetworkingTool GET:@"/APP/Elev_BasicInfo/GetList2_1" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetElevInfoList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-        if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
-            self.datas = responseObject[@"datas"];
-        }
+        self.datas = responseObject;
         [self.tableView reloadData];
     }];
 }
@@ -87,8 +85,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ESSSelectLiftCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSSelectLiftCell class]) forIndexPath:indexPath];
     if (self.datas.count > indexPath.row) {
-        cell.addressLb.text = self.datas[indexPath.row][@"InnerCode"];
-        cell.codeLb.text = self.datas[indexPath.row][@"LiftCode"];
+        cell.addressLb.text = self.datas[indexPath.row][@"InnerNo"];
+        cell.codeLb.text = self.datas[indexPath.row][@"ElevNo"];
     }
     return cell;
 }
@@ -98,8 +96,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.datas.count > indexPath.row) {
         NSDictionary *dict = self.datas[indexPath.row];
-        int basicInfoID = [dict[@"BasicInfoID"] intValue];
-        self.liftCodeBlock(dict[@"LiftCode"], basicInfoID);
+        int basicInfoID = [dict[@"ElevID"] intValue];
+        self.liftCodeBlock(dict[@"ElevNo"], basicInfoID);
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

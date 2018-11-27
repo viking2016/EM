@@ -32,14 +32,14 @@
         _model = model;
     }
     [self.repairNoLb setTitle:self.model.RepairNo forState:UIControlStateNormal];
-    self.liftCodeLb.text = self.model.LiftCode;
-    self.addressLb.text = self.model.Address;
-    self.repairPersonLb.text = self.model.RepairPerson;
+    self.liftCodeLb.text = self.model.ElevNo;
+    self.addressLb.text = [NSString stringWithFormat:@"%@%@", self.model.ProjectName ,self.model.InnerNo];
+    self.repairPersonLb.text = self.model.Repairer;
     self.repairDateLb.text = self.model.RepairDate;
     self.stateLb.text = self.model.State;
-    self.servicePersonLb.text = [NSString stringWithFormat:@"%@  %@",self.model.RepairPerson,self.model.RepairPersonTel];
-    self.callTypeLb.text = self.model.CallType;
-    self.remarkLb.text = self.model.Remark;
+    self.servicePersonLb.text = [NSString stringWithFormat:@"%@  %@",self.model.Repairer,self.model.RepairerTel];
+    self.callTypeLb.text = self.model.ReportType;
+    self.remarkLb.text = self.model.RepairContent;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

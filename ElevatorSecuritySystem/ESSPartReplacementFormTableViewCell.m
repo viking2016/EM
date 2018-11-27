@@ -23,9 +23,9 @@
     if (_model != model) {
         _model = model;
     }
-    self.partsTf.text = self.model.Parts;
-    self.brandTf.text = self.model.Brand;
-    self.modelTf.text = self.model.Model;
+    self.partsTf.text = self.model.PartName;
+    self.brandTf.text = self.model.PartBrand;
+    self.modelTf.text = self.model.PartModel;
     self.numberTf.text = self.model.Number;
     self.unitPriceTf.text = self.model.UnitPrice;
 }
@@ -36,13 +36,13 @@
 
 - (void)textFieldTextChanged:(UITextField *)textField {
     if (textField == self.partsTf) {
-        self.model.Parts = textField.text;
+        self.model.PartName = textField.text;
     }
     else if(textField == self.brandTf) {
-        self.model.Brand = textField.text;
+        self.model.PartBrand = textField.text;
     }
     else if(textField == self.modelTf) {
-        self.model.Model = textField.text;
+        self.model.PartModel = textField.text;
     }
     else if(textField == self.numberTf) {
         self.model.Number = textField.text;

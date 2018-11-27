@@ -45,22 +45,24 @@
         _PartReplacemen = PartReplacemen;
     }
     
-    self.lb.font = [UIFont systemFontOfSize:13];
-    self.lb.textColor = HexColor(@"999999");
-    
-    self.bgView.layer.cornerRadius = 0;
-    self.bgView.layer.shadowColor = [UIColor whiteColor].CGColor;
-    self.bgView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.bgView.layer.shadowRadius = 0;
-    self.bgView.layer.shadowOpacity = 0;
-    
-    self.addPartBtn.hidden = YES;
-    self.topConstraint.constant = 9;
-    self.btnHeightConstraint.constant = 0;
-    self.btnLeadingConstraint.constant = 6;
-    self.btnTrailingConstraint.constant = 6;
-    self.tableViewHeightConstraint.constant = 30 + 30 * self.PartReplacemen.count;
-    
+    if (self.isShow) {
+            self.lb.font = [UIFont systemFontOfSize:13];
+            self.lb.textColor = HexColor(@"999999");
+        
+            self.bgView.layer.cornerRadius = 0;
+            self.bgView.layer.shadowColor = [UIColor whiteColor].CGColor;
+            self.bgView.layer.shadowOffset = CGSizeMake(0, 0);
+            self.bgView.layer.shadowRadius = 0;
+            self.bgView.layer.shadowOpacity = 0;
+        
+            self.addPartBtn.hidden = YES;
+            self.topConstraint.constant = 9;
+            self.btnHeightConstraint.constant = 0;
+            self.btnLeadingConstraint.constant = 6;
+            self.btnTrailingConstraint.constant = 6;
+            self.tableViewHeightConstraint.constant = 30 + 30 * self.PartReplacemen.count;
+    }
+
     [self.tableView reloadData];
 }
 
@@ -83,7 +85,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ESSSubPartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSSubPartTableViewCell class])];
     ESSPartReplacemenModel *model = self.PartReplacemen[indexPath.row];
-    cell.modelLb.text = model.Model;
+    cell.partNameLb.text = model.PartName;
     cell.numberLb.text = model.Number;
     cell.unitPriceLb.text = model.UnitPrice;
     float totalAmount = 0;

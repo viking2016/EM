@@ -10,7 +10,7 @@
 
 @interface ESSSubPartTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *modelLb;
+@property (weak, nonatomic) IBOutlet UILabel *partNameLb;
 @property (weak, nonatomic) IBOutlet UILabel *unitPriceLb;
 @property (weak, nonatomic) IBOutlet UILabel *numberLb;
 

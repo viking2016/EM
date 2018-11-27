@@ -13,7 +13,6 @@ typedef void(^TypeBlock)(NSString *str, NSString *code);
 
 
 @property (copy,nonatomic) NSString *elevNo;
-@property (assign, nonatomic) int basicInfoID;
 @property (copy, nonatomic) TypeBlock block;
 
 @end

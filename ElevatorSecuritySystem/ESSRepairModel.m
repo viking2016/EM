@@ -23,18 +23,4 @@
     return self;
 }
 
-- (NSMutableArray<UIImage *> *)preImages {
-    if (!_preImages) {
-        _preImages = [NSMutableArray new];
-    }
-    return _preImages;
-}
-
-- (NSMutableArray<UIImage *> *)edImages {
-    if (!_edImages) {
-        _edImages = [NSMutableArray new];
-    }
-    return _edImages;
-}
-
 @end

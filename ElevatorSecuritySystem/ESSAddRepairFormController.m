@@ -84,8 +84,8 @@
         case 2:
         {
             ESSTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSTextFieldTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.RepairerTel placeholder:@"请在此填写报修人电话" keyboardType:UIKeyboardTypeNumberPad textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
-                self.model.RepairerTel = value;
+            [cell setLabelText:self.staticArr[indexPath.row] textFieldText:self.model.ReporterTel placeholder:@"请在此填写报修人电话" keyboardType:UIKeyboardTypeNumberPad textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
+                self.model.ReporterTel = value;
             }];
             return cell;
         }
@@ -130,10 +130,10 @@
         case 0:
         {
             ESSSelectLiftController *vc = [ESSSelectLiftController new];
-            vc.liftCodeBlock = ^(NSString *liftCode, int BasicInfoID){
-                self.model.BasicInfoID = BasicInfoID;
+            vc.liftCodeBlock = ^(NSString *ElevNo, int ElevID){
+                self.model.ElevID = ElevID;
                 ESSBaseTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-                cell.detailLbText = liftCode;
+                cell.detailLbText = ElevNo;
             };
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -144,17 +144,17 @@
 }
 
 - (void)submitClicked {    
-    if (self.model.BasicInfoID == 0)
+    if (self.model.ElevID == 0)
     {
         [SVProgressHUD showInfoWithStatus:@"请选择电梯"];
         return;
     }
-    else if (self.model.CallType.length == 0)
+    else if (self.model.ReportType.length == 0)
     {
         [SVProgressHUD showInfoWithStatus:@"请选择召修分类"];
         return;
     }
-    else if (self.model.Remark.length == 0)
+    else if (self.model.ReportContent.length == 0)
     {
         [SVProgressHUD showInfoWithStatus:@"请填写问题描述"];
         return;
@@ -163,8 +163,8 @@
                              @"RepairID":[NSNumber numberWithInt:self.model.RepairID]
                              ,@"ElevID":[NSNumber numberWithInt:self.model.ElevID]
                              ,@"Reporter":self.model.Reporter
-                             ,@"ReporterTel":self.model.RepairerTel
-                             ,@"ReportDate":self.model.ReportType
+                             ,@"ReporterTel":self.model.ReporterTel
+                             ,@"ReportDate":self.model.ReportDate
                              ,@"ReportContent":self.model.ReportContent
                              ,@"ReportType":self.model.ReportType
                              };
@@ -174,6 +174,7 @@
     [SVProgressHUD show];
     [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
+        self.model.RepairID = [responseObject[@"RepariID"] intValue];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否立即开始维修任务" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -189,7 +190,7 @@
         }];
         [alert addAction:confirm];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
+            [self.navigationController popViewControllerAnimated:YES];
         }];
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:^{
