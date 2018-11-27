@@ -19,8 +19,12 @@
 @interface ESSRepairFormController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (strong, nonatomic) NSArray *staticArr;
 @property (strong, nonatomic) ESSSubmitButton *submitBtn;
+@property (strong, nonatomic) NSString *FailureCauseCode;
+@property (strong, nonatomic) NSMutableArray <UIImage *>* beforeImgs;
+@property (strong, nonatomic) NSMutableArray <UIImage *>* afterImgs;
 
 @end
 
@@ -29,6 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [NSString stringWithFormat:@"维修单%@",self.model.RepairNo];
+    
+    self.beforeImgs = [NSMutableArray new];
+    self.afterImgs = [NSMutableArray new];
     
     self.staticArr = @[@"故障类型*",@"故障原因及分析*",@"维修情况说明*",@"零部件更换建议",@"是否收费*",@"维修前照片",@"维修后照片",@"维修后电梯结果*",@"处理结果*"];
     
@@ -50,11 +57,11 @@
         [SVProgressHUD showInfoWithStatus:@"请选择故障原因"];
         return;
     }
-    if (self.model.FailureCauseAnalysis.count == 0) {
+    if (self.model.FailureCauseAnalysis.length == 0) {
         [SVProgressHUD showInfoWithStatus:@"请选择故障原因及分析"];
         return;
     }
-    if (self.model.MaintenanceRemark.length == 0) {
+    if (self.model.RepairContent.length == 0) {
         [SVProgressHUD showInfoWithStatus:@"请填写维修情况说明"];
         return;
     }
@@ -62,19 +69,19 @@
         [SVProgressHUD showInfoWithStatus:@"请选择是否收费"];
         return;
     }
-    if (self.model.Result.length == 0) {
+    if (self.model.ElevState.length == 0) {
         [SVProgressHUD showInfoWithStatus:@"请选择维修后电梯结果"];
         return;
     }
-    if (self.model.ProcessingResults.length == 0) {
+    if (self.model.RepairResult.length == 0) {
         [SVProgressHUD showInfoWithStatus:@"请选择处理结果"];
         return;
     }
     
     NSMutableArray *FailureCauseAnalysis = [NSMutableArray new];
-    for (NSString *tmpStr in self.model.FailureCauseAnalysis) {
-        NSDictionary *tmpDic = @{@"FailureCauseAnalysis":tmpStr};
-        [FailureCauseAnalysis addObject:tmpDic];
+    for (NSString *str in [self.model.FailureCauseAnalysis componentsSeparatedByString:@","]) {
+        NSDictionary *dic = @{@"FaultReason2":str};
+        [FailureCauseAnalysis addObject:dic];
     }
     NSMutableArray *PartReplacemen = [NSMutableArray new];
     for (ESSPartReplacemenModel *model in self.model.PartReplacemen) {
@@ -83,14 +90,13 @@
     
     NSDictionary *tmpDic = @{
                              @"RepairID":[NSNumber numberWithInt:self.model.RepairID],
-                             @"FailureCause":self.model.FailureCause,
                              @"FailureCauseAnalysis":FailureCauseAnalysis,
-                             @"MaintenanceRemark":self.model.MaintenanceRemark,
+                             @"RepairContent":self.model.RepairContent,
                              @"PartReplacemen":PartReplacemen,
                              @"TotalAmount":self.model.TotalAmount,
-                             @"IsCharge":self.model.IsCharge,
-                             @"Result":self.model.Result,
-                             @"ProcessingResults":self.model.ProcessingResults
+                             @"IsCharge":[self.model.IsCharge isEqualToString:@"是"] ? @"1" : @"0",
+                             @"ElevState":[self.model.ElevState isEqualToString:@"正常"] ? @"1" : @"-1",
+                             @"RepairResult":self.model.RepairResult
                              };
     NSString *jsonStr = [tmpDic mj_JSONString];
     NSDictionary *parameters = @{@"StrJson":jsonStr};
@@ -111,7 +117,7 @@
         {
             ESSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSBaseTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.detailLbText = self.model.FailureCauseStr;
+            cell.detailLbText = self.model.FailureCause;
             return cell;
         }
             break;
@@ -119,7 +125,7 @@
         {
             ESSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSBaseTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.detailLbText = self.model.FailureCauseAnalysisStr;
+            cell.detailLbText = self.model.FailureCauseAnalysis;
             return cell;
         }
             break;
@@ -127,9 +133,9 @@
         {
             ESSTextViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSTextViewTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.textView.text = self.model.MaintenanceRemark;
+            cell.textView.text = self.model.RepairContent;
             cell.textViewTextChanged = ^(NSString *value) {
-                self.model.MaintenanceRemark = value;
+                self.model.RepairContent = value;
             };
             return cell;
         }
@@ -144,7 +150,7 @@
                 for (ESSPartReplacemenModel *model in self.model.PartReplacemen) {
                     totalAmount += [model.Total floatValue];
                 }
-                self.model.TotalAmount = [NSString stringWithFormat:@"%f",totalAmount];
+                self.model.TotalAmount = [NSString stringWithFormat:@"%.2f",totalAmount];
                 [self.tableView reloadData];
             };
             return cell;
@@ -153,12 +159,8 @@
         case 4:
         {
             ESSStringPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSStringPickerTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:@"请选择" strings:@[@"是",@"否"] valueSelected:^(NSString *value, id response) {
-                NSString *isChanrge = @"0";
-                if ([value isEqualToString:@"是"]) {
-                    isChanrge = @"1";
-                }
-                self.model.IsCharge = isChanrge;
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.IsCharge strings:@[@"是",@"否"] valueSelected:^(NSString *value, id response) {
+                self.model.IsCharge = value;
             }];
             return cell;
         }
@@ -167,9 +169,9 @@
         {
             ESSImagePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSImagePickerTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.images = self.model.preImages;
+            cell.images = self.beforeImgs;
             cell.imageSelected = ^(NSMutableArray<UIImage *> *images) {
-                self.model.preImages = images;
+                self.beforeImgs = images;
                 [self.tableView reloadData];
             };
             return cell;
@@ -179,10 +181,10 @@
         {
             ESSImagePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSImagePickerTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
-            cell.images = self.model.edImages;
+            cell.images = self.afterImgs;
             cell.imageSelected = ^(NSMutableArray<UIImage *> *images) {
-//                self.model.edImages = images;
-//                [self.tableView reloadData];
+                self.afterImgs = images;
+                [self.tableView reloadData];
             };
             return cell;
         }
@@ -190,20 +192,16 @@
         case 7:
         {
             ESSStringPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSStringPickerTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:@"请选择" strings:@[@"正常", @"停梯"] valueSelected:^(NSString *value, id response) {
-                NSString *result = @"1";
-                if ([value isEqualToString:@"停梯"]) {
-                    result = @"-1";
-                }
-                self.model.Result = result;
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.ElevState strings:@[@"正常", @"停梯"] valueSelected:^(NSString *value, id response) {
+                self.model.ElevState = value;
             }];
             return cell;
         }
         default:
         {
             ESSStringPickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSStringPickerTableViewCell class])];
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:@"请选择" strings:@[@"正常",@"缺件",@"报废",@"客观原因",@"其他" ] valueSelected:^(NSString *value, id response) {
-                self.model.ProcessingResults = value;
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.RepairResult strings:@[@"正常",@"缺件",@"报废",@"客观原因",@"其他" ] valueSelected:^(NSString *value, id response) {
+                self.model.RepairResult = value;
             }];
             return cell;
         }
@@ -217,10 +215,10 @@
         case 0:
         {
             ESSSelectFaultTypeController *vc = [ESSSelectFaultTypeController new];
-            vc.basicInfoID = self.model.BasicInfoID;
+            vc.elevNo = self.model.ElevNo;
             vc.block = ^(NSString *str, NSString *code) {
-                self.model.FailureCause = code;
-                self.model.FailureCauseStr = str;
+                self.model.FailureCause = str;
+                self.FailureCauseCode = code;
                 [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
             };
             [self.navigationController pushViewController:vc animated:YES];
@@ -229,13 +227,12 @@
         case 1:
         {
             ESSSelectFaultReasonController *vc = [ESSSelectFaultReasonController new];
-            vc.code = self.model.FailureCause;
+            vc.code = self.FailureCauseCode;
             vc.block = ^(NSString *str, NSString *code) {
-                self.model.FailureCauseAnalysisStr = str;
-                self.model.FailureCauseAnalysis = [code componentsSeparatedByString:@","];
+                self.model.FailureCauseAnalysis = str;
                 [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
             };
-            if (self.model.FailureCause) {
+            if (self.FailureCauseCode) {
                 [self.navigationController pushViewController:vc animated:YES];
             }
             else

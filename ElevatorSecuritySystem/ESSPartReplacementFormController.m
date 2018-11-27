@@ -55,6 +55,11 @@
     cell.model = self.PartReplacemen[indexPath.row];
     cell.deleteBtnClicked = ^{
         [self.PartReplacemen removeObjectAtIndex:indexPath.row];
+        float totalAmount = 0;
+        for (ESSPartReplacemenModel *model in self.PartReplacemen) {
+            totalAmount += [model.Total floatValue];
+        }
+        self.totalAmountLb.text = [NSString stringWithFormat:@"总金额：%.2f元",totalAmount];
         if (self.PartReplacemen.count == 0) {
             [self.PartReplacemen addObject:[ESSPartReplacemenModel new]];
         }

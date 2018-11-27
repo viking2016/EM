@@ -59,26 +59,23 @@
 }
 
 - (void)downloadData {
-    NSString *urlStr = @"/APP/WB/Maintenance_Repair/GetDetail";
-    NSDictionary *parameters = @{@"RepairID":[NSString stringWithFormat:@"%d",self.repairID]};
+    NSDictionary *paras = @{@"RepairID":[NSString stringWithFormat:@"%d",self.repairID]};
     [SVProgressHUD show];
-    [ESSNetworkingTool GET:urlStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-        NSDictionary *responseDic = responseObject[@"data"];
         [ESSRepairModel mj_setupObjectClassInArray:^NSDictionary *{
             return @{
                      @"PartReplacemen" : @"ESSPartReplacemenModel",
                      };
         }];
         
-        self.model = [ESSRepairModel mj_objectWithKeyValues:responseDic];
+        self.model = [ESSRepairModel mj_objectWithKeyValues:responseObject];
         [self.tableView reloadData];
     }];
 }
 
 - (void)itemClicked {
-//    NSString *elevID = [NSString stringWithFormat:@"%d",self.model.BasicInfoID];
-//    [self.navigationController pushViewController:[[ESSLiftDetailController alloc] initWithElevID:elevID] animated:YES];
+    [self.navigationController pushViewController:[[ESSLiftDetailController alloc] initWithElevID:[NSString stringWithFormat:@"%d",self.model.ElevID]] animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -157,11 +154,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
-                            NSMutableArray *tmpMArr = [NSMutableArray new];
-                            for (NSDictionary *tmpDic in self.model.FailureCauseAnalysis) {
-                                [tmpMArr addObject:tmpDic[@"FailureCauseAnalysis"]];
-                            }
-                            cell.detailLb.text = [tmpMArr componentsJoinedByString:@"，"];
+                            cell.detailLb.text = self.model.FailureCauseAnalysis;
                             return cell;
                         }
                             break;
@@ -200,7 +193,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
-                            cell.detailLb.text = self.model.Result;
+                            cell.detailLb.text = self.model.ElevState;
                             return cell;
                         }
                             break;
@@ -208,7 +201,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
-                            cell.detailLb.text = self.model.ProcessingResults;
+                            cell.detailLb.text = self.model.RepairResult;
                             return cell;
                         }
                             break;
@@ -216,6 +209,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
+                            cell.detailLb.text = @"";
                             return cell;
                         }
                             break;
@@ -223,6 +217,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
+                            cell.detailLb.text = @"";
                             return cell;
                         }
                             break;

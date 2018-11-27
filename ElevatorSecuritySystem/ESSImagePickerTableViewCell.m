@@ -61,22 +61,18 @@
     return cell;
 }
 
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(width, height);
 }
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (indexPath.row == self.images.count) {
         self.collectionView.height = (self.images.count / 2 + 1) * (height + 15);
-
         [self.images addObject:[UIImage imageNamed:@"icon_weixiudan_paizhao"]];
-//        TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:(9 - self.images.count) delegate:self];
-//        [self.viewController presentViewController:vc animated:YES completion:^{
-//
-//        }];
+        TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:(9 - self.images.count) delegate:self];
+        [self.viewController presentViewController:vc animated:YES completion:^{
+        }];
     }
     else {
         [self.images removeObjectAtIndex:indexPath.row];
@@ -89,8 +85,8 @@
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
     [self.images addObjectsFromArray:photos];
     self.collectionView.height = (self.images.count / 2 + 1) * (height + 15);
-//    [self.collectionView reloadData];
     self.imageSelected(self.images);
+    [self.collectionView reloadData];
 }
 
 @end

@@ -22,11 +22,11 @@
     self.lb_LiftCode.text = model.ElevNo;
     self.lb_LiftType.text = model.ElevType;
     self.lb_Address.text = [model.ProjectName stringByAppendingString:model.InnerNo];
-    self.lb_RepairPerson.text = [NSString stringWithFormat:@"%@  %@",model.Repairer,model.RepairerTel];
+    self.lb_RepairPerson.text = [NSString stringWithFormat:@"%@  %@",model.Reporter,model.ReporterTel];
     self.lb_Remark.text = model.ReportContent;
     self.btn_Revise.hidden = NO;
     self.btn_Delete.hidden = NO;
-    if (![model.State isEqualToString:@"0"]) {
+    if ([model.IsDelete isEqualToString:@"0"]) {
         self.btn_Revise.hidden = YES;
         self.btn_Delete.hidden = YES;
     }
@@ -70,13 +70,14 @@
 }
 
 - (IBAction)telClicked:(UIButton *)sender {
-    NSString * tel = [NSString stringWithFormat:@"tel://%@",self.model.RepairerTel];
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"是否要拨打%@?",self.model.RepairPersonTel] preferredStyle:UIAlertControllerStyleActionSheet];
+    NSString * tel = [NSString stringWithFormat:@"tel://%@",self.model.ReporterTel];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"是否要拨打%@?",self.model.RepairerTel] preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:tel] options:@{} completionHandler:^(BOOL success) {
             
         }];
     }];
+    
     [alert addAction:action];
     UIAlertAction * actionCancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:actionCancle];
