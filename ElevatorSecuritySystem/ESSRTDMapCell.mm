@@ -71,7 +71,7 @@
 //        ESSStartingPointAnnotation *startAnnotation=(ESSStartingPointAnnotation *)annotation;
         BMKAnnotationView *newAnnotationView=(BMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"start"];
         if (!newAnnotationView) {
-            newAnnotationView= [[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"chewei"];
+            newAnnotationView= [[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"start"];
             newAnnotationView.canShowCallout=NO;
             newAnnotationView.image=[UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_chufadian"];
         }
