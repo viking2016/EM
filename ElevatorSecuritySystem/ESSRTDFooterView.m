@@ -208,8 +208,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row < self.dataArray.count) {
-//        cell.contentLb.text = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"Description"]] ;
-//        cell.timeLb.text = self.dataArray[indexPath.row][@"CreateTime"];
+        cell.contentLb.text = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"Description"]] ;
+        cell.timeLb.text = self.dataArray[indexPath.row][@"CreateTime"];
         if (indexPath.row == 0) {
             cell.icon.image = [UIImage imageNamed:@"icon_jiuyuanrenwuxiangqing_shijianzhoulan"];
         }else{

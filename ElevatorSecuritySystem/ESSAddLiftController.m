@@ -36,10 +36,11 @@
 }
 
 - (void)btnClick{
-    if ((_tf.text.length < 18 || _tf.text.length > 25)) {
-        [SVProgressHUD showInfoWithStatus:@"请填写真实有效的注册代码"];
+    if (!(_tf.text.length > 0)) {
+        [SVProgressHUD showInfoWithStatus:@"注册代码不能为空"];
         return;
     }
+    
     
     NSDictionary *paras = @{@"RegNo":_tf.text};
     [SVProgressHUD show];
