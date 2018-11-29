@@ -25,6 +25,5 @@
 @property (strong, nonatomic) NSMutableArray<ESSPartReplacemenModel *> *PartReplacemen;
 @property (copy, nonatomic) void(^dataArrived)(NSArray<ESSPartReplacemenModel *> *PartReplacemen);
 
-@property (nonatomic, assign) BOOL isShow;
-
+@property (nonatomic, assign) BOOL onlyShow;
 @end

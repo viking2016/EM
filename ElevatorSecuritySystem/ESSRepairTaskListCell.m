@@ -18,7 +18,13 @@
         _model = model;
     }
     self.lb_RepairNo.text = model.RepairNo;
-    self.lb_RepairDate.text = model.ReportDate;
+    
+    NSDate *date = [NSDate dateWithString:model.ReportDate format:@"yyyy/mm/dd hh:mm:ss"];
+    NSDateFormatter *format = [NSDateFormatter new];
+    format.dateFormat = @"YYYY-MM-dd";
+    NSString *dateStr = [format stringFromDate:date];
+    
+    self.lb_RepairDate.text = dateStr;
     self.lb_LiftCode.text = model.ElevNo;
     self.lb_LiftType.text = model.ElevType;
     self.lb_Address.text = [model.ProjectName stringByAppendingString:model.InnerNo];

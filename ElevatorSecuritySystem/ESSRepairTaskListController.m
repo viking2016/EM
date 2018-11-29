@@ -103,7 +103,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SVProgressHUD show];
-    [self downloadData];
     
     // navi
     self.navigationItem.title = @"维修任务";
@@ -123,6 +122,11 @@
     // refresh
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(downloadData)];
     self.tableView.mj_header = header;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self downloadData];
 }
 
 @end

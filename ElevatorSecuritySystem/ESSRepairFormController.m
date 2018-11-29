@@ -29,13 +29,20 @@
 @end
 
 @implementation ESSRepairFormController
+{
+    CGFloat width;
+    CGFloat height;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = [NSString stringWithFormat:@"维修单%@",self.model.RepairNo];
+    self.navigationItem.title = [NSString stringWithFormat:@"维修单%@",self.model.RepairNo.length == 0 ? @"" : self.model.RepairNo];
     
     self.beforeImgs = [NSMutableArray new];
     self.afterImgs = [NSMutableArray new];
+    width = (SCREEN_WIDTH - 30 - 15) / 2;
+    height = width / 16 * 9;
+    self.model.TotalAmount = @"0.00";
     
     self.staticArr = @[@"故障类型*",@"故障原因及分析*",@"维修情况说明*",@"零部件更换建议",@"是否收费*",@"维修前照片",@"维修后照片",@"维修后电梯结果*",@"处理结果*"];
     
@@ -100,8 +107,22 @@
                              };
     NSString *jsonStr = [tmpDic mj_JSONString];
     NSDictionary *parameters = @{@"StrJson":jsonStr};
+    NSMutableDictionary *imgs = [NSMutableDictionary new];
+    if (self.beforeImgs.count > 0) {
+        [self.beforeImgs enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *key = [NSString stringWithFormat:@"wxqfile_%lu",idx];
+            [imgs setObject:obj forKey:key];
+        }];
+    }
+    if (self.afterImgs.count > 0) {
+        [self.afterImgs enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *key = [NSString stringWithFormat:@"wxhfile_%lu",idx];
+            [imgs setObject:obj forKey:key];
+        }];
+    }
+    
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:@{} success:^(NSDictionary * _Nonnull responseObject) {
+    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:imgs success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功 "];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
@@ -170,7 +191,8 @@
             ESSImagePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSImagePickerTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
             cell.images = self.beforeImgs;
-            cell.imageSelected = ^(NSMutableArray<UIImage *> *images) {
+            cell.heightConstraint.constant = (self.beforeImgs.count / 2 + 1) * (height + 15);
+            cell.imageChanged = ^(NSMutableArray<UIImage *> *images) {
                 self.beforeImgs = images;
                 [self.tableView reloadData];
             };
@@ -182,7 +204,8 @@
             ESSImagePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSImagePickerTableViewCell class])];
             cell.lbText = self.staticArr[indexPath.row];
             cell.images = self.afterImgs;
-            cell.imageSelected = ^(NSMutableArray<UIImage *> *images) {
+            cell.heightConstraint.constant = (self.afterImgs.count / 2 + 1) * (height + 15);
+            cell.imageChanged = ^(NSMutableArray<UIImage *> *images) {
                 self.afterImgs = images;
                 [self.tableView reloadData];
             };

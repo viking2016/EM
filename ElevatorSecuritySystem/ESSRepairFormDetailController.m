@@ -168,6 +168,7 @@
                         case 5:
                         {
                             ESSPartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSPartTableViewCell class])];
+                            cell.onlyShow = true;
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
                             cell.PartReplacemen = [self.model.PartReplacemen mutableCopy];
                             return cell;
@@ -209,7 +210,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
-                            cell.detailLb.text = @"";
+                            cell.detailLb.text = self.model.BeforePhoto;
                             return cell;
                         }
                             break;
@@ -217,7 +218,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
-                            cell.detailLb.text = @"";
+                            cell.detailLb.text = self.model.AfterPhoto;
                             return cell;
                         }
                             break;

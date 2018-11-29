@@ -10,11 +10,12 @@
 
 @interface ESSImagePickerTableViewCell : UITableViewCell<UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *lb;
-@property (copy, nonatomic) NSString *lbText;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (copy, nonatomic) NSString *lbText;
 @property (strong, nonatomic) NSMutableArray<UIImage *> *images;
-@property (copy, nonatomic) void(^imageSelected)(NSMutableArray<UIImage *> *images);
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (copy, nonatomic) void(^imageChanged)(NSMutableArray<UIImage *> *images);
 
 @end

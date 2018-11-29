@@ -14,7 +14,7 @@
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (copy, nonatomic) NSString *searchString;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *datas;
+@property (strong, nonatomic) NSArray *datas;
 
 @end
 
@@ -60,7 +60,7 @@
     NSDictionary *parameters = @{@"Keywords":self.searchString};
     [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetElevInfoList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-        self.datas = responseObject;
+        self.datas = (NSArray *)responseObject;
         [self.tableView reloadData];
     }];
 }

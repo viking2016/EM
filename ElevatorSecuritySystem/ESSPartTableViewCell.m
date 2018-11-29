@@ -45,7 +45,7 @@
         _PartReplacemen = PartReplacemen;
     }
     
-    if (self.isShow) {
+    if (self.onlyShow) {
             self.lb.font = [UIFont systemFontOfSize:13];
             self.lb.textColor = HexColor(@"999999");
         

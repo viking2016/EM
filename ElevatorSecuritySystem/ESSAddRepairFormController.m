@@ -38,7 +38,6 @@
         format.dateFormat = @"YYYY-MM-dd";
         NSString *dateStr = [format stringFromDate:[NSDate date]];
         self.model.ReportDate = dateStr;
-        
     }else {
         self.navigationItem.title = @"修改维修任务";
     }
@@ -94,7 +93,11 @@
         {
             ESSDatePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDatePickerTableViewCell class])];
             
-            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:self.model.ReportDate pickerDateFormate:UIDatePickerModeDate showDateFormate:@"YYYY-MM-dd" valueSelected:^(NSString *value) {
+            NSDate *date = [NSDate dateWithString:self.model.ReportDate format:@"yyyy/mm/dd hh:mm:ss"];
+            NSDateFormatter *format = [NSDateFormatter new];
+            format.dateFormat = @"YYYY-MM-dd";
+            NSString *dateStr = [format stringFromDate:date];
+            [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:dateStr pickerDateFormate:UIDatePickerModeDate showDateFormate:@"YYYY-MM-dd" valueSelected:^(NSString *value) {
                 self.model.ReportDate = value;
             }];
             return cell;
@@ -174,7 +177,7 @@
     [SVProgressHUD show];
     [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
-        self.model.RepairID = [responseObject[@"RepariID"] intValue];
+        self.model.RepairID = [responseObject[@"RepairID"] intValue];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否立即开始维修任务" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

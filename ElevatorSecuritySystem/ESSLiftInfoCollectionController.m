@@ -154,7 +154,7 @@
             cell.tf.userInteractionEnabled = NO;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             self.model.RegNo = self.regCode;
-            [cell setLabelText:self.dataArr[indexPath.row] textFieldText:self.regCode placeholder:nil keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentLeft textFieldTextChanged:^(NSString *value) {
+            [cell setLabelText:self.dataArr[indexPath.row] textFieldText:self.regCode placeholder:nil keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
             }];
             return cell;
         }
@@ -186,7 +186,7 @@
         case 4:
         {
             ESSTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EMATextFieldTableViewCellName forIndexPath:indexPath];
-            [cell setLabelText:self.dataArr[indexPath.row] textFieldText:_model.InnerNo placeholder:nil keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentLeft textFieldTextChanged:^(NSString *value) {
+            [cell setLabelText:self.dataArr[indexPath.row] textFieldText:_model.InnerNo placeholder:nil keyboardType:UIKeyboardTypeDefault textAlignment:NSTextAlignmentRight textFieldTextChanged:^(NSString *value) {
                 _model.InnerNo = value;
             }];
             return cell;
