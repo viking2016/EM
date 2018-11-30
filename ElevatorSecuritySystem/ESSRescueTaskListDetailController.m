@@ -243,6 +243,7 @@
 //                    [self createUI];
 //                }
 //            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
             [SVProgressHUD showSuccessWithStatus:@"提交成功"];
             [self downloadDate];
             self.state = @"成功失败";

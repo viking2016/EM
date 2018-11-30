@@ -1887,10 +1887,10 @@
 			isa = PBXGroup;
 			children = (
 				74BC1F2C21A79BBF0072B72A /* UIView+SDExtension.h */,
-				74BC1F2D21A79BBF0072B72A /* SDCycleScrollView.h */,
-				74BC1F2E21A79BBF0072B72A /* SDCollectionViewCell.h */,
-				74BC1F2F21A79BBF0072B72A /* SDCycleScrollView.m */,
 				74BC1F3021A79BBF0072B72A /* UIView+SDExtension.m */,
+				74BC1F2D21A79BBF0072B72A /* SDCycleScrollView.h */,
+				74BC1F2F21A79BBF0072B72A /* SDCycleScrollView.m */,
+				74BC1F2E21A79BBF0072B72A /* SDCollectionViewCell.h */,
 				74BC1F3121A79BBF0072B72A /* SDCollectionViewCell.m */,
 				74BC1F3221A79BBF0072B72A /* PageControl */,
 			);
@@ -1900,14 +1900,14 @@
 		74BC1F3221A79BBF0072B72A /* PageControl */ = {
 			isa = PBXGroup;
 			children = (
-				74BC1F3321A79BBF0072B72A /* TAAbstractDotView.h */,
-				74BC1F3421A79BBF0072B72A /* TADotView.m */,
-				74BC1F3521A79BBF0072B72A /* TAPageControl.m */,
-				74BC1F3621A79BBF0072B72A /* TAAnimatedDotView.m */,
-				74BC1F3721A79BBF0072B72A /* TAAbstractDotView.m */,
 				74BC1F3821A79BBF0072B72A /* TADotView.h */,
+				74BC1F3421A79BBF0072B72A /* TADotView.m */,
 				74BC1F3921A79BBF0072B72A /* TAAnimatedDotView.h */,
+				74BC1F3621A79BBF0072B72A /* TAAnimatedDotView.m */,
+				74BC1F3321A79BBF0072B72A /* TAAbstractDotView.h */,
+				74BC1F3721A79BBF0072B72A /* TAAbstractDotView.m */,
 				74BC1F3A21A79BBF0072B72A /* TAPageControl.h */,
+				74BC1F3521A79BBF0072B72A /* TAPageControl.m */,
 			);
 			path = PageControl;
 			sourceTree = "<group>";

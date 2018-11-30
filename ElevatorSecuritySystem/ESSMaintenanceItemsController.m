@@ -71,7 +71,6 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self countDownWith:self.basicInfoModel.BeginTime];
-            
         });
     }];
  
@@ -121,7 +120,7 @@
 - (void)countDownWith:(NSString *)timeStr
 {
     if (!_timer) {
-        _timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
     }
     
     [_timer setFireDate:[NSDate distantPast]];
@@ -244,6 +243,7 @@
             
             [SVProgressHUD show];
             [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [SVProgressHUD showSuccessWithStatus:@"提交成功"];
 //                ESSMaintencanceItemsModel *result = [ESSMaintencanceItemsModel objectForPrimaryKey:self.taskID];
 //                if (result) {
 //                    RLMRealm *realm = [RLMRealm defaultRealm];
