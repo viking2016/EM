@@ -26,7 +26,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_denglujiemian" translatesAutoresizingMaskIntoConstraints="NO" id="kpJ-6l-SsD">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="A37020278" placeholder="请输入公司编号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q67-C5-uc7">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="A37020280" placeholder="请输入公司编号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q67-C5-uc7">
                     <rect key="frame" x="75" y="250" width="259" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="sKt-8Z-hzc"/>
@@ -61,7 +61,7 @@
                         <constraint firstAttribute="height" constant="80" id="fe2-Ar-Zv3"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18661775036" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2N5-4o-wjF">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15764222334" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2N5-4o-wjF">
                     <rect key="frame" x="76" y="312" width="259" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="QXu-Lo-6M3"/>
