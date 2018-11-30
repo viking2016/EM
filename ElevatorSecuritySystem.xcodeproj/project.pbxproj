@@ -149,6 +149,7 @@
 		743B69391FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743B69371FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m */; };
 		743B693A1FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */; };
 		743F6FE31EAAFC6C005515E5 /* ESSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743F6FE21EAAFC6C005515E5 /* ESSProgressView.m */; };
+		744A0A6621B10DA600947F4C /* StartPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 744A0A6521B10DA600947F4C /* StartPage.png */; };
 		744C6E921EFB50DB003A7A2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744C6E911EFB50DB003A7A2B /* CoreLocation.framework */; };
 		744C6E951EFB5373003A7A2B /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744C6E941EFB5373003A7A2B /* LocationManager.m */; };
 		744FF7001F6F93D000785F7C /* UIBarButtonItem+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF6FF1F6F93D000785F7C /* UIBarButtonItem+Add.m */; };
@@ -298,7 +299,6 @@
 		74BC1F8821A79BBF0072B72A /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BC1F4021A79BBF0072B72A /* Base64.m */; };
 		74BC1F8921A79BBF0072B72A /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BC1F4121A79BBF0072B72A /* CocoaSecurity.m */; };
 		74BE93321F5E845C003A3915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74BE93311F5E845C003A3915 /* LaunchScreen.storyboard */; };
-		74BE93361F5E881A003A3915 /* img_launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 74BE93351F5E881A003A3915 /* img_launchScreen.png */; };
 		74BEA3311F70A74800BAF0A0 /* ESSExitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BEA32F1F70A74800BAF0A0 /* ESSExitCell.m */; };
 		74BEA3321F70A74800BAF0A0 /* ESSExitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEA3301F70A74800BAF0A0 /* ESSExitCell.xib */; };
 		74BEA33D1F71054200BAF0A0 /* ESSHomeTaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BEA33C1F71054200BAF0A0 /* ESSHomeTaskButton.m */; };
@@ -573,6 +573,7 @@
 		743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSMaintenanceFormDetailLiftInfomationCell.xib; sourceTree = "<group>"; };
 		743F6FE11EAAFC6C005515E5 /* ESSProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSProgressView.h; sourceTree = "<group>"; };
 		743F6FE21EAAFC6C005515E5 /* ESSProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSProgressView.m; sourceTree = "<group>"; };
+		744A0A6521B10DA600947F4C /* StartPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartPage.png; sourceTree = "<group>"; };
 		744C6E911EFB50DB003A7A2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		744C6E931EFB5373003A7A2B /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		744C6E941EFB5373003A7A2B /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -857,7 +858,6 @@
 		74BC1F4021A79BBF0072B72A /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		74BC1F4121A79BBF0072B72A /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		74BE93311F5E845C003A3915 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		74BE93351F5E881A003A3915 /* img_launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_launchScreen.png; sourceTree = "<group>"; };
 		74BEA32E1F70A74800BAF0A0 /* ESSExitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSExitCell.h; sourceTree = "<group>"; };
 		74BEA32F1F70A74800BAF0A0 /* ESSExitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSExitCell.m; sourceTree = "<group>"; };
 		74BEA3301F70A74800BAF0A0 /* ESSExitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSExitCell.xib; sourceTree = "<group>"; };
@@ -1266,12 +1266,12 @@
 		748B6CC51EA999DA0050B552 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				744A0A6521B10DA600947F4C /* StartPage.png */,
 				53D206931EE8DC850022B996 /* AppDelegate.h */,
 				53D206941EE8DC850022B996 /* AppDelegate.m */,
 				74BB32DE1EA99BC4002A7327 /* Defines.h */,
 				53D206961EE8DCF30022B996 /* ElevatorSecuritySystem.pch */,
 				74BE93311F5E845C003A3915 /* LaunchScreen.storyboard */,
-				74BE93351F5E881A003A3915 /* img_launchScreen.png */,
 				748B6CD11EA999DA0050B552 /* Assets.xcassets */,
 				748B6CD61EA999DA0050B552 /* Info.plist */,
 				748B6CC61EA999DA0050B552 /* main.m */,
@@ -2208,7 +2208,6 @@
 				530AAFB71EC2EFFD00E8CC4D /* ESSLocationPickerTableViewCell.xib in Resources */,
 				530AAFA01EC15EEC00E8CC4D /* ESSAddLiftController.xib in Resources */,
 				74BC1F7F21A79BBF0072B72A /* README.md in Resources */,
-				74BE93361F5E881A003A3915 /* img_launchScreen.png in Resources */,
 				744FF7111F6FA21300785F7C /* ESSMessageListCell.xib in Resources */,
 				74270C7620F2FF4C00F1C3BF /* ESSImagePickerTableViewCell.xib in Resources */,
 				5369E9E1204ED96F00452E99 /* ESSRTDFanKuiCell.xib in Resources */,
@@ -2221,6 +2220,7 @@
 				53D9F9BC2052180D009DCA5D /* ESSRTDMapCell.xib in Resources */,
 				7495805420FDD64E004D6244 /* ESSRepairFormDetailPartReplacementCell.xib in Resources */,
 				7495800C20F9DF91004D6244 /* ESSDefaultCell.xib in Resources */,
+				744A0A6621B10DA600947F4C /* StartPage.png in Resources */,
 				7400D70D1ECC37BF001BC5D2 /* ESSMaintenanceReadTermsPlist.plist in Resources */,
 				5381CC3B202062BC00C52268 /* ESSRTDWeiBaoComInfoCell.xib in Resources */,
 				7499E65C2105B1DC00F41907 /* ESSPageControlCell.xib in Resources */,
