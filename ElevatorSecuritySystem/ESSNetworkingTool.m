@@ -76,7 +76,7 @@
     [manager POST:[self createURLStringWithString:URLString] parameters:[self createParasWithDic:parameters] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (NSString *name in images.allKeys) {
             NSData *imageData = UIImageJPEGRepresentation(images[name], 0.2);
-            [formData appendPartWithFileData:imageData name:@"TuPian" fileName:name mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:imageData name:name fileName:name mimeType:@"image/jpeg"];
         }
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"url:%@ \n paras:%@ \n result:%@ \n", URLString, [self createParasWithDic:parameters], responseObject[responseObject[@"type"]]);

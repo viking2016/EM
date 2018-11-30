@@ -12,6 +12,7 @@
 {
     __weak IBOutlet UIView *videoView;
 }
-@property (nonatomic,copy)NSString *LiftCode;
+
+@property (nonatomic,copy)NSString *ElevID;
 
 @end

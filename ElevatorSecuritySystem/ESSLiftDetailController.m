@@ -332,10 +332,9 @@
         [SVProgressHUD showInfoWithStatus:@"暂无视频数据"];
         return;
     }else{
-        ESSVideoController *vc = [ESSVideoController new];        
-        vc.LiftCode = self.ElevID;
+        ESSVideoController *vc = [ESSVideoController new];
+        vc.ElevID = self.ElevID;
         [self.navigationController pushViewController:vc animated:YES];
-        
     }
 
 }

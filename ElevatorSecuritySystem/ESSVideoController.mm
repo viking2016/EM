@@ -51,14 +51,18 @@ int decodePort = -1;
 
 - (void)getDerviceID{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    [dict setObject:self.LiftCode forKey:@"LiftCode"];
-    [dict setValue:@"0" forKey:@"RoleType"];
-    
-   [ESSNetworkingTool GET:@"/APP/Elev_BasicInfo/GetCameraByLiftCode" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
-       NSDictionary *dict = [responseObject objectForKey:@"data"];
-       self.deviceId = [NSString stringWithFormat:@"%@",[dict objectForKey:@"DeviceId"]];
-       self.userNameString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Account"]];
-       self.passwordString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Password"]];
+    [dict setObject:self.ElevID forKey:@"ElevID"];
+   [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetCamera" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+//       NSDictionary *dict = responseObject;
+//       self.deviceId = [NSString stringWithFormat:@"%@",[dict objectForKey:@"CameraNo"]];
+//       self.userNameString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Account"]];
+//       self.passwordString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Password"]];
+
+      self.deviceId = @"1185404";
+      self.userNameString = @"admin";
+      self.passwordString = @"123456";
+
+       
    }];
 }
 
@@ -118,8 +122,6 @@ int decodePort = -1;
 //                NSString *userNameString = @"admin";
 //                NSString *passwordString = @"Zx123456";
 //                NSString *serverAddressString = @"3079696";
-                
-                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     self.loginResult = FC_Login([self.userNameString cStringUsingEncoding:NSASCIIStringEncoding],
                                                 [self.passwordString cStringUsingEncoding:NSASCIIStringEncoding],
@@ -133,10 +135,8 @@ int decodePort = -1;
                     if (!(result == 0)) {
                         [SVProgressHUD showInfoWithStatus:@"连接设备失败"];
                     }
-                    
                     NSLog(@"FC_Login resutl:%d",_loginResult);
                     NSLog(@"FC_AddWatch result:%d",result);
-
                 });
                 
             }else{//关闭视频
@@ -425,10 +425,8 @@ int FC_MsgRspCallBack(unsigned int nMsgType, char* pData, unsigned int nDataLen)
             case TPS_MSG_DOWNLOAD_OSS_OBJECT_FAILED:
                 printf("recv TPS_MSG_DOWNLOAD_OSS_OBJECT_FAILED message \n");
                 break;
-                
         }
     }
-    
     return 0;
 }
 
@@ -453,7 +451,6 @@ int FC_MediaRspCallBack(char* pDevId, unsigned int nMediaType, unsigned char* pF
         }else if(nMediaType == 2){
             
         }
-        
     }
     [SVProgressHUD dismiss];
     return 0;
