@@ -46,10 +46,13 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSMutableArray *textCycleTitleArr;
+//
+//@property (nonatomic, strong) NSMutableArray *mNewsURLs;
+//@property (nonatomic, strong) NSMutableArray *typeArray;
+//@property (nonatomic, strong) NSMutableArray *textCycleURLArr;
 
-@property (nonatomic, strong) NSMutableArray *mNewsURLs;
-@property (nonatomic, strong) NSMutableArray *typeArray;
-@property (nonatomic, strong) NSMutableArray *textCycleURLArr;
+@property (nonatomic, strong) NSArray *news;
+@property (nonatomic, strong) NSArray *infos;
 
 @property (nonatomic, strong) NSMutableArray *datas;
 
@@ -110,37 +113,21 @@
 }
 
 - (void)getHomeData{
-//    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetList" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
-//        NSMutableArray *mTitles = [NSMutableArray new];
-//        NSMutableArray *mImages = [NSMutableArray new];
-//        self.mNewsURLs = [NSMutableArray new];
-//        for (NSDictionary *dic in responseObject[@"datas"]){
-//            [mTitles addObject:dic[@"Title"]];
-//            [mImages addObject:dic[@"Img"]];
-//            [self.mNewsURLs addObject:dic[@"Url"]];
-//        }
-//        self.imageCycleView.titlesGroup = mTitles;
-//        self.imageCycleView.imageURLStringsGroup = mImages;
-//    }];
-//
-//    [ESSNetworkingTool GET:@"/APP/Elev_Article/GetLatestNotices" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
-//        _textCycleTitleArr = [[NSMutableArray alloc] init];
-//        _typeArray = [[NSMutableArray alloc] init];
-//        _textCycleURLArr = [[NSMutableArray alloc] init];
-//        if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
-//            for (NSDictionary *dict in responseObject[@"datas"]){
-//                [_textCycleTitleArr addObject:dict[@"Title"]];
-//                [_typeArray addObject:dict[@"Type"]];
-//                [_textCycleURLArr addObject:dict[@"Url"]];
-//            }
-//            self.textCycleView.titlesGroup = [_textCycleTitleArr copy];
-//            self.textCycleView.typeGroup = [_typeArray copy];
-//        }else{
-//            self.textCycleView.titlesGroup = @[@"暂无未读消息",@"暂无未读消息"];
-//            self.textCycleView.typeGroup = @[@"消息",@"消息"];
-//        }
-//    }];
     
+    NSString *URLStr = @"/APP/CMS/CMS_News/GetLunBoAndGongGao";
+    [ESSNetworkingTool GET:URLStr parameters:@{} success:^(id  _Nonnull responseObject) {
+        self.news = responseObject[@"TuPianLunBo"];
+        self.infos = responseObject[@"TongZhiGongGao"];
+        NSMutableArray *mArr = [NSMutableArray new];
+        [self.infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
+            [mArr addObject:dic[@"BiaoTi"]];
+        }];
+        NSArray *arr_BiaoTi = [self.infos valueForKey:@"BiaoTi"];
+        self.textCycleView.titlesGroup = arr_BiaoTi;
+        self.imageCycleView.titlesGroup = [self.news valueForKey:@"BiaoTi"];
+        self.imageCycleView.imageURLStringsGroup = [self.news valueForKey:@"TuPianURL"];
+    }];
+
     [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetTaskCount" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             self.maintenanceBtn.numberLabel.text = responseObject[@"MaintTaskCount"];
@@ -156,11 +143,13 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     if (cycleScrollView == _imageCycleView) {
-        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:self.mNewsURLs[index]];
+        NSArray *arr = [self.news valueForKey:@"XiangQingURL"];
+        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:arr[index]];
         [self.navigationController pushViewController:aboutUs animated:YES];
     }
     if (cycleScrollView == _textCycleView) {
-        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:_textCycleURLArr[index]];
+        NSArray *arr = [self.infos valueForKey:@"XiangQingURL"];
+        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:arr[index]];
         [self.navigationController pushViewController:aboutUs animated:YES];
     }
 }
