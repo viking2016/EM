@@ -87,7 +87,7 @@
     
     NSMutableArray *FailureCauseAnalysis = [NSMutableArray new];
     for (NSString *str in [self.model.FailureCauseAnalysis componentsSeparatedByString:@","]) {
-        NSDictionary *dic = @{@"FaultReason2":str};
+        NSDictionary *dic = @{@"FaultReason1":self.model.FailureCause, @"FaultReason2":str};
         [FailureCauseAnalysis addObject:dic];
     }
     NSMutableArray *PartReplacemen = [NSMutableArray new];
@@ -124,6 +124,8 @@
     [SVProgressHUD show];
     [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:imgs success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功 "];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
+
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }

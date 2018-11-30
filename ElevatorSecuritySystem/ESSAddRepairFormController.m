@@ -54,6 +54,15 @@
     
     self.submitBtn = [ESSSubmitButton buttonWithTitle:@"提交" selecter:@selector(submitClicked)];
     [self.view addSubview:self.submitBtn];
+    [self downloadPersonInfo];
+}
+
+- (void)downloadPersonInfo {
+    [ESSNetworkingTool GET:@"/APP/SYS/Sys_YongHu/Get" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+        self.model.Reporter = responseObject[@"XingMing"];
+        self.model.ReporterTel = responseObject[@"ShouJiHao"];
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark UITableViewCellDelegate
@@ -96,7 +105,7 @@
             NSDate *date = [NSDate dateWithString:self.model.ReportDate format:@"yyyy/mm/dd hh:mm:ss"];
             NSDateFormatter *format = [NSDateFormatter new];
             format.dateFormat = @"YYYY-MM-dd";
-            NSString *dateStr = [format stringFromDate:date];
+            NSString *dateStr = [format stringFromDate:date].length == 0 ? [format stringFromDate:[NSDate date]] : [format stringFromDate:date];
             [cell setLabelText:self.staticArr[indexPath.row] detailLabelText:dateStr pickerDateFormate:UIDatePickerModeDate showDateFormate:@"YYYY-MM-dd" valueSelected:^(NSString *value) {
                 self.model.ReportDate = value;
             }];

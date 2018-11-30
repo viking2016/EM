@@ -162,6 +162,7 @@
                         {
                             ESSDefaultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ESSDefaultCell class])];
                             cell.lb.text = self.repairInfoStaticArr[indexPath.row];
+                            cell.detailLb.text = self.model.RepairContent;
                             return cell;
                         }
                             break;
