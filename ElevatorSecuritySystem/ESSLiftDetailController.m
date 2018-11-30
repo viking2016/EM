@@ -358,37 +358,37 @@
 }
 
 - (IBAction)switchTouchUpInside:(UISwitch *)sender {
-    if ([self isCorrectMPerson]) {
-        //关闭报警推送
-        if (sender.isOn) {//开启
-            [self submitPushState:1];
-            self.mySwitch.on = YES;
-        }else{
-            [self submitPushState:0];
-            self.mySwitch.on = NO;
-        }
-    }else{
-        if (sender.isOn) {
-            self.mySwitch.on = NO;
-        }else{
-            self.mySwitch.on = YES;
-        }
-        [SVProgressHUD showInfoWithStatus:@"您不是该部电梯的维保人员，暂无权限使用此功能"];
-    }
+//    if ([self isCorrectMPerson]) {
+//        //关闭报警推送
+//        if (sender.isOn) {//开启
+//            [self submitPushState:1];
+//            self.mySwitch.on = YES;
+//        }else{
+//            [self submitPushState:0];
+//            self.mySwitch.on = NO;
+//        }
+//    }else{
+//        if (sender.isOn) {
+//            self.mySwitch.on = NO;
+//        }else{
+//            self.mySwitch.on = YES;
+//        }
+//        [SVProgressHUD showInfoWithStatus:@"您不是该部电梯的维保人员，暂无权限使用此功能"];
+//    }
 }
 
 ///开启关闭报警推送提交
 - (void)submitPushState:(int )state{
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:[NSNumber numberWithInt:state] forKey:@"State"];
-    [dict setObject:self.ElevID forKey:@"BasicInfoID"];
-    [ESSNetworkingTool POST:@"/APP/PushState/SubmitPushState" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
-        if (state == 1){
-            [SVProgressHUD showSuccessWithStatus:@"开启成功"];
-        }else{
-            [SVProgressHUD showSuccessWithStatus:@"关闭成功"];
-        }
-    }];
+//    NSMutableDictionary *dict = [NSMutableDictionary new];
+//    [dict setObject:[NSNumber numberWithInt:state] forKey:@"State"];
+//    [dict setObject:self.ElevID forKey:@"BasicInfoID"];
+//    [ESSNetworkingTool POST:@"/APP/PushState/SubmitPushState" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+//        if (state == 1){
+//            [SVProgressHUD showSuccessWithStatus:@"开启成功"];
+//        }else{
+//            [SVProgressHUD showSuccessWithStatus:@"关闭成功"];
+//        }
+//    }];
 }
 
 //维保任务
@@ -397,7 +397,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)jiuYuanJiLuBtnClick:(id)sender {
-    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"1" elevID:self.ElevID] animated:YES];
+    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"2" elevID:self.ElevID] animated:YES];
 }
 
 /**
