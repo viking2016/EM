@@ -15,7 +15,7 @@
 #import "ESSVideoController.h"
 #import "ESSMaintenanceFormDetailListController.h"
 #import "ESSWebController.h"
-
+#import "ESSRescueTaskListController.h"
 #import <PNChart.h>
 #import "ESSLiftDetailButton.h"
 
@@ -78,7 +78,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"电梯详情";
-    self.URLArray = @[@"/APP/WP/Elev_InfoWP/GetFactoryInfo",@"/APP/WP/Elev_InfoWP/GetManufactureInfo",@"/APP/WP/Elev_InfoWP/GetElevUseInfo",@"/APP/WP/Elev_InfoWP/GetPCUnitInfo",@"/APP/WP/Elev_InfoWP/GetPUnitInfo",@"/APP/WP/Elev_InfoWP/GetInstallInfo",@"/APP/WP/Elev_InfoWP/GetRegOrgInfo",@"/APP/WP/Elev_InfoWP/GetMUnitInfo",@"/APP/WP/Elev_InfoWP/GetMaintenanceInfo",@"/APP/WP/Elev_InfoWP/GetRepairInfo@"];
+    self.URLArray = @[@"/APP/WP/Elev_InfoWP/GetFactoryInfo",@"/APP/WP/Elev_InfoWP/GetManufactureInfo",@"/APP/WP/Elev_InfoWP/GetElevUseInfo",@"/APP/WP/Elev_InfoWP/GetPUnitInfo",@"/APP/WP/Elev_InfoWP/GetPCUnitInfo",@"/APP/WP/Elev_InfoWP/GetRegOrgInfo",@"/APP/WP/Elev_InfoWP/GetInstallInfo",@"/APP/WP/Elev_InfoWP/GetMUnitInfo",@"/APP/WP/Elev_InfoWP/GetMaintenanceInfo",@"/APP/WP/Elev_InfoWP/GetRepairInfo"];
     
     self.scrollViewHeight.constant = 1200;
 //    self.registCodeLb.lineBreakMode = NSLineBreakByTruncatingMiddle  ;
@@ -396,19 +396,23 @@
     ESSMaintenanceFormDetailListController *vc = [[ESSMaintenanceFormDetailListController alloc] initWithBasicInfoID:self.ElevID];
     [self.navigationController pushViewController:vc animated:YES];
 }
+- (IBAction)jiuYuanJiLuBtnClick:(id)sender {
+    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"1" elevID:self.ElevID] animated:YES];
+}
 
 /**
  判断是否是该部电梯的维保人员
  */
 - (BOOL)isCorrectMPerson{
-    NSString *MPersonName = [ESSLoginTool getUserName];
-    NSString *MPersonTel = [[ESSLoginTool getLoginInfo] objectForKey:@"userName"];
-    
-    if ([self.MPersonLb.text isEqualToString:MPersonName] && [self.MPersonTel.text isEqualToString:MPersonTel] ) {
-        return YES;
-    }else{
-        return NO;
-    }
+//    NSString *MPersonName = [ESSLoginTool getUserName];
+//    NSString *MPersonTel = [[ESSLoginTool getLoginInfo] objectForKey:@"userName"];
+//
+//    if ([self.MPersonLb.text isEqualToString:MPersonName] && [self.MPersonTel.text isEqualToString:MPersonTel] ) {
+//        return YES;
+//    }else{
+//        return NO;
+//    }
+    return YES;
 }
 
 //技术图纸

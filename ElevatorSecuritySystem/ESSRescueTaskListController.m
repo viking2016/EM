@@ -28,10 +28,11 @@
 @implementation ESSRescueTaskListController
 
 
-- (instancetype)initWithControllerType:(NSString *)controllerType {
+- (instancetype)initWithControllerType:(NSString *)controllerType elevID:(NSString *)elevID{
     self = [super init];
     if (self) {
         self.controllerType = controllerType;
+        self.elevID = elevID;
     }
     return self;
 }
@@ -91,6 +92,7 @@
     }else {
         [parameters setValue:@"1" forKey:@"Status"];
     }
+    [parameters setValue:self.elevID forKey:@"ElevID"];
     
     [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {

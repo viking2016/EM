@@ -352,7 +352,7 @@
 }
 
 - (void)rescueBtnClicked:(UIButton *)btn {
-    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"1"] animated:YES];
+    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"1" elevID:@""] animated:YES];
 }
 
 - (void)nianshenBtnClicked:(UIButton *)btn {
@@ -372,7 +372,7 @@
 }
 
 - (void)presentESSRescueTaskListController {
-    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"2"] animated:YES];
+    [self.navigationController pushViewController:[[ESSRescueTaskListController alloc]initWithControllerType:@"2" elevID:@""] animated:YES];
 }
 
 - (void)prensentESSAddRepairFormController {

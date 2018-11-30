@@ -11,7 +11,7 @@
 @interface ESSRescueTaskListController : UIViewController
 
 @property (nonatomic,copy) NSString *controllerType;
-
-- (instancetype)initWithControllerType:(NSString *)controllerType;
+@property (nonatomic,copy) NSString *elevID;
+- (instancetype)initWithControllerType:(NSString *)controllerType elevID:(NSString *)elevID;
 
 @end
