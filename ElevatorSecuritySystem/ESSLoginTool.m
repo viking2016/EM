@@ -78,7 +78,7 @@
     if (!loginInfo) {return;}
     
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/SYS/Sys_YongHu/Login" parameters:loginInfo success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/SYS/Sys_YongHu/Login" parameters:loginInfo success:^(NSDictionary * _Nonnull responseObject) {
         if (success) {
             NSLog(@"登录成功");
             [JPUSHService setAlias:loginInfo[@"PushID"] completion:nil seq:123];

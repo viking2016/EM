@@ -1,5 +1,5 @@
 //
-//  ESSNetworkingTool.h
+//  NetworkingTool.h
 //  ElevatorSecuritySystem
 //
 //  Created by 刘树龙 on 2017/4/11.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ESSNetworkingTool : NSObject
+@interface NetworkingTool : NSObject
 
 + (void)GET:(nonnull NSString *)URLString
  parameters:(nullable NSDictionary *)parameters

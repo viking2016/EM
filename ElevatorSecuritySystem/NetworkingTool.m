@@ -1,12 +1,12 @@
 //
-//  ESSNetworkingTool.m
+//  NetworkingTool.m
 //  ElevatorSecuritySystem
 //
 //  Created by 刘树龙 on 2017/4/11.
 //  Copyright © 2017年 Qingdao Zhengxin Technology Co,. Ltd. All rights reserved.
 //
 
-#import "ESSNetworkingTool.h"
+#import "NetworkingTool.h"
 #import <AFNetworking.h>
 #import "CocoaSecurity.h"
 #import "Base64.h"
@@ -17,7 +17,7 @@
 #define URL_MAIN @"http://yw.intelevator.cn"
 #define URL_TEST @"http://yw.intelevator.cn"
 
-@implementation ESSNetworkingTool
+@implementation NetworkingTool
 
 + (void)GET:(NSString *)URLString parameters:(NSDictionary *)parameters success:(void (^)(NSDictionary * _Nonnull))success {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

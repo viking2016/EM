@@ -12,7 +12,7 @@
 
 #import "ESSFeedbackController.h"
 #import "ESSAccountSafetyController.h"
-#import "ESSWebController.h"
+#import "ZXWebController.h"
 
 #import "ESSMeCell.h"
 #import "ESSExitCell.h"
@@ -58,7 +58,7 @@ UITableViewDelegate
 }
 
 - (void)downloadPersonInfo {
-    [ESSNetworkingTool GET:@"/APP/SYS/Sys_YongHu/Get" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/SYS/Sys_YongHu/Get" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
         NSLog(@"个人信息：%@",responseObject);
         NSString *str = [NSString stringWithFormat:@"http://yw.intelevator.cn%@",responseObject[@"TouXiangURL"]];
         [self.portrait sd_setBackgroundImageWithURL:[NSURL URLWithString:str] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_wode_touxiang"]];
@@ -173,7 +173,7 @@ UITableViewDelegate
 }
 
 - (void)aboutUsClicked {
-    ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:[[ESSLoginTool getMainURL] stringByAppendingString:@"/APP/AboutUs"] viewWillDisappear:^{
+    ZXWebController *aboutUs = [[ZXWebController alloc] initWithURLStr:[[ESSLoginTool getMainURL] stringByAppendingString:@"/APP/AboutUs"] viewWillDisappear:^{
     }];
     [self.navigationController pushViewController:aboutUs animated:YES];
 }
@@ -181,7 +181,7 @@ UITableViewDelegate
 - (void)exit {
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否确认退出登录？" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [ESSNetworkingTool POST:@"/APP/SYS/Sys_YongHu/Logout" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+        [NetworkingTool POST:@"/APP/SYS/Sys_YongHu/Logout" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
             [ESSLoginTool exitLogin];
         }];
 

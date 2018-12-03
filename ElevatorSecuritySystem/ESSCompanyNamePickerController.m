@@ -52,7 +52,7 @@
 - (void)getCompanyNameList:(NSString *)searchBarText{
     self.dataSource = [NSMutableArray new];
     NSDictionary *dict  = @{@"KeyValue":self.searchBar.text};
-    [ESSNetworkingTool GET:@"/APP/Unit/MatchingUnit" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/Unit/MatchingUnit" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         if([responseObject[@"datas"] isKindOfClass:[NSArray class]]){
             self.dataSource = [responseObject objectForKey:@"datas"];
             [self.tableView reloadData];

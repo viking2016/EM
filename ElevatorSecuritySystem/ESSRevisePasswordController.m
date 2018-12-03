@@ -49,7 +49,7 @@
     
     NSDictionary *dict = @{@"PwdOld":_oldPasswordTF.text,@"PwdNew":_revisePasswordTF.text};
     
-    [ESSNetworkingTool POST:@"/APP/SYS/Sys_YongHu/ChangePwd" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/SYS/Sys_YongHu/ChangePwd" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:@"修改成功"];
         [ESSLoginTool exitLogin];

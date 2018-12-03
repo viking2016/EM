@@ -11,7 +11,7 @@
 #import "ESSHomeController.h"
 #import "ESSHomeCollectionViewCell.h"
 #import "ESSVerifyController.h"
-#import "ESSWebController.h"
+#import "ZXWebController.h"
 
 #import "ESSMaintenanceTaskListController.h"
 #import "ESSRepairTaskListController.h"
@@ -115,7 +115,7 @@
 - (void)getHomeData{
     
     NSString *URLStr = @"/APP/CMS/CMS_News/GetLunBoAndGongGao";
-    [ESSNetworkingTool GET:URLStr parameters:@{} success:^(id  _Nonnull responseObject) {
+    [NetworkingTool GET:URLStr parameters:@{} success:^(id  _Nonnull responseObject) {
         self.news = responseObject[@"TuPianLunBo"];
         self.infos = responseObject[@"TongZhiGongGao"];
         NSMutableArray *mArr = [NSMutableArray new];
@@ -128,7 +128,7 @@
         self.imageCycleView.imageURLStringsGroup = [self.news valueForKey:@"TuPianURL"];
     }];
 
-    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetTaskCount" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Elev_Info/GetTaskCount" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             self.maintenanceBtn.numberLabel.text = responseObject[@"MaintTaskCount"];
             self.repairBtn.numberLabel.text = responseObject[@"RepairTaskCount"];
@@ -144,12 +144,12 @@
 {
     if (cycleScrollView == _imageCycleView) {
         NSArray *arr = [self.news valueForKey:@"XiangQingURL"];
-        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:arr[index]];
+        ZXWebController *aboutUs = [[ZXWebController alloc] initWithURLStr:arr[index]];
         [self.navigationController pushViewController:aboutUs animated:YES];
     }
     if (cycleScrollView == _textCycleView) {
         NSArray *arr = [self.infos valueForKey:@"XiangQingURL"];
-        ESSWebController *aboutUs = [[ESSWebController alloc] initWithURLStr:arr[index]];
+        ZXWebController *aboutUs = [[ZXWebController alloc] initWithURLStr:arr[index]];
         [self.navigationController pushViewController:aboutUs animated:YES];
     }
 }

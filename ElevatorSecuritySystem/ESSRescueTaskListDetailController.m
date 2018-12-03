@@ -175,7 +175,7 @@
                                                               NSMutableDictionary *parameters = [NSMutableDictionary new];
                                                               [parameters setValue:[NSString stringWithFormat:@"%@",self.AlarmOrderTaskID] forKey:@"AlarmOrderTaskID"];
                                                               [parameters setValue:@"3" forKey:@"TaskState"];
-                                                              [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+                                                              [NetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
                                                                   if (![responseObject isKindOfClass:[NSNull class]]){
 //                                                                          if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
 //                                                                              [SVProgressHUD showInfoWithStatus:@"平台工单已到达现场，刷新数据中..."];
@@ -229,7 +229,7 @@
     [parameters setValue:self.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
     [parameters setValue:result forKey:@"TaskState"];
     [parameters setValue:remark forKey:@"Remark"];
-    [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if (![responseObject isKindOfClass:[NSNull class]]) {
 //            if ([[responseObject objectForKey:@"isOk"]boolValue]) {
 //                if ([[responseObject objectForKey:@"info"]isEqualToString:@"301"]) {
@@ -257,7 +257,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:self.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
 
-    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if (![responseObject isKindOfClass:[NSNull class]]) {
                 self.dictSource = [responseObject mutableCopy];
                 [self.tableView reloadData];

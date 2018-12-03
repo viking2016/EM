@@ -94,7 +94,7 @@
     }
     [parameters setValue:self.elevID forKey:@"ElevID"];
     
-    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject) {
                 ESSRescueTaskListModel *model = [ESSRescueTaskListModel mj_objectWithKeyValues:dic];
@@ -161,7 +161,7 @@
                                                                           [parameters setValue:model.AlarmOrderTaskID forKey:@"AlarmOrderTaskID"];
                                                                           [parameters setValue:@"1" forKey:@"TaskState"];
                                                                           [parameters setValue:@"" forKey:@"Remark"];
-                                                                          [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+                                                                          [NetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/RescueSubmit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
                                                                               if (![responseObject isKindOfClass:[NSNull class]]){
                                                                                   [self.navigationController pushViewController:[[ESSRescueTaskListDetailController alloc]initWithAlarmOrderTaskID:model.AlarmOrderTaskID rescueState:@"已确认" controllerType:self.controllerType] animated:YES];
                                                                                   [self loadNewData];

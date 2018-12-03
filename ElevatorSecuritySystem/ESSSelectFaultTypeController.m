@@ -35,7 +35,7 @@
         return;
     }
     NSDictionary *items = @{@"ElevID":self.elevNo};
-    [ESSNetworkingTool GET:@"/APP/WY/Rescue_AlarmOrderTaskWY/ElevatorWorkOrderFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WY/Rescue_AlarmOrderTaskWY/ElevatorWorkOrderFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
         self.dataSource = [responseObject mutableCopy];
         [self.tableView reloadData];
     }];

@@ -44,7 +44,7 @@
     
     NSDictionary *paras = @{@"RegNo":_tf.text};
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/WB/Elev_Info/CheckRegNo" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/WB/Elev_Info/CheckRegNo" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"验证成功"];
         [self.navigationController pushViewController:[[ESSLiftInfoCollectionController alloc] initWithRegCode:_tf.text] animated:YES];
     }];

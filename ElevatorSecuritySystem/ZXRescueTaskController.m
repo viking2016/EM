@@ -62,7 +62,7 @@
 
 - (void)downloadSwitchTask{
     NSDictionary *items = @{@"taskType":@"JY"};
-    [ESSNetworkingTool POST:@"/APP/TaskSwitching/GetSwitchTaskList" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/TaskSwitching/GetSwitchTaskList" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
         _dataSource = [[NSMutableArray alloc]init];
         if([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject[@"datas"]) {
@@ -75,7 +75,7 @@
 }
 
 - (void)downloadData {
-    [ESSNetworkingTool POST:@"/APP/Rescue/GetRescueTask" parameters:self.item success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/Rescue/GetRescueTask" parameters:self.item success:^(NSDictionary * _Nonnull responseObject) {
         [self.tableView.mj_header endRefreshing];
         _dataSource = [[NSMutableArray alloc] init];
         if([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {

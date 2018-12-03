@@ -68,7 +68,7 @@ static NSString *const submitURL = @"/APP/Base_User/ResetPassword";
     }
     NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"UUID":[[UIDevice currentDevice].identifierForVendor UUIDString]};
     
-    [ESSNetworkingTool POST:getVerificationCodeURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:getVerificationCodeURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"获取成功"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self countDown];
@@ -96,7 +96,7 @@ static NSString *const submitURL = @"/APP/Base_User/ResetPassword";
     
     NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"MiMa":_passwordTf.text,@"YanZhengMa":_verificationCodeTf.text,@"PushID":@"0"};
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:submitURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:submitURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"重置成功"];
         [self.navigationController popViewControllerAnimated:YES];
     }];

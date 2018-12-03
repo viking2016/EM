@@ -68,7 +68,7 @@
     NSNumber *longitude = [NSNumber numberWithDouble:baiduCoor.longitude];
     NSDictionary *paras = @{@"Lat":latitude,@"Lon":longitude};
     
-    [ESSNetworkingTool POST:@"/APP/RealTimeLocation/Submit" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/RealTimeLocation/Submit" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         NSLog(@"定位上传成功%@",paras);
     }];
 }

@@ -38,7 +38,7 @@
     
     [SVProgressHUD show];
     NSDictionary *paras = @{@"Password":self.codeTF.text};
-    [ESSNetworkingTool POST:@"/APP/Base_User/VerifyPassword" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/Base_User/VerifyPassword" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [self.navigationController pushViewController:[ESSChangeTelController new] animated:YES];
     }];

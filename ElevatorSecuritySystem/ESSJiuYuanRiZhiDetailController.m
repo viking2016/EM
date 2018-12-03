@@ -210,7 +210,7 @@
 - (void)downloadData {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:self.LogId forKey:@"ProcessRecordID"];
-    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueRecordDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTask/GetRescueRecordDetail" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             _result_Lab.text = [NSString replaceEmptyString:responseObject[@"Description"]];
             _content_Lab.text = responseObject[@"RescueContent"];

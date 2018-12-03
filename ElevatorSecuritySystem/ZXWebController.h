@@ -1,5 +1,5 @@
 //
-//  ESSWebController.h
+//  ZXWebController.h
 //  ElevatorSecuritySystem
 //
 //  Created by 刘树龙 on 2017/4/11.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESSWebController : UIViewController
+@interface ZXWebController : UIViewController
 
 - (instancetype)initWithURLStr:(NSString *)URLStr;
 

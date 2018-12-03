@@ -58,7 +58,7 @@
     }
     
     NSDictionary *dict = @{@"Tel":_phoneTF.text,@"Type":[NSNumber numberWithInt:0]};
-    [ESSNetworkingTool POST:@"/APP/Base_User/SMSVerificationCode" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/Base_User/SMSVerificationCode" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"获取成功"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self countDown];
@@ -133,7 +133,7 @@
     NSDictionary *para = @{@"Mobile":_phoneTF.text,@"Vcode":_codeTF.text,@"Password":_passwordTF.text};
     
     [SVProgressHUD show];
-    [ESSNetworkingTool GET:@"/APP/Base_User/Register2" parameters:para success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/Base_User/Register2" parameters:para success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"注册成功"];
         [self dismissViewControllerAnimated:YES completion:^{
             if (_registerSuccess) {

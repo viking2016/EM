@@ -78,7 +78,7 @@
     [paras setValue:self.msgtype forKey:@"msgtype"];
     [paras setValue:[NSNumber numberWithInteger:_page] forKey:@"page"];
 
-    [ESSNetworkingTool GET:@"/APP/Elev_Push/getJpushList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/Elev_Push/getJpushList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         if([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject[@"datas"]) {
                 ESSMessageListModel *model = [ESSMessageListModel mj_objectWithKeyValues:dic];

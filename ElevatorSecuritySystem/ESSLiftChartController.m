@@ -330,7 +330,7 @@
     NSDictionary *dict = @{@"LiftCode":self.LiftCode,@"Year":date};
     
     NSLog(@"请求一次url:%@  dict%@",url,dict);
-    [ESSNetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         NSLog(@"responseObject ：%@",responseObject);
         if ([[responseObject objectForKey:@"isOk"] boolValue]){
             self.runCountArr = [NSMutableArray new];
@@ -378,7 +378,7 @@
         return;
     }
     NSDictionary *dict = @{@"LiftCode":self.LiftCode,@"Month":date};
-    [ESSNetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         if ([[responseObject objectForKey:@"isOk"] boolValue]){
             self.openCountArr = [NSMutableArray new];
             for (NSDictionary *dict in [responseObject objectForKey:@"datas"]){
@@ -426,7 +426,7 @@
         return;
     }
     NSDictionary *dict = @{@"LiftCode":self.LiftCode,@"Date":date};
-    [ESSNetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:url parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         if ([[responseObject objectForKey:@"isOk"] boolValue]){
             self.faultCountArr = [NSMutableArray new];
             for (NSDictionary *dict in [responseObject objectForKey:@"datas"]){

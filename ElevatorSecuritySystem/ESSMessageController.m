@@ -24,16 +24,11 @@
 {
     self = [super init];
     if (self) {
-        self.menuHeight = 50;
-        self.menuBGColor = [UIColor whiteColor];
-        self.menuItemWidth = 80;
-        self.titleColorNormal = [UIColor blackColor];
+        self.automaticallyCalculatesItemWidths = true;
+        self.titleColorNormal = [UIColor colorWithHexString:@"333333"];
         self.titleColorSelected = MAINCOLOR;
         self.menuViewStyle = WMMenuViewStyleLine;
-        self.pageAnimatable = YES;
-        self.progressColor = MAINCOLOR;
-        self.titleSizeNormal = 14;
-        self.titleSizeSelected = 14;
+        self.progressWidth = 40;
     }
     return self;
 }
@@ -70,7 +65,7 @@
     if (self.aTitles.count == 0) {
         [SVProgressHUD show];
         self.aTitles = [[NSMutableArray alloc] init];
-        [ESSNetworkingTool GET:@"/APP/Elev_Push/getMsgType" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+        [NetworkingTool GET:@"/APP/Elev_Push/getMsgType" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
             [SVProgressHUD dismiss];
             if ([responseObject[@"datas"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary *dic in responseObject[@"datas"]) {

@@ -89,7 +89,7 @@
         [paras setValue:self.tv.text forKey:@"Info"];
         [paras setValue:[ESSLoginTool getLoginInfo][@"userName"] forKey:@"Contact"];
 
-        [ESSNetworkingTool POST:@"/APP/Feedback/Submit" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+        [NetworkingTool POST:@"/APP/Feedback/Submit" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
             [self.navigationController popViewControllerAnimated:YES];
             [SVProgressHUD showSuccessWithStatus:@"提交成功"];
         }];

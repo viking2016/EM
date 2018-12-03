@@ -49,7 +49,7 @@
 - (void)downloadBasicInfoWithTaskID:(NSString *)taskID {
     
     NSDictionary *paras = @{@"MTaskID":taskID};
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         self.basicInfoModel = [ESSMaintenanceFormDetailModel mj_objectWithKeyValues:responseObject];
         
  /* 改版后
@@ -92,7 +92,7 @@
     }else {
         NSDictionary *item = @{@"MTaskID":taskID,@"MCategories":self.maintenanceModel.MCategories};
         [SVProgressHUD show];
-        [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:item success:^(NSDictionary * _Nonnull responseObject) {
+        [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:item success:^(NSDictionary * _Nonnull responseObject) {
             [SVProgressHUD dismiss];
             if ([responseObject isKindOfClass:[NSArray class]]) {
                 NSArray *locationArray = [responseObject valueForKey:@"Position"];
@@ -242,7 +242,7 @@
             NSDictionary *paras = @{@"strJson":strJson};
             
             [SVProgressHUD show];
-            [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+            [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                 [SVProgressHUD showSuccessWithStatus:@"提交成功"];
 //                ESSMaintencanceItemsModel *result = [ESSMaintencanceItemsModel objectForPrimaryKey:self.taskID];
 //                if (result) {

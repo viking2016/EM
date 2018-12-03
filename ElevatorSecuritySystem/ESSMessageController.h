@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Qingdao Zhengxin Technology Co,. Ltd. All rights reserved.
 //
 
-#import <WMPageController.h>
+#import "WMPageController.h"
 
 @interface ESSMessageController : WMPageController
 

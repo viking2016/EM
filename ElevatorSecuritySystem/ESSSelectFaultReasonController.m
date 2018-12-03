@@ -40,7 +40,7 @@
 
 - (void)downloadData{
     NSDictionary *items = @{@"ZiDianID":self.code};
-    [ESSNetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTaskWY/GetItemByFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Rescue_AlarmOrderTaskWY/GetItemByFaultType" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
         self.dataSource = [NSMutableArray new];
         _dataSource = [responseObject mutableCopy];
         [self.tableView reloadData];

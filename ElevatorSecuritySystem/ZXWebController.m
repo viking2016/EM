@@ -1,16 +1,16 @@
 //
-//  ESSWebController.m
+//  ZXWebController.m
 //  ElevatorSecuritySystem
 //
 //  Created by 刘树龙 on 2017/4/11.
 //  Copyright © 2017年 Qingdao Zhengxin Technology Co,. Ltd. All rights reserved.
 //
 
-#import "ESSWebController.h"
+#import "ZXWebController.h"
 
 #import <WebKit/WebKit.h>
 
-@interface ESSWebController ()<WKUIDelegate, WKNavigationDelegate>
+@interface ZXWebController ()<WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation ESSWebController
+@implementation ZXWebController
 
 #pragma mark - Public Method
 

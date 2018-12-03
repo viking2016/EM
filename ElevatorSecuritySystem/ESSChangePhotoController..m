@@ -99,7 +99,7 @@ UIActionSheetDelegate
     format.dateFormat = @"yyyyMMddHHmmss";
 //    NSString *key = [NSString stringWithFormat:@"%@.png",[format stringFromDate:[NSDate date]]];
     NSDictionary *images = @{@"TuPian":cropImage};
-    [ESSNetworkingTool POST:@"/APP/SYS/Sys_YongHu/SetTouXiang" parameters:nil images:images success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/SYS/Sys_YongHu/SetTouXiang" parameters:nil images:images success:^(NSDictionary * _Nonnull responseObject) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getPersonInfo" object:nil];
         NSMutableDictionary *tmp = [NSMutableDictionary new];
         [tmp setValue:responseObject forKey:@"TouXiangURL"];

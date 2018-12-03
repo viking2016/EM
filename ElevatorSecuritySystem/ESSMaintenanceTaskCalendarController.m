@@ -146,7 +146,7 @@ UIScrollViewDelegate
     NSString *month = [formate stringFromDate:self.currentDate];
     NSDictionary *items = @{@"Month":month};
     
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetMTaskStateByDate" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetMTaskStateByDate" parameters:items success:^(NSDictionary * _Nonnull responseObject) {
         [self hideIndicator];
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dict in responseObject) {
@@ -166,7 +166,7 @@ UIScrollViewDelegate
 - (void)getStaffTask_DayState {
     NSString *date = [self.selectedDate formattedDateWithFormat:@"yyyy-MM-dd"];
     NSDictionary *paras = @{@"ElevID":@"",@"Page":@"",@"Mdate":date,@"IsChaoQi":@"",@"Status":@"0"};
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [self.tableView.mj_header endRefreshing];
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject) {
@@ -225,7 +225,7 @@ UIScrollViewDelegate
             UIAlertAction *start = [UIAlertAction actionWithTitle:@"开始维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [SVProgressHUD show];
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
                 }];
@@ -242,7 +242,7 @@ UIScrollViewDelegate
             UIAlertAction *start = [UIAlertAction actionWithTitle:@"开始维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [SVProgressHUD show];
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@""};
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
                 }];
@@ -257,7 +257,7 @@ UIScrollViewDelegate
             UIAlertAction *pause = [UIAlertAction actionWithTitle:@"暂停维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@""};
                 [SVProgressHUD show];
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self.datas[indexPath.row] setValue:@"4" forKey:@"State"];
                     [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
@@ -278,7 +278,7 @@ UIScrollViewDelegate
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"恢复维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"1"};
                 [SVProgressHUD show];
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
                 }];

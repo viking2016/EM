@@ -58,7 +58,7 @@
 }
 
 - (void)downloadPersonInfo {
-    [ESSNetworkingTool GET:@"/APP/SYS/Sys_YongHu/Get" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/SYS/Sys_YongHu/Get" parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
         self.model.Reporter = responseObject[@"XingMing"];
         self.model.ReporterTel = responseObject[@"ShouJiHao"];
         [self.tableView reloadData];
@@ -184,7 +184,7 @@
     NSDictionary *parameters = @{@"StrJson":jsonStr};
     
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/WB/Maintenance_Repair/Submit" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         self.model.RepairID = [responseObject[@"RepairID"] intValue];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
@@ -193,7 +193,7 @@
             NSString *URLStr = @"/APP/WB/Maintenance_Repair/BeginRepair";
             NSDictionary *parameters = @{@"RepairID":[NSNumber numberWithInt:self.model.RepairID]};
             [SVProgressHUD show];
-            [ESSNetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+            [NetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
                 [SVProgressHUD dismiss];
                 ESSRepairFormController *vc = [ESSRepairFormController new];
                 vc.model = self.model;

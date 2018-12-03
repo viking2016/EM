@@ -112,7 +112,7 @@
         [paras setValue:strJson forKey:@"ElevJson"];
         
         [SVProgressHUD show];
-        [ESSNetworkingTool POST:@"/APP/WB/Elev_Info/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+        [NetworkingTool POST:@"/APP/WB/Elev_Info/Save" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
             [SVProgressHUD showSuccessWithStatus:@"新增成功"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
             [self.navigationController popToRootViewControllerAnimated:YES];

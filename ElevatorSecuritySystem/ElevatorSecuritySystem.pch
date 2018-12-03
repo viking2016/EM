@@ -39,7 +39,7 @@
 #import "ESSTabBarController.h"
 
 // 工具类
-#import "ESSNetworkingTool.h"
+#import "NetworkingTool.h"
 #import "ESSLoginTool.h"
 
 // 自定义类扩展

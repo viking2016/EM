@@ -27,7 +27,7 @@
 #pragma mark - Private Method
 - (void)loadNewData {
     NSDictionary *paras = @{@"Keywords":@""};
-    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Elev_Info/GetList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [self.tableView.mj_header endRefreshing];
         NSMutableArray *mArr = [[NSMutableArray alloc] init];
         if ([responseObject isKindOfClass:[NSArray class]]) {

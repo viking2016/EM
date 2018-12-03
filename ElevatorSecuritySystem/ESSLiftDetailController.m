@@ -9,12 +9,11 @@
 #import "ESSLiftDetailController.h"
 #import "ESSLiftMessageController.h"
 #import "ESSLiftChartController.h"
-#import "ESSInformationListController.h"
 #import "ESSLiftPhotoViewController.h"
 #import "ESSAddRepairFormController.h"
 #import "ESSVideoController.h"
 #import "ESSMaintenanceFormDetailListController.h"
-#import "ESSWebController.h"
+#import "ZXWebController.h"
 #import "ESSRescueTaskListController.h"
 #import <PNChart.h>
 #import "ESSLiftDetailButton.h"
@@ -181,7 +180,7 @@
         return;
     }
     NSDictionary *dict = @{@"BasicInfoID":self.ElevID,@"Year":[NSString stringWithFormat:@"%lu",[[NSDate date] year]]};
-    [ESSNetworkingTool GET:@"/APP/Count/GetYearOpenDoorCount" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/Count/GetYearOpenDoorCount" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
          if ([[responseObject objectForKey:@"isOk"] boolValue]){
              NSMutableArray *tmpMArr = [NSMutableArray new];
              for (NSDictionary *dict in [responseObject objectForKey:@"datas"]){
@@ -204,7 +203,7 @@
         return;
     }
     NSDictionary *dict = @{@"ElevID":self.ElevID};
-    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/Get" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Elev_Info/Get" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             NSDictionary *dict = responseObject;
             self.dictSource = responseObject;
@@ -303,7 +302,7 @@
     NSDictionary *userInfo = [ESSLoginTool getUserInfo];
     if (userInfo && loginInfo) {
         URL = [NSString stringWithFormat:@"http://yw.intelevator.cn%@?Token=%@&YongHuMing=%@&UUID=%@&ElevID=%@",self.URLArray[sender.tag - 10],userInfo[@"Token"],loginInfo[@"YongHuMing"],[[UIDevice currentDevice].identifierForVendor UUIDString],self.ElevID];
-    ESSWebController *webController = [[ESSWebController alloc] initWithURLStr:URL];
+    ZXWebController *webController = [[ZXWebController alloc] initWithURLStr:URL];
     [self.navigationController pushViewController:webController animated:YES];
     }
 }
@@ -311,12 +310,6 @@
 - (IBAction)realTimeBtnEvent:(id)sender {
     ESSLiftChartController *vc = [ESSLiftChartController new];
     vc.LiftCode = self.ElevID;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (IBAction)getTechArticlesEvent:(id)sender {
-    ESSInformationListController *vc = [ESSInformationListController new];
-    vc.type = @"技术资料";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -382,7 +375,7 @@
 //    NSMutableDictionary *dict = [NSMutableDictionary new];
 //    [dict setObject:[NSNumber numberWithInt:state] forKey:@"State"];
 //    [dict setObject:self.ElevID forKey:@"BasicInfoID"];
-//    [ESSNetworkingTool POST:@"/APP/PushState/SubmitPushState" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+//    [NetworkingTool POST:@"/APP/PushState/SubmitPushState" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
 //        if (state == 1){
 //            [SVProgressHUD showSuccessWithStatus:@"开启成功"];
 //        }else{

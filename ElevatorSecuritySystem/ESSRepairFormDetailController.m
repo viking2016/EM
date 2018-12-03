@@ -61,7 +61,7 @@
 - (void)downloadData {
     NSDictionary *paras = @{@"RepairID":[NSString stringWithFormat:@"%d",self.repairID]};
     [SVProgressHUD show];
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [ESSRepairModel mj_setupObjectClassInArray:^NSDictionary *{
             return @{

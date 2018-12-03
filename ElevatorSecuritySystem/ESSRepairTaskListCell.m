@@ -100,7 +100,7 @@
     NSString *URLStr = @"/APP/WB/Maintenance_Repair/DeleteRepair";
     [SVProgressHUD show];
     NSDictionary *parameters = @{@"RepairID":[NSNumber numberWithInt:self.model.RepairID]};
-    [ESSNetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
         self.deleted();
@@ -115,7 +115,7 @@
     NSString *URLStr = @"/APP/WB/Maintenance_Repair/BeginRepair";
     NSDictionary *parameters = @{@"RepairID":[NSNumber numberWithInt:self.model.RepairID]};
     [SVProgressHUD show];
-    [ESSNetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:URLStr parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         ESSRepairFormController *vc = [ESSRepairFormController new];
         vc.model = self.model;

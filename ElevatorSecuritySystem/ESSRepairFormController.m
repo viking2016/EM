@@ -122,7 +122,7 @@
     }
     
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:imgs success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/WB/Maintenance_Repair/Save" parameters:parameters images:imgs success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功 "];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"getHomeData" object:nil];
 

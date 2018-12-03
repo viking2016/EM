@@ -91,7 +91,7 @@
     
     NSDictionary *paras = @{@"NewShouJiHao":_telTF.text,@"YanZhengMa":_codeTF.text};
     [SVProgressHUD show];
-    [ESSNetworkingTool GET:@"/APP/SYS/Sys_YongHu/SetPhoneNum" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/SYS/Sys_YongHu/SetPhoneNum" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [ESSLoginTool exitLogin];
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -105,7 +105,7 @@
     }
 
     NSDictionary *dict = @{@"NewShouJiHao":_telTF.text};
-    [ESSNetworkingTool POST:@"/APP/SYS/Sys_YongHu/SendYanZhengMa4SetPhoneNum" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/SYS/Sys_YongHu/SendYanZhengMa4SetPhoneNum" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"获取成功"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self countDown];

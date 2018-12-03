@@ -33,7 +33,7 @@
         return;
     }
     NSDictionary *dict = @{@"LiftCode":self.LiftCode};
-    [ESSNetworkingTool GET:@"/APP/Elev_BasicInfo/GetPicInfo" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/Elev_BasicInfo/GetPicInfo" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         self.dataSource = responseObject[@"data"][@"TechPics"];
         if (_dataSource.count > 0) {
             

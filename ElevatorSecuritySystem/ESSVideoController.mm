@@ -52,7 +52,7 @@ int decodePort = -1;
 - (void)getDerviceID{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     [dict setObject:self.ElevID forKey:@"ElevID"];
-   [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetCamera" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+   [NetworkingTool GET:@"/APP/WB/Elev_Info/GetCamera" parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
 //       NSDictionary *dict = responseObject;
 //       self.deviceId = [NSString stringWithFormat:@"%@",[dict objectForKey:@"CameraNo"]];
 //       self.userNameString = [NSString stringWithFormat:@"%@",[dict objectForKey:@"Account"]];

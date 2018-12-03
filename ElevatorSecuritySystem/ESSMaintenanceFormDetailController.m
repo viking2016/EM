@@ -75,7 +75,7 @@
     [SVProgressHUD show];
     _dataSource = [[NSMutableArray alloc] init];
     
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetRuleItemList" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *arr1 = @[@"生产厂家",@"电梯品牌",@"电梯型号",@"注册代码",@"额定速度",@"额定重量",@"使用地址"];
             NSArray *arr2 = @[@"公司名称",@"负责人",@"负责人电话",@"安全管理员",@"安全管理员电话"];
@@ -92,7 +92,7 @@
         }
     }];
     
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetDetail" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         self.model = [ESSMaintenanceFormDetailModel mj_objectWithKeyValues:responseObject];
         [self.tableView.mj_header endRefreshing];

@@ -45,7 +45,7 @@
         return;
     }
     NSDictionary *dict = @{@"LiftCode":self.LiftCode};
-    [ESSNetworkingTool GET:[self.URLArray objectAtIndex:self.index] parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:[self.URLArray objectAtIndex:self.index] parameters:dict success:^(NSDictionary * _Nonnull responseObject) {
         if (![responseObject[@"data"] isKindOfClass:[NSNull class]]){
             NSDictionary *dic = responseObject[@"data"] ;
             for (int i = 0; i < self.dataSource.count; i ++) {

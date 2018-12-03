@@ -56,7 +56,7 @@
     [parameters setValue:@"1" forKey:@"Status"];
 
     
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject) {
                 ESSMaintenanceFormDetailListModel *model = [ESSMaintenanceFormDetailListModel mj_objectWithKeyValues:dic];

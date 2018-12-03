@@ -102,7 +102,7 @@
     [parameters setValue:self.faultType forKey:@"FaultReason1"];
     [parameters setValue:self.faultReason forKey:@"FaultReason2"];
     [parameters setValue:self.textView.text forKey:@"Remark"];
-    [ESSNetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/FaultReason" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/WB/Rescue_AlarmOrderTask/FaultReason" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"提交成功"];
         [self.navigationController popViewControllerAnimated:YES];
         self.submitCallback(@"success");

@@ -39,7 +39,7 @@ PODS:
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
-    - SDWebImage (!= 3.7.2, ~> 3.7)
+    - "SDWebImage (!= 3.7.2, ~> 3.7)"
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - pop (1.0.9)
@@ -57,7 +57,6 @@ PODS:
   - TZImagePickerController (1.7.9)
   - UICountingLabel (1.2.0)
   - UMengAnalytics (4.2.4)
-  - WMPageController (2.2.1)
   - XHRealTimeBlur (1.7)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -85,8 +84,38 @@ DEPENDENCIES:
   - SVProgressHUD
   - TZImagePickerController
   - UMengAnalytics
-  - WMPageController
   - YYKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - AFNetworking
+    - BaiduMapKit
+    - ChameleonFramework
+    - DACircularProgress
+    - DateTools
+    - DZNEmptyDataSet
+    - EAIntroView
+    - EARestrictedScrollView
+    - JCore
+    - JPush
+    - LBXScan
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MWPhotoBrowser
+    - PNChart
+    - pop
+    - PopMenu
+    - Realm
+    - SDWebImage
+    - SocketRocket
+    - SVProgressHUD
+    - TZImagePickerController
+    - UICountingLabel
+    - UMengAnalytics
+    - XHRealTimeBlur
+    - YYKit
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
@@ -115,10 +144,9 @@ SPEC CHECKSUMS:
   TZImagePickerController: 0a8ff228d287ebdd7d485e8c42a2a932894f1fba
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
-  WMPageController: 181bcc9b1fb7c9c3466bff66012552953a547d28
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 7c9b849aec4598364502a73fd1f4fc7ec3c61362
+PODFILE CHECKSUM: f7814cad3873cdc4a51761667010ab4bd28fa0e5
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

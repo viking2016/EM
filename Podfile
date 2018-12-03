@@ -10,7 +10,6 @@ target 'ElevatorSecuritySystem' do
   pod 'SVProgressHUD'
   pod 'MJExtension'
   pod 'TZImagePickerController'
-  pod 'WMPageController'
   pod 'ActionSheetPicker-3.0'
   pod 'EAIntroView'
   pod 'SocketRocket'

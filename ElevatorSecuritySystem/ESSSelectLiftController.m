@@ -58,7 +58,7 @@
 - (void)downloadData{
     [SVProgressHUD show];
     NSDictionary *parameters = @{@"Keywords":self.searchString};
-    [ESSNetworkingTool GET:@"/APP/WB/Elev_Info/GetElevInfoList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Elev_Info/GetElevInfoList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         self.datas = (NSArray *)responseObject;
         [self.tableView reloadData];

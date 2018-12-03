@@ -49,7 +49,7 @@
 - (void)downloadData{
     self.datas = [NSMutableArray new];
     NSDictionary *parameters = @{@"Status":@"0"};
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetRepairList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_Repair/GetRepairList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
         if ([responseObject isKindOfClass:[NSArray class]]) {

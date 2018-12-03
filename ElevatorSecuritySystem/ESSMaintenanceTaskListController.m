@@ -84,7 +84,7 @@
     }
     NSString *taskId = [taskIds componentsJoinedByString:@","];
     NSDictionary *parameters = @{@"TaskIDs":taskId};
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/ConfirmMTask" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/ConfirmMTask" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         self.confirmBtn.hidden = YES;
         [self.tableView.mj_header beginRefreshing];
     }];
@@ -104,7 +104,7 @@
     [parameters setValue:@"0" forKey:@"Status"];
 
     
-    [ESSNetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:@"/APP/WB/Maintenance_MTask/GetTaskList" parameters:parameters success:^(NSDictionary * _Nonnull responseObject) {
         [self.tableView.mj_header endRefreshing];
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dic in responseObject) {
@@ -154,7 +154,7 @@
             UIAlertAction *start = [UIAlertAction actionWithTitle:@"开始维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [SVProgressHUD show];
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
@@ -172,7 +172,7 @@
             UIAlertAction *start = [UIAlertAction actionWithTitle:@"开始维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [SVProgressHUD show];
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
                 }];
@@ -187,7 +187,7 @@
             UIAlertAction *pause = [UIAlertAction actionWithTitle:@"暂停维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"1"};
                 [SVProgressHUD show];
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self.datas[indexPath.row] setValue:@"暂停" forKey:@"State"];
                     [self.tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
@@ -208,7 +208,7 @@
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"恢复维保" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSDictionary *paras = @{@"MTaskID":taskID,@"Status":@"0"};
                 [SVProgressHUD show];
-                [ESSNetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+                [NetworkingTool POST:@"/APP/WB/Maintenance_MTask/StartMTask" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
                     [SVProgressHUD dismiss];
                     [self pushReadTermsControllerWithTaskId:taskID maintenanceModel:model];
                 }];

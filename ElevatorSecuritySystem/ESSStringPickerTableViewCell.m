@@ -64,7 +64,7 @@ NSString *const EMAStringPickerTableViewCellName = @"ESSStringPickerTableViewCel
 - (void)createPickerViewWithURL:(NSString *)URLStr
                             key:(NSString *)key{
     
-    [ESSNetworkingTool GET:URLStr parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool GET:URLStr parameters:nil success:^(NSDictionary * _Nonnull responseObject) {
         
         NSMutableArray *mArr = [NSMutableArray new];
         for (NSDictionary *dic in responseObject) {

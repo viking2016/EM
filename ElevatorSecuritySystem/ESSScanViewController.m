@@ -9,7 +9,7 @@
 #import "ESSScanViewController.h"
 #import "LBXAlertAction.h"
 #import "ESSLiftDetailController.h"
-#import "ESSWebController.h"
+#import "ZXWebController.h"
 
 @interface ESSScanViewController ()
 
@@ -100,7 +100,7 @@
 //        ESSLiftDetailController *vc = [[ESSLiftDetailController alloc] initWithBasicInfoID:liftCode];
 //        [self.navigationController pushViewController:vc animated:YES];
     }else {
-        ESSWebController *vc = [[ESSWebController alloc] initWithURLStr:strResult.strScanned];
+        ZXWebController *vc = [[ZXWebController alloc] initWithURLStr:strResult.strScanned];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

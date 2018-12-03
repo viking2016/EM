@@ -11,7 +11,7 @@
 #import "ESSScanViewController.h"
 
 static NSString *const kHomeItem = @"ESSHomeController/主页/icon_tab_zhuye/icon_tab_zhuye_pre";
-static NSString *const kNewsItem = @"ESSInformationController/资讯/icon_tab_zixun/icon_tab_zixun_pre";
+static NSString *const kNewsItem = @"ZXNewsController/资讯/icon_tab_zixun/icon_tab_zixun_pre";
 static NSString *const kTaskItem = @"ESSMessageController/消息/icon_tab_xiaoxi/icon_tab_xiaoxi_pre";
 static NSString *const kInformationItem = @"ESSMeController/我的/icon_tab_wode/icon_tab_wode_pre";
 

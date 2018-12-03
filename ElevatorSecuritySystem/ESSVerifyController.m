@@ -93,7 +93,7 @@
     [paras setValue:strJson forKey:@"StrJson"];
     
     [SVProgressHUD show];
-    [ESSNetworkingTool POST:@"/APP/Base_User/Authentication2" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
+    [NetworkingTool POST:@"/APP/Base_User/Authentication2" parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD dismiss];
         int tmp = [[responseObject objectForKey:@"info"] intValue];
         if (tmp == 0) {
