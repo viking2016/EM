@@ -35,6 +35,9 @@
     if ([model.IsDelete isEqualToString:@"0"]) {
         self.btn_Revise.hidden = YES;
         self.btn_Delete.hidden = YES;
+        self.leftDistance.constant = -92;
+    }else {
+        self.leftDistance.constant = 12;
     }
 }
 

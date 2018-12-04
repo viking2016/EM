@@ -1157,7 +1157,7 @@
         <image name="icon_anzhuang" width="35" height="35"/>
         <image name="icon_anzhuangxinxi" width="27" height="27"/>
         <image name="icon_baojingtuisong" width="25" height="25"/>
-        <image name="icon_changjia" width="35" height="35"/>
+        <image name="icon_changjia" width="36" height="35"/>
         <image name="icon_chanquan" width="33" height="32"/>
         <image name="icon_chuchang" width="40" height="40"/>
         <image name="icon_diantixiangqing_beijingkuang" width="131" height="191"/>
@@ -1174,7 +1174,7 @@
         <image name="icon_jishuzixun" width="35" height="35"/>
         <image name="icon_lingjian" width="35" height="35"/>
         <image name="icon_qianhong_xinxi" width="17" height="17"/>
-        <image name="icon_shiyong" width="40" height="40"/>
+        <image name="icon_shiyong" width="29" height="32"/>
         <image name="icon_shiyongdanwei" width="28" height="28"/>
         <image name="icon_weibaogongsi" width="35" height="35"/>
         <image name="icon_weibaoxinxi" width="28" height="32"/>

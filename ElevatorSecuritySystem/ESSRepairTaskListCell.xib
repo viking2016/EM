@@ -241,6 +241,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzF-If-lf3">
                                 <rect key="frame" x="69" y="0.0" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="GIe-HY-bOT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="删除" image="icon_weixiurenwu_shanchu">
@@ -318,6 +321,7 @@
                 <outlet property="lb_RepairDate" destination="XXD-br-wsY" id="iQa-kv-Ccy"/>
                 <outlet property="lb_RepairNo" destination="3BN-pb-sYb" id="YDz-YC-iot"/>
                 <outlet property="lb_RepairPerson" destination="d91-1T-RG9" id="hUl-0V-lcp"/>
+                <outlet property="leftDistance" destination="LLY-1I-hui" id="U8F-EV-dfH"/>
                 <outlet property="uv_Bottom" destination="kXD-g8-GBC" id="kdS-hn-yCw"/>
                 <outlet property="uv_Top" destination="k1N-Mj-o4A" id="62z-Up-tnv"/>
             </connections>

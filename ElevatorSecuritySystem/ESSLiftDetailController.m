@@ -7,14 +7,15 @@
 //
 
 #import "ESSLiftDetailController.h"
-#import "ESSLiftMessageController.h"
 #import "ESSLiftChartController.h"
 #import "ESSLiftPhotoViewController.h"
-#import "ESSAddRepairFormController.h"
 #import "ESSVideoController.h"
 #import "ESSMaintenanceFormDetailListController.h"
 #import "ZXWebController.h"
 #import "ESSRescueTaskListController.h"
+#import "ESSRepairFormDetailListController.h"
+
+
 #import <PNChart.h>
 #import "ESSLiftDetailButton.h"
 
@@ -292,11 +293,7 @@
 }
 
 - (IBAction)btnClick:(UIButton *)sender {//
-//    ESSLiftMessageController *vc = [ESSLiftMessageController new];
-//    vc.vctitle = sender.currentTitle;
-//    vc.index = sender.tag - 10;
-//    vc.LiftCode = self.ElevID;
-//    [self.navigationController pushViewController:vc animated:YES];
+
     NSString *URL = [[NSString alloc]init];
     NSDictionary *loginInfo = [ESSLoginTool getLoginInfo];
     NSDictionary *userInfo = [ESSLoginTool getUserInfo];
@@ -334,9 +331,7 @@
 
 - (IBAction)repairEvent:(id)sender {
     if ([self isCorrectMPerson]) {
-        ESSAddRepairFormController *vc = [ESSAddRepairFormController new];
-//        vc.liftCode = self.basicInfoID;
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:[ESSRepairFormDetailListController new] animated:YES];
     }else{
         [SVProgressHUD showInfoWithStatus:@"您不是该部电梯的维保人员，暂无权限使用此功能"];
     }

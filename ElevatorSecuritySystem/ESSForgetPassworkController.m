@@ -15,6 +15,7 @@ static NSString *const submitURL = @"/APP/Base_User/ResetPassword";
 
 @interface ESSForgetPassworkController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *companyCodeTf;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTf;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTf;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTf;
@@ -62,11 +63,16 @@ static NSString *const submitURL = @"/APP/Base_User/ResetPassword";
 #pragma mark - Action
 
 - (IBAction)getVerificationCodeBtnClick:(UIButton *)sender {
+    
+    if (!(self.companyCodeTf.text.length > 0)) {
+        [SVProgressHUD showInfoWithStatus:@"请输入公司编号"];
+        return;
+    }
     if ( ![_phoneNumberTf.text isPhoneNumber]) {
         [SVProgressHUD showInfoWithStatus:@"请输入正确的手机号"];
         return;
     }
-    NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"UUID":[[UIDevice currentDevice].identifierForVendor UUIDString]};
+    NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"UUID":[[UIDevice currentDevice].identifierForVendor UUIDString],@"DanWeiBianHao":self.companyCodeTf.text};
     
     [NetworkingTool POST:getVerificationCodeURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"获取成功"];
@@ -94,7 +100,7 @@ static NSString *const submitURL = @"/APP/Base_User/ResetPassword";
         return;
     }
     
-    NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"MiMa":_passwordTf.text,@"YanZhengMa":_verificationCodeTf.text,@"PushID":@"0"};
+    NSDictionary *paras = @{@"ShouJiHao":_phoneNumberTf.text,@"MiMa":_passwordTf.text,@"YanZhengMa":_verificationCodeTf.text,@"PushID":@"0",@"UUID":[[UIDevice currentDevice].identifierForVendor UUIDString]};
     [SVProgressHUD show];
     [NetworkingTool POST:submitURL parameters:paras success:^(NSDictionary * _Nonnull responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"重置成功"];

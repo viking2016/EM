@@ -10,6 +10,7 @@
 #import "ESSRepairModel.h"
 
 @interface ESSRepairTaskListCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftDistance;
 
 @property (weak, nonatomic) IBOutlet UIView *uv_Top;
 @property (weak, nonatomic) IBOutlet UIView *uv_Bottom;

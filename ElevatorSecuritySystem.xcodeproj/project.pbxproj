@@ -131,8 +131,6 @@
 		74270C8620F4844B00F1C3BF /* ESSImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74270C8420F4844B00F1C3BF /* ESSImagePickerCollectionViewCell.xib */; };
 		74270C8B20F4A6CD00F1C3BF /* ESSRepairFormDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74270C8920F4A6CD00F1C3BF /* ESSRepairFormDetailController.m */; };
 		74270C8C20F4A6CD00F1C3BF /* ESSRepairFormDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74270C8A20F4A6CD00F1C3BF /* ESSRepairFormDetailController.xib */; };
-		7430E00F1EC6A3FC00D7D4AB /* ESSForgetPassworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7430E00D1EC6A3FC00D7D4AB /* ESSForgetPassworkController.m */; };
-		7430E0101EC6A3FC00D7D4AB /* ESSForgetPassworkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7430E00E1EC6A3FC00D7D4AB /* ESSForgetPassworkController.xib */; };
 		7431DFE21ECE839E00BBB12F /* ESSMaintenanceTaskCalendarLegendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7431DFE11ECE839E00BBB12F /* ESSMaintenanceTaskCalendarLegendView.xib */; };
 		7436DC841F71E22E00F712AC /* RescueTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436DC7D1F71E22E00F712AC /* RescueTaskModel.m */; };
 		7436DC851F71E22E00F712AC /* ZXRescueTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7436DC7F1F71E22E00F712AC /* ZXRescueTaskCell.m */; };
@@ -159,6 +157,12 @@
 		743A42BD21B6062200C27A2B /* ZXInformationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42B721B6062200C27A2B /* ZXInformationListCell.m */; };
 		743A42BE21B6062200C27A2B /* ZXInformationListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42B821B6062200C27A2B /* ZXInformationListController.xib */; };
 		743A42C121B60CCA00C27A2B /* ZXInformationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42C021B60CCA00C27A2B /* ZXInformationListModel.m */; };
+		743A42CB21B61D8900C27A2B /* ESSForgetPassworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42C621B61D8800C27A2B /* ESSForgetPassworkController.m */; };
+		743A42CC21B61D8900C27A2B /* ESSRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42C821B61D8800C27A2B /* ESSRegisterController.m */; };
+		743A42CD21B61D8900C27A2B /* ESSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42C921B61D8900C27A2B /* ESSRegisterController.xib */; };
+		743A42CE21B61D8900C27A2B /* ESSForgetPassworkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42CA21B61D8900C27A2B /* ESSForgetPassworkController.xib */; };
+		743A42D221B61EDB00C27A2B /* ESSRepairTaskListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42D021B61EDB00C27A2B /* ESSRepairTaskListCell.xib */; };
+		743A42D321B61EDB00C27A2B /* ESSRepairTaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42D121B61EDB00C27A2B /* ESSRepairTaskListCell.m */; };
 		743B69391FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743B69371FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m */; };
 		743B693A1FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */; };
 		743F6FE31EAAFC6C005515E5 /* ESSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743F6FE21EAAFC6C005515E5 /* ESSProgressView.m */; };
@@ -168,8 +172,6 @@
 		744FF7001F6F93D000785F7C /* UIBarButtonItem+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF6FF1F6F93D000785F7C /* UIBarButtonItem+Add.m */; };
 		745744EA1EC5624A0096504B /* ESSLiftManagerProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 745744E91EC5624A0096504B /* ESSLiftManagerProjectModel.m */; };
 		7475823E20E35E7C00649490 /* ESSRepairModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7475823D20E35E7C00649490 /* ESSRepairModel.m */; };
-		7475824220E364A200649490 /* ESSRepairTaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7475824020E364A200649490 /* ESSRepairTaskListCell.m */; };
-		7475824320E364A200649490 /* ESSRepairTaskListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7475824120E364A200649490 /* ESSRepairTaskListCell.xib */; };
 		7475824720E490B300649490 /* ESSAddRepairFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7475824520E490B300649490 /* ESSAddRepairFormController.m */; };
 		7475824820E490B300649490 /* ESSAddRepairFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7475824620E490B300649490 /* ESSAddRepairFormController.xib */; };
 		74775D1220FF43B30051FE16 /* ESSEvalutionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74775D1020FF43B30051FE16 /* ESSEvalutionCell.m */; };
@@ -217,8 +219,6 @@
 		74BB333A1EA99BFF002A7327 /* ESSLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB32F71EA99BFF002A7327 /* ESSLoginTool.m */; };
 		74BB333F1EA99BFF002A7327 /* ESSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB32FF1EA99BFF002A7327 /* ESSNavigationController.m */; };
 		74BB33401EA99BFF002A7327 /* NetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB33011EA99BFF002A7327 /* NetworkingTool.m */; };
-		74BB33421EA99BFF002A7327 /* ESSRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB33051EA99BFF002A7327 /* ESSRegisterController.m */; };
-		74BB33431EA99BFF002A7327 /* ESSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BB33061EA99BFF002A7327 /* ESSRegisterController.xib */; };
 		74BB33441EA99BFF002A7327 /* ESSRevisePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB33081EA99BFF002A7327 /* ESSRevisePasswordController.m */; };
 		74BB33451EA99BFF002A7327 /* ESSRevisePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BB33091EA99BFF002A7327 /* ESSRevisePasswordController.xib */; };
 		74BB334A1EA99BFF002A7327 /* ESSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BB33121EA99BFF002A7327 /* ESSSearchController.m */; };
@@ -552,9 +552,6 @@
 		74270C8820F4A6CD00F1C3BF /* ESSRepairFormDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSRepairFormDetailController.h; sourceTree = "<group>"; };
 		74270C8920F4A6CD00F1C3BF /* ESSRepairFormDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSRepairFormDetailController.m; sourceTree = "<group>"; };
 		74270C8A20F4A6CD00F1C3BF /* ESSRepairFormDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSRepairFormDetailController.xib; sourceTree = "<group>"; };
-		7430E00C1EC6A3FC00D7D4AB /* ESSForgetPassworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSForgetPassworkController.h; sourceTree = "<group>"; };
-		7430E00D1EC6A3FC00D7D4AB /* ESSForgetPassworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSForgetPassworkController.m; sourceTree = "<group>"; };
-		7430E00E1EC6A3FC00D7D4AB /* ESSForgetPassworkController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSForgetPassworkController.xib; sourceTree = "<group>"; };
 		7431DFE11ECE839E00BBB12F /* ESSMaintenanceTaskCalendarLegendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSMaintenanceTaskCalendarLegendView.xib; sourceTree = "<group>"; };
 		7436DC7C1F71E22E00F712AC /* RescueTaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RescueTaskModel.h; sourceTree = "<group>"; };
 		7436DC7D1F71E22E00F712AC /* RescueTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RescueTaskModel.m; sourceTree = "<group>"; };
@@ -599,6 +596,15 @@
 		743A42B921B6062200C27A2B /* ZXInformationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXInformationListController.h; sourceTree = "<group>"; };
 		743A42BF21B60CCA00C27A2B /* ZXInformationListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXInformationListModel.h; sourceTree = "<group>"; };
 		743A42C021B60CCA00C27A2B /* ZXInformationListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXInformationListModel.m; sourceTree = "<group>"; };
+		743A42C521B61D8800C27A2B /* ESSForgetPassworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSForgetPassworkController.h; sourceTree = "<group>"; };
+		743A42C621B61D8800C27A2B /* ESSForgetPassworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSForgetPassworkController.m; sourceTree = "<group>"; };
+		743A42C721B61D8800C27A2B /* ESSRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSRegisterController.h; sourceTree = "<group>"; };
+		743A42C821B61D8800C27A2B /* ESSRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSRegisterController.m; sourceTree = "<group>"; };
+		743A42C921B61D8900C27A2B /* ESSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSRegisterController.xib; sourceTree = "<group>"; };
+		743A42CA21B61D8900C27A2B /* ESSForgetPassworkController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSForgetPassworkController.xib; sourceTree = "<group>"; };
+		743A42CF21B61EDB00C27A2B /* ESSRepairTaskListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSRepairTaskListCell.h; sourceTree = "<group>"; };
+		743A42D021B61EDB00C27A2B /* ESSRepairTaskListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSRepairTaskListCell.xib; sourceTree = "<group>"; };
+		743A42D121B61EDB00C27A2B /* ESSRepairTaskListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSRepairTaskListCell.m; sourceTree = "<group>"; };
 		743B69361FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSMaintenanceFormDetailLiftInfomationCell.h; sourceTree = "<group>"; };
 		743B69371FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSMaintenanceFormDetailLiftInfomationCell.m; sourceTree = "<group>"; };
 		743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSMaintenanceFormDetailLiftInfomationCell.xib; sourceTree = "<group>"; };
@@ -614,9 +620,6 @@
 		745744E91EC5624A0096504B /* ESSLiftManagerProjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSLiftManagerProjectModel.m; sourceTree = "<group>"; };
 		7475823C20E35E7C00649490 /* ESSRepairModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSRepairModel.h; sourceTree = "<group>"; };
 		7475823D20E35E7C00649490 /* ESSRepairModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSRepairModel.m; sourceTree = "<group>"; };
-		7475823F20E364A200649490 /* ESSRepairTaskListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSRepairTaskListCell.h; sourceTree = "<group>"; };
-		7475824020E364A200649490 /* ESSRepairTaskListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSRepairTaskListCell.m; sourceTree = "<group>"; };
-		7475824120E364A200649490 /* ESSRepairTaskListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSRepairTaskListCell.xib; sourceTree = "<group>"; };
 		7475824420E490B300649490 /* ESSAddRepairFormController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSAddRepairFormController.h; sourceTree = "<group>"; };
 		7475824520E490B300649490 /* ESSAddRepairFormController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSAddRepairFormController.m; sourceTree = "<group>"; };
 		7475824620E490B300649490 /* ESSAddRepairFormController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSAddRepairFormController.xib; sourceTree = "<group>"; };
@@ -698,9 +701,6 @@
 		74BB32FF1EA99BFF002A7327 /* ESSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSNavigationController.m; sourceTree = "<group>"; };
 		74BB33001EA99BFF002A7327 /* NetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingTool.h; sourceTree = "<group>"; };
 		74BB33011EA99BFF002A7327 /* NetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NetworkingTool.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		74BB33041EA99BFF002A7327 /* ESSRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSRegisterController.h; sourceTree = "<group>"; };
-		74BB33051EA99BFF002A7327 /* ESSRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESSRegisterController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		74BB33061EA99BFF002A7327 /* ESSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSRegisterController.xib; sourceTree = "<group>"; };
 		74BB33071EA99BFF002A7327 /* ESSRevisePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSRevisePasswordController.h; sourceTree = "<group>"; };
 		74BB33081EA99BFF002A7327 /* ESSRevisePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSRevisePasswordController.m; sourceTree = "<group>"; };
 		74BB33091EA99BFF002A7327 /* ESSRevisePasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSRevisePasswordController.xib; sourceTree = "<group>"; };
@@ -1236,9 +1236,9 @@
 			children = (
 				53B3E00C1ECC4B820098A7D7 /* ESSRepairTaskListController.h */,
 				53B3E00D1ECC4B820098A7D7 /* ESSRepairTaskListController.m */,
-				7475823F20E364A200649490 /* ESSRepairTaskListCell.h */,
-				7475824020E364A200649490 /* ESSRepairTaskListCell.m */,
-				7475824120E364A200649490 /* ESSRepairTaskListCell.xib */,
+				743A42CF21B61EDB00C27A2B /* ESSRepairTaskListCell.h */,
+				743A42D121B61EDB00C27A2B /* ESSRepairTaskListCell.m */,
+				743A42D021B61EDB00C27A2B /* ESSRepairTaskListCell.xib */,
 			);
 			name = RepairTaskList;
 			sourceTree = "<group>";
@@ -1587,12 +1587,12 @@
 				74BB32F31EA99BFF002A7327 /* ESSLoginController.h */,
 				74BB32F41EA99BFF002A7327 /* ESSLoginController.m */,
 				74BB32F51EA99BFF002A7327 /* ESSLoginController.xib */,
-				74BB33041EA99BFF002A7327 /* ESSRegisterController.h */,
-				74BB33051EA99BFF002A7327 /* ESSRegisterController.m */,
-				74BB33061EA99BFF002A7327 /* ESSRegisterController.xib */,
-				7430E00C1EC6A3FC00D7D4AB /* ESSForgetPassworkController.h */,
-				7430E00D1EC6A3FC00D7D4AB /* ESSForgetPassworkController.m */,
-				7430E00E1EC6A3FC00D7D4AB /* ESSForgetPassworkController.xib */,
+				743A42C521B61D8800C27A2B /* ESSForgetPassworkController.h */,
+				743A42C621B61D8800C27A2B /* ESSForgetPassworkController.m */,
+				743A42CA21B61D8900C27A2B /* ESSForgetPassworkController.xib */,
+				743A42C721B61D8800C27A2B /* ESSRegisterController.h */,
+				743A42C821B61D8800C27A2B /* ESSRegisterController.m */,
+				743A42C921B61D8900C27A2B /* ESSRegisterController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -2200,6 +2200,7 @@
 				74B29E2920EDC4AB005B6E21 /* ESSPartReplacementFormTableViewCell.xib in Resources */,
 				74B29E1720EC9889005B6E21 /* ESSPartTableViewCell.xib in Resources */,
 				532396D32047E59E0096EE17 /* ESSChuZhiFanKuiController.xib in Resources */,
+				743A42CE21B61D8900C27A2B /* ESSForgetPassworkController.xib in Resources */,
 				5381CC3620205D1000C52268 /* ESSRTDUserInfoCell.xib in Resources */,
 				5340D01D1F05E4DF006CF85F /* ESSVerifyCell.xib in Resources */,
 				74BB33371EA99BFF002A7327 /* ESSLiftDetailController.xib in Resources */,
@@ -2210,9 +2211,7 @@
 				530AAFC41EC2F00F00E8CC4D /* ESSStringPickerTableViewCell.xib in Resources */,
 				7436DC861F71E22E00F712AC /* ZXRescueTaskCell.xib in Resources */,
 				74BC1F5A21A79BBF0072B72A /* PYSearch.bundle in Resources */,
-				74BB33431EA99BFF002A7327 /* ESSRegisterController.xib in Resources */,
 				74CD0CF61EB8699700FB1C59 /* ESSLiftManagermentCell.xib in Resources */,
-				7475824320E364A200649490 /* ESSRepairTaskListCell.xib in Resources */,
 				7416A55B1ECC3D3500EA4253 /* ESSMeCell.xib in Resources */,
 				53FD482E21A583C2003A4CF2 /* ESSTextViewTableViewCell.xib in Resources */,
 				74270C7C20F4403600F1C3BF /* ESSRepairFormDetailListController.xib in Resources */,
@@ -2262,6 +2261,7 @@
 				530AAFB71EC2EFFD00E8CC4D /* ESSLocationPickerTableViewCell.xib in Resources */,
 				530AAFA01EC15EEC00E8CC4D /* ESSAddLiftController.xib in Resources */,
 				74BC1F7F21A79BBF0072B72A /* README.md in Resources */,
+				743A42CD21B61D8900C27A2B /* ESSRegisterController.xib in Resources */,
 				74270C7620F2FF4C00F1C3BF /* ESSImagePickerTableViewCell.xib in Resources */,
 				5369E9E1204ED96F00452E99 /* ESSRTDFanKuiCell.xib in Resources */,
 				532396D42047E59E0096EE17 /* ESSChuZhiFanKuiCell.xib in Resources */,
@@ -2279,7 +2279,7 @@
 				7499E65C2105B1DC00F41907 /* ESSPageControlCell.xib in Resources */,
 				7400D70F1ECC37BF001BC5D2 /* ESSMaintenanceFormDetailCell.xib in Resources */,
 				74BC1F4421A79BBF0072B72A /* MJRefresh.bundle in Resources */,
-				7430E0101EC6A3FC00D7D4AB /* ESSForgetPassworkController.xib in Resources */,
+				743A42D221B61EDB00C27A2B /* ESSRepairTaskListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2354,6 +2354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BC1F7C21A79BBF0072B72A /* IQUIViewController+Additions.m in Sources */,
+				743A42CB21B61D8900C27A2B /* ESSForgetPassworkController.m in Sources */,
 				744C6E951EFB5373003A7A2B /* LocationManager.m in Sources */,
 				53B3E0A31ECC68F40098A7D7 /* ESSLiftPhotoViewController.m in Sources */,
 				74BC1F8921A79BBF0072B72A /* CocoaSecurity.m in Sources */,
@@ -2397,7 +2398,6 @@
 				7401D5A31F5D02BB0093C7CD /* ScanResultViewController.m in Sources */,
 				7495805320FDD64E004D6244 /* ESSRepairFormDetailPartReplacementCell.m in Sources */,
 				5302572421A7A876006E92DE /* ESSRescueTaskListModel.m in Sources */,
-				7430E00F1EC6A3FC00D7D4AB /* ESSForgetPassworkController.m in Sources */,
 				74BC1F7121A79BBF0072B72A /* IQToolbar.m in Sources */,
 				7416A55A1ECC3D3500EA4253 /* ESSMeCell.m in Sources */,
 				74BC1F5621A79BBF0072B72A /* UIColor+PYSearchExtension.m in Sources */,
@@ -2446,6 +2446,7 @@
 				74BC1F4F21A79BBF0072B72A /* MJRefreshStateHeader.m in Sources */,
 				74BC1F4321A79BBF0072B72A /* MJRefreshConst.m in Sources */,
 				74BBCE5D1F74958000D8BCD5 /* ESSMaintenanceTaskListController.m in Sources */,
+				743A42D321B61EDB00C27A2B /* ESSRepairTaskListCell.m in Sources */,
 				74BB332F1EA99BFF002A7327 /* ESSLiftDetailButton.m in Sources */,
 				74BC1F7021A79BBF0072B72A /* IQTextView.m in Sources */,
 				53B3E0171ECC4B820098A7D7 /* ESSSelectFaultReasonController.m in Sources */,
@@ -2542,12 +2543,12 @@
 				7416A5601ECC3D3500EA4253 /* ESSChangePhotoController..m in Sources */,
 				74BB334F1EA99BFF002A7327 /* ESSTabBarController.m in Sources */,
 				74957FFE20F87102004D6244 /* ESSRepairFormDetailTopCell.m in Sources */,
-				74BB33421EA99BFF002A7327 /* ESSRegisterController.m in Sources */,
 				532396D12047E59E0096EE17 /* ESSChuZhiFanKuiCell.m in Sources */,
 				74BC1F5121A79BBF0072B72A /* MJRefreshFooter.m in Sources */,
 				5381CC3A202062BC00C52268 /* ESSRTDWeiBaoComInfoCell.m in Sources */,
 				74BC1F6721A79BBF0072B72A /* JTCalendarManager.m in Sources */,
 				74BC1F6321A79BBF0072B72A /* JTCalendarSettings.m in Sources */,
+				743A42CC21B61D8900C27A2B /* ESSRegisterController.m in Sources */,
 				74B29E1B20ECACE3005B6E21 /* ESSSubPartTableViewCell.m in Sources */,
 				74BC1F7721A79BBF0072B72A /* IQKeyboardManager.m in Sources */,
 				74270C7B20F4403600F1C3BF /* ESSRepairFormDetailListController.m in Sources */,
@@ -2564,7 +2565,6 @@
 				7436DC871F71E22E00F712AC /* ZXRescueTaskController.m in Sources */,
 				7400D71C1ECC37BF001BC5D2 /* ESSMaintenanceTaskCalendarController.m in Sources */,
 				74BB33401EA99BFF002A7327 /* NetworkingTool.m in Sources */,
-				7475824220E364A200649490 /* ESSRepairTaskListCell.m in Sources */,
 				743A42C121B60CCA00C27A2B /* ZXInformationListModel.m in Sources */,
 				5302571821A7A856006E92DE /* ESSRescueTaskListDetailController.m in Sources */,
 				749E874E21082A1B00837AFA /* ViewController.m in Sources */,

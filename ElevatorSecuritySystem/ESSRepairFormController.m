@@ -240,7 +240,7 @@
         case 0:
         {
             ESSSelectFaultTypeController *vc = [ESSSelectFaultTypeController new];
-            vc.elevNo = self.model.ElevNo;
+            vc.elevNo = [NSString stringWithFormat:@"%d",self.model.ElevID];
             vc.block = ^(NSString *str, NSString *code) {
                 self.model.FailureCause = str;
                 self.FailureCauseCode = code;
