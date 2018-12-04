@@ -153,6 +153,12 @@
 		743A429921B4C74C00C27A2B /* WMScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A429121B4C74C00C27A2B /* WMScrollView.m */; };
 		743A429A21B4C74C00C27A2B /* WMMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A429221B4C74C00C27A2B /* WMMenuView.m */; };
 		743A429B21B4C74C00C27A2B /* WMProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A429321B4C74C00C27A2B /* WMProgressView.m */; };
+		743A42BA21B6062200C27A2B /* ZXInformationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42B421B6062200C27A2B /* ZXInformationListCell.xib */; };
+		743A42BB21B6062200C27A2B /* ZXInformationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42B521B6062200C27A2B /* ZXInformationListController.m */; };
+		743A42BC21B6062200C27A2B /* ZXInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42B621B6062200C27A2B /* ZXInformationController.m */; };
+		743A42BD21B6062200C27A2B /* ZXInformationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42B721B6062200C27A2B /* ZXInformationListCell.m */; };
+		743A42BE21B6062200C27A2B /* ZXInformationListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743A42B821B6062200C27A2B /* ZXInformationListController.xib */; };
+		743A42C121B60CCA00C27A2B /* ZXInformationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 743A42C021B60CCA00C27A2B /* ZXInformationListModel.m */; };
 		743B69391FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 743B69371FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m */; };
 		743B693A1FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */; };
 		743F6FE31EAAFC6C005515E5 /* ESSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743F6FE21EAAFC6C005515E5 /* ESSProgressView.m */; };
@@ -160,11 +166,6 @@
 		744C6E921EFB50DB003A7A2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744C6E911EFB50DB003A7A2B /* CoreLocation.framework */; };
 		744C6E951EFB5373003A7A2B /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744C6E941EFB5373003A7A2B /* LocationManager.m */; };
 		744FF7001F6F93D000785F7C /* UIBarButtonItem+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF6FF1F6F93D000785F7C /* UIBarButtonItem+Add.m */; };
-		744FF7051F6F98B600785F7C /* ESSMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF7041F6F98B600785F7C /* ESSMessageController.m */; };
-		744FF7101F6FA21300785F7C /* ESSMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF70A1F6FA21300785F7C /* ESSMessageListCell.m */; };
-		744FF7111F6FA21300785F7C /* ESSMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 744FF70B1F6FA21300785F7C /* ESSMessageListCell.xib */; };
-		744FF7121F6FA21300785F7C /* ESSMessageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF70D1F6FA21300785F7C /* ESSMessageListController.m */; };
-		744FF7131F6FA21300785F7C /* ESSMessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 744FF70F1F6FA21300785F7C /* ESSMessageListModel.m */; };
 		745744EA1EC5624A0096504B /* ESSLiftManagerProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 745744E91EC5624A0096504B /* ESSLiftManagerProjectModel.m */; };
 		7475823E20E35E7C00649490 /* ESSRepairModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7475823D20E35E7C00649490 /* ESSRepairModel.m */; };
 		7475824220E364A200649490 /* ESSRepairTaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7475824020E364A200649490 /* ESSRepairTaskListCell.m */; };
@@ -588,6 +589,16 @@
 		743A429321B4C74C00C27A2B /* WMProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMProgressView.m; sourceTree = "<group>"; };
 		743A429421B4C74C00C27A2B /* WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPageController.h; sourceTree = "<group>"; };
 		743A429521B4C74C00C27A2B /* UIViewController+WMPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WMPageController.h"; sourceTree = "<group>"; };
+		743A42B221B6062200C27A2B /* ZXInformationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXInformationListCell.h; sourceTree = "<group>"; };
+		743A42B321B6062200C27A2B /* ZXInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXInformationController.h; sourceTree = "<group>"; };
+		743A42B421B6062200C27A2B /* ZXInformationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXInformationListCell.xib; sourceTree = "<group>"; };
+		743A42B521B6062200C27A2B /* ZXInformationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXInformationListController.m; sourceTree = "<group>"; };
+		743A42B621B6062200C27A2B /* ZXInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXInformationController.m; sourceTree = "<group>"; };
+		743A42B721B6062200C27A2B /* ZXInformationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXInformationListCell.m; sourceTree = "<group>"; };
+		743A42B821B6062200C27A2B /* ZXInformationListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXInformationListController.xib; sourceTree = "<group>"; };
+		743A42B921B6062200C27A2B /* ZXInformationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXInformationListController.h; sourceTree = "<group>"; };
+		743A42BF21B60CCA00C27A2B /* ZXInformationListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXInformationListModel.h; sourceTree = "<group>"; };
+		743A42C021B60CCA00C27A2B /* ZXInformationListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXInformationListModel.m; sourceTree = "<group>"; };
 		743B69361FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSMaintenanceFormDetailLiftInfomationCell.h; sourceTree = "<group>"; };
 		743B69371FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSMaintenanceFormDetailLiftInfomationCell.m; sourceTree = "<group>"; };
 		743B69381FA16F08003E3F3D /* ESSMaintenanceFormDetailLiftInfomationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ESSMaintenanceFormDetailLiftInfomationCell.xib; sourceTree = "<group>"; };
@@ -599,15 +610,6 @@
 		744C6E941EFB5373003A7A2B /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		744FF6FE1F6F93D000785F7C /* UIBarButtonItem+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Add.h"; sourceTree = "<group>"; };
 		744FF6FF1F6F93D000785F7C /* UIBarButtonItem+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Add.m"; sourceTree = "<group>"; };
-		744FF7031F6F98B600785F7C /* ESSMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSMessageController.h; sourceTree = "<group>"; };
-		744FF7041F6F98B600785F7C /* ESSMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESSMessageController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		744FF7091F6FA21300785F7C /* ESSMessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSMessageListCell.h; sourceTree = "<group>"; };
-		744FF70A1F6FA21300785F7C /* ESSMessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSMessageListCell.m; sourceTree = "<group>"; };
-		744FF70B1F6FA21300785F7C /* ESSMessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSMessageListCell.xib; sourceTree = "<group>"; };
-		744FF70C1F6FA21300785F7C /* ESSMessageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSMessageListController.h; sourceTree = "<group>"; };
-		744FF70D1F6FA21300785F7C /* ESSMessageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSMessageListController.m; sourceTree = "<group>"; };
-		744FF70E1F6FA21300785F7C /* ESSMessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSMessageListModel.h; sourceTree = "<group>"; };
-		744FF70F1F6FA21300785F7C /* ESSMessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSMessageListModel.m; sourceTree = "<group>"; };
 		745744E81EC5624A0096504B /* ESSLiftManagerProjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSLiftManagerProjectModel.h; sourceTree = "<group>"; };
 		745744E91EC5624A0096504B /* ESSLiftManagerProjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSLiftManagerProjectModel.m; sourceTree = "<group>"; };
 		7475823C20E35E7C00649490 /* ESSRepairModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSRepairModel.h; sourceTree = "<group>"; };
@@ -1173,6 +1175,23 @@
 			path = WMMenuView;
 			sourceTree = "<group>";
 		};
+		743A42B121B6062200C27A2B /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				743A42B321B6062200C27A2B /* ZXInformationController.h */,
+				743A42B621B6062200C27A2B /* ZXInformationController.m */,
+				743A42B221B6062200C27A2B /* ZXInformationListCell.h */,
+				743A42B721B6062200C27A2B /* ZXInformationListCell.m */,
+				743A42B421B6062200C27A2B /* ZXInformationListCell.xib */,
+				743A42B921B6062200C27A2B /* ZXInformationListController.h */,
+				743A42B521B6062200C27A2B /* ZXInformationListController.m */,
+				743A42B821B6062200C27A2B /* ZXInformationListController.xib */,
+				743A42BF21B60CCA00C27A2B /* ZXInformationListModel.h */,
+				743A42C021B60CCA00C27A2B /* ZXInformationListModel.m */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		744BC4C01FBEBF4E0049F7B2 /* MaintenanceFormDetailList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1222,22 +1241,6 @@
 				7475824120E364A200649490 /* ESSRepairTaskListCell.xib */,
 			);
 			name = RepairTaskList;
-			sourceTree = "<group>";
-		};
-		744FF7021F6F988A00785F7C /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				744FF7031F6F98B600785F7C /* ESSMessageController.h */,
-				744FF7041F6F98B600785F7C /* ESSMessageController.m */,
-				744FF70C1F6FA21300785F7C /* ESSMessageListController.h */,
-				744FF70D1F6FA21300785F7C /* ESSMessageListController.m */,
-				744FF7091F6FA21300785F7C /* ESSMessageListCell.h */,
-				744FF70A1F6FA21300785F7C /* ESSMessageListCell.m */,
-				744FF70B1F6FA21300785F7C /* ESSMessageListCell.xib */,
-				744FF70E1F6FA21300785F7C /* ESSMessageListModel.h */,
-				744FF70F1F6FA21300785F7C /* ESSMessageListModel.m */,
-			);
-			name = Message;
 			sourceTree = "<group>";
 		};
 		7455B2DF1F78D8230038C94C /* Verify */ = {
@@ -1423,7 +1426,7 @@
 				7455B2DF1F78D8230038C94C /* Verify */,
 				74BB33601EA99DF9002A7327 /* Home */,
 				743A427A21B4C4A500C27A2B /* News */,
-				744FF7021F6F988A00785F7C /* Message */,
+				743A42B121B6062200C27A2B /* Information */,
 				74BB33611EA99E0A002A7327 /* Me */,
 				74BB335E1EA99D96002A7327 /* Search */,
 				74C657231EBFF4A700FCAF66 /* Scan */,
@@ -2193,6 +2196,7 @@
 				7400D7151ECC37BF001BC5D2 /* ESSMaintenanceItemsCell.xib in Resources */,
 				5381CC272020246F00C52268 /* ESSRTDLiftInfoCell.xib in Resources */,
 				74BEA3321F70A74800BAF0A0 /* ESSExitCell.xib in Resources */,
+				743A42BE21B6062200C27A2B /* ZXInformationListController.xib in Resources */,
 				74B29E2920EDC4AB005B6E21 /* ESSPartReplacementFormTableViewCell.xib in Resources */,
 				74B29E1720EC9889005B6E21 /* ESSPartTableViewCell.xib in Resources */,
 				532396D32047E59E0096EE17 /* ESSChuZhiFanKuiController.xib in Resources */,
@@ -2243,6 +2247,7 @@
 				7495805920FDE037004D6244 /* ESSRepairFormDetailPartReplacementFooter.xib in Resources */,
 				748B6CD21EA999DA0050B552 /* Assets.xcassets in Resources */,
 				7416A55F1ECC3D3500EA4253 /* ESSMeController.xib in Resources */,
+				743A42BA21B6062200C27A2B /* ZXInformationListCell.xib in Resources */,
 				74BC1F6F21A79BBF0072B72A /* README.md in Resources */,
 				74775D1320FF43B30051FE16 /* ESSEvalutionCell.xib in Resources */,
 				743A428521B4C4A500C27A2B /* ZXNewsListController.xib in Resources */,
@@ -2257,7 +2262,6 @@
 				530AAFB71EC2EFFD00E8CC4D /* ESSLocationPickerTableViewCell.xib in Resources */,
 				530AAFA01EC15EEC00E8CC4D /* ESSAddLiftController.xib in Resources */,
 				74BC1F7F21A79BBF0072B72A /* README.md in Resources */,
-				744FF7111F6FA21300785F7C /* ESSMessageListCell.xib in Resources */,
 				74270C7620F2FF4C00F1C3BF /* ESSImagePickerTableViewCell.xib in Resources */,
 				5369E9E1204ED96F00452E99 /* ESSRTDFanKuiCell.xib in Resources */,
 				532396D42047E59E0096EE17 /* ESSChuZhiFanKuiCell.xib in Resources */,
@@ -2412,6 +2416,7 @@
 				74BEA33D1F71054200BAF0A0 /* ESSHomeTaskButton.m in Sources */,
 				74BC1F7921A79BBF0072B72A /* IQUITextFieldView+Additions.m in Sources */,
 				74BB33441EA99BFF002A7327 /* ESSRevisePasswordController.m in Sources */,
+				743A42BD21B6062200C27A2B /* ZXInformationListCell.m in Sources */,
 				532396DE2047E5DF0096EE17 /* ESSSubmitController.m in Sources */,
 				7400D7201ECC37BF001BC5D2 /* ESSMaintenanceReadTermsController.m in Sources */,
 				749CDA8620E605B500405F4B /* ESSBaseTableViewCell.m in Sources */,
@@ -2434,7 +2439,6 @@
 				74BC1F6521A79BBF0072B72A /* JTCalendarScrollManager.m in Sources */,
 				743A428721B4C4A500C27A2B /* ZXNewsController.m in Sources */,
 				744FF7001F6F93D000785F7C /* UIBarButtonItem+Add.m in Sources */,
-				744FF7101F6FA21300785F7C /* ESSMessageListCell.m in Sources */,
 				7416A5641ECC3D8100EA4253 /* ESSLiftMessageController.m in Sources */,
 				74BC1F5821A79BBF0072B72A /* PYSearchSuggestionViewController.m in Sources */,
 				74BC1F5921A79BBF0072B72A /* PYSearchConst.m in Sources */,
@@ -2443,7 +2447,6 @@
 				74BC1F4321A79BBF0072B72A /* MJRefreshConst.m in Sources */,
 				74BBCE5D1F74958000D8BCD5 /* ESSMaintenanceTaskListController.m in Sources */,
 				74BB332F1EA99BFF002A7327 /* ESSLiftDetailButton.m in Sources */,
-				744FF7121F6FA21300785F7C /* ESSMessageListController.m in Sources */,
 				74BC1F7021A79BBF0072B72A /* IQTextView.m in Sources */,
 				53B3E0171ECC4B820098A7D7 /* ESSSelectFaultReasonController.m in Sources */,
 				7436DC851F71E22E00F712AC /* ZXRescueTaskCell.m in Sources */,
@@ -2453,6 +2456,7 @@
 				7401D5B21F5D03B30093C7CD /* UIActionSheet+LBXAlertAction.m in Sources */,
 				74BC1F4821A79BBF0072B72A /* MJRefreshBackGifFooter.m in Sources */,
 				7400D7191ECC37BF001BC5D2 /* ESSMaintenanceFormDetailController.m in Sources */,
+				743A42BB21B6062200C27A2B /* ZXInformationListController.m in Sources */,
 				7400D7141ECC37BF001BC5D2 /* ESSMaintenanceItemsCell.m in Sources */,
 				74BC1F6121A79BBF0072B72A /* SDPhotoItem.m in Sources */,
 				74BC1F4621A79BBF0072B72A /* NSBundle+MJRefresh.m in Sources */,
@@ -2460,6 +2464,7 @@
 				7401D59C1F5D021D0093C7CD /* ESSScanViewController.m in Sources */,
 				5311CE231ECD233200C94DE8 /* ESSVideoController.mm in Sources */,
 				74270C8020F4412600F1C3BF /* ESSRepairFormDetailListCell.m in Sources */,
+				743A42BC21B6062200C27A2B /* ZXInformationController.m in Sources */,
 				5302572321A7A876006E92DE /* ESSRescueTaskListCell.m in Sources */,
 				74CD0CF71EB8699700FB1C59 /* ESSLiftManagermentController.m in Sources */,
 				745744EA1EC5624A0096504B /* ESSLiftManagerProjectModel.m in Sources */,
@@ -2488,7 +2493,6 @@
 				53F3F0292024157D00FC184D /* NavigationManager.m in Sources */,
 				5381CC2B20203D5B00C52268 /* ESSRTDAlarmInfoCell.m in Sources */,
 				74BB33561EA99BFF002A7327 /* SZTextView.m in Sources */,
-				744FF7131F6FA21300785F7C /* ESSMessageListModel.m in Sources */,
 				7400D71D1ECC37BF001BC5D2 /* ESSMaintencanceItemsModel.m in Sources */,
 				74BC1F4221A79BBF0072B72A /* UIScrollView+MJRefresh.m in Sources */,
 				7416A55C1ECC3D3500EA4253 /* ESSAccountSafetyCell.m in Sources */,
@@ -2557,11 +2561,11 @@
 				74BB33341EA99BFF002A7327 /* ESSHomeController.m in Sources */,
 				74CD0CF81EB8699700FB1C59 /* ESSLiftManagermentHeader.m in Sources */,
 				74BC1F8521A79BBF0072B72A /* TAAnimatedDotView.m in Sources */,
-				744FF7051F6F98B600785F7C /* ESSMessageController.m in Sources */,
 				7436DC871F71E22E00F712AC /* ZXRescueTaskController.m in Sources */,
 				7400D71C1ECC37BF001BC5D2 /* ESSMaintenanceTaskCalendarController.m in Sources */,
 				74BB33401EA99BFF002A7327 /* NetworkingTool.m in Sources */,
 				7475824220E364A200649490 /* ESSRepairTaskListCell.m in Sources */,
+				743A42C121B60CCA00C27A2B /* ZXInformationListModel.m in Sources */,
 				5302571821A7A856006E92DE /* ESSRescueTaskListDetailController.m in Sources */,
 				749E874E21082A1B00837AFA /* ViewController.m in Sources */,
 				74BC1F8021A79BBF0072B72A /* SDCycleScrollView.m in Sources */,

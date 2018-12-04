@@ -1,21 +1,21 @@
 //
-//  ZXNewsController.m
+//  ZXInformationController.m
 //  ElevatorUnit
 //
 //  Created by 刘树龙 on 2018/8/10.
 //  Copyright © 2018年 刘树龙. All rights reserved.
 //
 
-#import "ZXNewsController.h"
-#import "ZXNewsListController.h"
+#import "ZXInformationController.h"
+#import "ZXInformationListController.h"
 
-@interface ZXNewsController ()
+@interface ZXInformationController ()
 
 @property (nonatomic, strong) NSMutableArray *datas;
 
 @end
 
-@implementation ZXNewsController
+@implementation ZXInformationController
 
 - (instancetype)init
 {
@@ -33,14 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"资讯";
+    self.navigationItem.title = @"消息";
     [self downloadData];
 }
 
 - (void)downloadData {
     NSDictionary *paras = @{};
-    [NetworkingTool GET:@"/APP/CMS/CMS_News/GetLanMu" parameters:paras success:^(id  _Nonnull responseObject) {
-        self.datas = responseObject;
+    [NetworkingTool GET:@"/APP/SYS/Sys_PushLog/GetMsgType" parameters:paras success:^(id  _Nonnull responseObject) {
+        NSString *msgTypeStr = responseObject[@"MsgType"];
+        self.datas = [[msgTypeStr componentsSeparatedByString:@","] mutableCopy];
         [self reloadData];
     }];
 }
@@ -58,12 +59,11 @@
 }
 
 - (NSString *)pageController:(WMPageController *)pageController titleAtIndex:(NSInteger)index {
-    return self.datas[index][@"MingCheng"];
+    return self.datas[index];
 }
 
 - (__kindof UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
-    NSString *aID = self.datas[index][@"LanMuID"];
-    ZXNewsListController *vc = [[ZXNewsListController alloc] initWithLanMuID:[aID intValue]];
+    ZXInformationListController *vc = [[ZXInformationListController alloc] initWithMsgType:self.datas[index]];
     return vc;
 }
 
